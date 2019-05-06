@@ -10,3 +10,7 @@ div.card:hover {
 div.card {
   margin-left: 5px;
 }
+
+h5.card-title {
+  text-align: center;
+}
