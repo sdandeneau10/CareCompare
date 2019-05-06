@@ -1,3 +1,19 @@
-<p>
-  price-compare works!
-</p>
+<br>
+<div class="flex-container">
+  <div class="row">
+    <div class="col-sm">
+      <table class="table">
+        <tr *ngFor="let hospital of relevantHospitals" (click)="selected(hospital)">
+          <td>{{hospital.name}}</td>
+          <td>{{hospital.address}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-sm">
+      that
+    </div>
+    <div class="col-sm">
+      here
+    </div>
+  </div>
+</div>

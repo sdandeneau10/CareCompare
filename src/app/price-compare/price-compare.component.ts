@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Hospital} from '../Hospital';
 
 @Component({
   selector: 'app-price-compare',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PriceCompareComponent implements OnInit {
 
+  relevantHospitals: Hospital[] = [];
+  activeHospital: Hospital;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  selected(hospital: Hospital): void {
+    this.activeHospital = hospital;
   }
 
 }
