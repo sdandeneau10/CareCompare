@@ -3,22 +3,18 @@
   <div class="row">
     <div class="col-sm">
       <h1>{{procedureName}} Pricing</h1>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Hospital Price</th>
-            <th scope="col">Care Compare Score</th>
-            <th scope="col">Cost</th>
-          </tr>
-        </thead>
-        <tr *ngFor="let hospital of relevantHospitals"
-            [class.selected]="hospital==activeHospital"
-            (click)="selected(hospital)">
-          <td>{{hospital.name}}</td>
-          <td>{{hospital.address}}</td>
-          <td>{{hospital.getApproxOutOfPocket()}}</td>
-        </tr>
-      </table>
+      <div *ngFor="let hospital of relevantHospitals"
+           class="card"
+           [class.selected]="hospital === activeHospital"
+           (click)="selected(hospital)"
+           style="margin-top: 10px; width: 18rem;">
+        <img src="../../assets/img/placeholder.jpg" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{hospital.name}}</h5>
+          <p class="card-text">Price: {{hospital.getApproxOutOfPocket()}}</p>
+          <p class="card-text">Distance: 0</p>
+        </div>
+      </div>
     </div>
     <div class="col-sm">
     </div>

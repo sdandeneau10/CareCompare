@@ -3,7 +3,10 @@
   color: white;
 }
 
-table.table tr:hover td {
-  background-color: black;
-  color:white;
+div.card:hover {
+  background-color: gray;
+}
+
+div.card {
+  margin-left: 5px;
 }
