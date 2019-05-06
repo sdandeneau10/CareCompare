@@ -3,16 +3,39 @@ export class Hospital {
   address: string;
   state: string;
 
-  // TODO: get definition from medicare IPPS api documentation
+  // Providers average charges
   coveredCharges: number;
-  // TODO: get definition from medicare IPPS api documentation
+  // Average total payments to provider medicare + additional
   totalPayments: number;
-  // TODO: get definition from medicare IPPS api documentation
+  // Average total payment by medicare
   averageMedicarePayment: number;
 
-  constructor(name: string, address: string){
+  constructor(name: string, address: string, coveredCharges: number, totalPayments: number, averageMedicarePayments: number) {
     this.name = name;
     this.address = address;
+    this.coveredCharges = coveredCharges;
+    this.totalPayments = totalPayments;
+    this.averageMedicarePayment = averageMedicarePayments;
   }
 
+  /**
+   * Gets hospital street address and state
+   */
+  getFullAddress(): string {
+    return this.address + ' ' + this.state;
+  }
+
+  /**
+   * Subtracts medicare payments from total amount paid
+   */
+  getApproxOutOfPocket(): number {
+    return this.totalPayments - this.averageMedicarePayment;
+  }
+
+  /**
+   * Gets the price the hopsital charges
+   */
+  gethospitalPrice(): number {
+    return this.coveredCharges;
+  }
 }

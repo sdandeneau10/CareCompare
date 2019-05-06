@@ -1,19 +1,33 @@
 <br>
-<div class="flex-container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-sm">
+      <h1>{{procedureName}} Pricing</h1>
       <table class="table">
-        <tr *ngFor="let hospital of relevantHospitals" (click)="selected(hospital)">
+        <thead>
+          <tr>
+            <th scope="col">Hospital Price</th>
+            <th scope="col">Care Compare Score</th>
+            <th scope="col">Cost</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let hospital of relevantHospitals"
+            [class.selected]="hospital==activeHospital"
+            (click)="selected(hospital)">
           <td>{{hospital.name}}</td>
           <td>{{hospital.address}}</td>
+          <td>{{hospital.getApproxOutOfPocket()}}</td>
         </tr>
       </table>
     </div>
     <div class="col-sm">
-      that
     </div>
     <div class="col-sm">
-      here
+      <table>
+        <tr>
+          <h1>{{activeHospital.name}}</h1>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
