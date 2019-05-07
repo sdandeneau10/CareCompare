@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Hospital} from '../Hospital';
+import {MedicareDataService} from '../medicare-data.service';
 
 @Component({
   selector: 'app-price-compare',
@@ -12,17 +13,16 @@ export class PriceCompareComponent implements OnInit {
   activeHospital: Hospital;
   procedureName: string;
 
-  constructor() { }
+  constructor(private dataRequest: MedicareDataService) { }
 
   ngOnInit() {
-    // for testing
-    this.procedureName = 'Heart Attack';
-    for (let i = 0; i < 25; i++) {
-      const cost1 = (Math.abs(Math.random()) * 6000) + 1;
-      const cost2 = (Math.abs(Math.random()) * 6000) + 1;
-      const cost3 = (Math.abs(Math.random()) * 6000) + 1;
-      this.relevantHospitals.push(new Hospital('Hospital ' + i, 'x', cost1, cost2, cost3));
-    }
+    this.requestData('');
+  }
+
+  requestData(code: string): void {
+    this.dataRequest.getData('').subscribe(arr => {
+      this.relevantHospitals = arr;
+    });
   }
 
   selected(hospital: Hospital): void {
