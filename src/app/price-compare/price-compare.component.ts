@@ -17,14 +17,28 @@ export class PriceCompareComponent implements OnInit {
   ngOnInit() {
     // for testing
     this.procedureName = 'Heart Attack';
-    for (let i = 0; i < 20; i++) {
-      this.relevantHospitals.push(new Hospital('Hospital ' + i, 'x', 0, 0, 0));
+    for (let i = 0; i < 25; i++) {
+      const cost1 = (Math.abs(Math.random()) * 6000) + 1;
+      const cost2 = (Math.abs(Math.random()) * 6000) + 1;
+      const cost3 = (Math.abs(Math.random()) * 6000) + 1;
+      this.relevantHospitals.push(new Hospital('Hospital ' + i, 'x', cost1, cost2, cost3));
     }
   }
 
   selected(hospital: Hospital): void {
     this.activeHospital = hospital;
-    console.log('selected' + this.activeHospital.name);
   }
 
+  getRelevantHospitals(): Hospital[] {
+    return this.relevantHospitals;
+  }
+
+  getHospitalsInRows(col: number): Hospital[][] {
+    const listOfHospitals = this.getRelevantHospitals();
+    const formattedList = new Array<Array<Hospital>>();
+    for (let i = 0; i <  listOfHospitals.length; i += col) {
+      formattedList.push(listOfHospitals.slice(i, i + col));
+    }
+    return formattedList;
+  }
 }
