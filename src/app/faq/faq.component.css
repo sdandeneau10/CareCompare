@@ -1,0 +1,11 @@
+div.title{
+  text-align: center;
+  font-size: 30px;
+}
+.FAQImages{
+  height: 75px;
+  padding-right: 20px;
+}
+.category:hover{
+  background-color: gray;
+}
