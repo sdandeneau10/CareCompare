@@ -6,6 +6,6 @@ div.title{
   height: 75px;
   padding-right: 20px;
 }
-.category:hover{
+.row:hover{
   background-color: gray;
 }
