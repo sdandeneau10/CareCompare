@@ -1,19 +1,19 @@
 <br>
 <div class="container-fluid row">
   <div class="col-md-auto">
-    <nav class="sticky-top" id="sidebar">
+    <nav class="sticky-top sidebar-offset" id="sidebar">
       <div class="sidebar-header">
         <h3>Filters</h3>
       </div>
-        <h6>Distance</h6>
+        <h6 class="filter-header">Distance</h6>
         <div class="slidecontainer">
           <input type="range" min="1" max="100" value="50" class="slider" id="distanceRange">
         </div>
-      <h6>Rating</h6>
+      <h6 class="filter-header">Rating</h6>
       <div class="slidecontainer">
         <input type="range" min="1" max="100" value="50" class="slider" id="ratingRange">
       </div>
-      <h6>Price</h6>
+      <h6 class="filter-header">Price</h6>
       <div class="slidecontainer">
         <input type="range" min="1" max="100" value="50" class="slider" id="priceRange">
       </div>
@@ -24,8 +24,7 @@
       <div class="col" *ngFor="let hospital of hospitalRow">
         <div class="card mx-auto"
              (click)="selected(hospital)"
-             [class.selected]="hospital === activeHospital"
-             style="width: 20rem;">
+             [class.selected]="hospital === activeHospital">
           <img class="card-img-top" src="../../assets/img/placeholder.jpg">
           <div class="card-body">
             <h5 class="card-title">{{hospital.name}}</h5>
