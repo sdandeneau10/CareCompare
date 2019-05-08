@@ -4,14 +4,18 @@ div.title{
 }
 .FAQImages{
   height: 75px;
+  padding-right: 20px;
+}
+.categoryButton{
   display: block;
-  /*margin: 0 auto 0 auto;*/
-  vertical-align: top;
+  margin: 0 auto 0 auto;
+  background-color: white;
+  border-width: 0;
+}
+
+.categoryButton:hover{
+  background-color: #F0F0F0;
 }
 .categoryTitles{
   font-size: 40px;
-  vertical-align: middle;
-}
-.row:hover{
-  background-color: gray;
 }
