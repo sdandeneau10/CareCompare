@@ -4,7 +4,13 @@ div.title{
 }
 .FAQImages{
   height: 75px;
-  padding-right: 20px;
+  display: block;
+  /*margin: 0 auto 0 auto;*/
+  vertical-align: top;
+}
+.categoryTitles{
+  font-size: 40px;
+  vertical-align: middle;
 }
 .row:hover{
   background-color: gray;
