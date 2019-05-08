@@ -4,7 +4,8 @@ div.title{
 }
 .FAQImages{
   height: 75px;
-  padding-right: 20px;
+  /*vertical-align: top;*/
+  float: left;
 }
 .categoryButton{
   display: block;
@@ -18,4 +19,17 @@ div.title{
 }
 .categoryTitles{
   font-size: 40px;
+  /*vertical-align: middle;*/
+}
+
+.card-header{
+  background-color: white;
+}
+.btn-link{
+  background-color: white;
+  border-width: 0;
+}
+
+.card-body{
+  border-width: 0;
 }
