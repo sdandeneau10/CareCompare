@@ -1,0 +1,40 @@
+.Side{
+  float: left;
+  width: 50%;
+  height: 1000px;
+}
+.box{
+  border: 1px solid green ;
+  width: 1200px;
+  height: 1000px;
+  display: block;
+  margin: auto auto auto auto;
+}
+
+.prettySide{
+  height: 300px;
+  width: 400px;
+  display: block;
+  margin: 200px auto 0 auto;
+}
+.pill{
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 10px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+.pill:hover{
+  background-color: #aaa;
+}
+.pillDiv{
+  float: right;
+}
+.Title{
+  text-align: center;
+}
