@@ -38,10 +38,15 @@
   height: 40px;
 }
 
+.log:hover{
+  background-color: #99d6ff;
+}
+
 
 .longform::placeholder {
   color: #cccccc;
 }
+
 
 .longform{
   font-size: 20px;

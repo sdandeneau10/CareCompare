@@ -9,11 +9,14 @@ export class SignUpComponent implements OnInit {
   login = true;
 
   changePage(event) {
-    if (event.target.value === 'l') {
+    if (event.target.value === 'lg') {
       this.login = true;
     } else {
       this.login = false;
     }
+  }
+  changeBack(event) {
+    this.login = true;
   }
 
   constructor() { }
