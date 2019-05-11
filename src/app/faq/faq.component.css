@@ -1,0 +1,34 @@
+div.title{
+  text-align: center;
+  font-size: 30px;
+}
+.FAQImages{
+  height: 75px;
+  float: left;
+  padding-right: 20px;
+}
+.categoryButton{
+  display: block;
+  margin: 0 auto 0 auto;
+  background-color: white;
+  border-width: 0;
+}
+
+.categoryButton:hover{
+  background-color: #F0F0F0;
+}
+.categoryTitles{
+  font-size: 40px;
+}
+
+.card-header{
+  background-color: white;
+}
+.btn-link{
+  background-color: white;
+  border-width: 0;
+}
+
+.card-body{
+  border-width: 0;
+}
