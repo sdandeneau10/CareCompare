@@ -35,6 +35,7 @@ h3 {
 
 /* The slider itself */
 .slider {
+  margin-top: 10px;
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
   width: 100%; /* Full-width */
@@ -67,4 +68,19 @@ h3 {
   height: 25px; /* Slider handle height */
   background: #4CAF50; /* Green background */
   cursor: pointer; /* Cursor on hover */
+}
+
+.resizeSingle {
+  margin-top: 5px;
+  width: 30px;
+  height: auto;
+}
+
+.resizeTriple {
+  width: 40px;
+  height: auto;
+}
+
+h6 {
+  font-size: 14px;
 }

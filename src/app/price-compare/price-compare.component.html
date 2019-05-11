@@ -19,19 +19,25 @@
       </div>
     </nav>
   </div>
-  <div class="col">
-    <div class="row" *ngFor="let hospitalRow of getHospitalsInRows(4)">
-      <div class="col" *ngFor="let hospital of hospitalRow">
-        <div class="card mx-auto"
-             (click)="selected(hospital)"
-             [class.selected]="hospital === activeHospital">
-          <img class="card-img-top" src="../../assets/img/placeholder.jpg">
-          <div class="card-body">
-            <h5 class="card-title">{{hospital.name}}</h5>
-            <p class="card-text">Price: {{hospital.getApproxOutOfPocket()}}</p>
+    <div class="col">
+      <div *ngIf="loading == false; else loadingWheel">
+        <h1>DRG Code: {{this.drgCode}}</h1>
+        <div class="row" *ngFor="let hospitalRow of getHospitalsInRows(3)">
+          <div class="col" *ngFor="let hospital of hospitalRow">
+            <div class="card mx-auto"
+                 (click)="selected(hospital)"
+                 [class.selected]="hospital === activeHospital">
+              <img class="card-img-top" src="../../assets/img/placeholder.jpg">
+              <div class="card-body">
+                <h6 class="card-title">{{hospital.name}}</h6>
+                <p class="card-text">Price: {{hospital.totalPayments}}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <ng-template #loadingWheel>
+        <img src="../../assets/img/loadingWheel.gif">
+      </ng-template>
     </div>
-  </div>
 </div>
