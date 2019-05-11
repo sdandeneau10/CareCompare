@@ -1,22 +1,11 @@
-.Side{
-  float: left;
-  width: 50%;
-  height: 1000px;
-}
 .box{
-  border: 1px solid green ;
-  width: 1200px;
-  height: 1000px;
+  width: 900px;
+  height:  800px;
   display: block;
+  background-color: #004080;
   margin: auto auto auto auto;
 }
 
-.prettySide{
-  height: 300px;
-  width: 400px;
-  display: block;
-  margin: 200px auto 0 auto;
-}
 .pill{
   background-color: #ddd;
   border: none;
@@ -37,4 +26,35 @@
 }
 .Title{
   text-align: center;
+  color: white;
+}
+
+.log{
+  color:white;
+  background-color: #0099ff;
+  border-width: 0;
+  font-size: 20px;
+  width: 400px;
+  height: 40px;
+}
+
+
+.longform::placeholder {
+  color: #cccccc;
+}
+
+.longform{
+  font-size: 20px;
+  border-width: 1px;
+  border-color: white;
+  display: block;
+  margin: 0 auto 0 auto;
+  color:white;
+  width: 400px;
+  background-color: #004080;
+}
+
+.check{
+  color: white;
+  padding-left: 250px;
 }

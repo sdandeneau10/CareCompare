@@ -2,10 +2,6 @@
 <br>
 <div class="container-fluid">
   <div class="box">
-    <div class="Side" style="background-color:#aaa;">
-      some picture or design of some sort
-    </div>
-    <div class="Side" style="background-color:#bbb;">
       <div class="pillDiv">
       <button class="pill" value="l" (click)="changePage($event)">Log in</button>
       <button class="pill" value="s" (click)="changePage($event)">Sign up</button>
@@ -13,35 +9,48 @@
       <br>
       <br>
       <br>
+    <img src="http://www.stickpng.com/assets/images/5847ea22cef1014c0b5e4833.png" style="display: block;margin: 0 auto 0 auto;height: 200px;width:200px;"/>
+    <h1 class="Title">CareCompare</h1>
       <div>
         <span *ngIf="login; then log else new"></span>
         <ng-template #log>
-          <h1 class="Title">Log in</h1>
           <br>
           <br>
           <br>
           <form action="/action_page.php" class="loginForm">
             <div class="form">
-              <label for="email" style="font-size: 25px;padding-left: 50px; padding-right: 20px">Email Address:</label>
-              <input type="email"class="longform"id="email"placeholder="Enter Email"name="email">
+              <input type="email"class="longform"id="email"placeholder="Username or Email"name="email">
             </div>
             <br>
             <br>
             <div class="form">
-              <label for="password" style="font-size: 25px;padding-left: 50px; padding-right: 20px">Password:</label>
-              <input type="password"class="longform"id="password"placeholder="Enter Password"name="password">
+              <input type="password"class="longform"id="password"placeholder="Password"name="password">
             </div>
             <br>
+            <div class="check">
+              <input type="checkbox" class="check-input" id="Check">
+              <label class="checkLabel" for="Check">Remember me</label>
+            </div>
             <br>
           </form>
-          <button style="display: block;margin: 0 auto 0 auto">Log in</button>
+          <button class="log" style="display: block;margin: 0 auto 0 auto">LOGIN</button>
+          <br>
+          <table>
+            <tr>
+              <td value="s" (click)="changePage($event)" class="btn btn-link" style="padding-left: 250px;color:white;">
+                Register
+              </td>
+              <td class="btn btn-link" style="padding-left: 210px;color:white;">
+                Forgot your password?
+              </td>
+            </tr>
+          </table>
         </ng-template>
 
 
         <ng-template #new>
-          hi
+
         </ng-template>
       </div>
-    </div>
   </div>
 </div>
