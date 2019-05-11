@@ -6,6 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+  login = true;
+
+  changePage(event) {
+    if (event.target.value === 'l') {
+      this.login = true;
+    } else {
+      this.login = false;
+    }
+  }
 
   constructor() { }
 

@@ -1,4 +1,4 @@
-<!--<br>
+<br>
 <div class="container-fluid">
   <div class="box">
     <div class="Side" style="background-color:#aaa;">
@@ -6,72 +6,41 @@
     </div>
     <div class="Side" style="background-color:#bbb;">
       <div class="pillDiv">
-      <button class="pill" value="l" ngModel="switch.Data">Log in</button>
-      <button class="pill" value="s" ngModel="switch.Data">Sign up</button>
+      <button class="pill" value="l" (click)="changePage($event)">Log in</button>
+      <button class="pill" value="s" (click)="changePage($event)">Sign up</button>
       </div>
       <br>
       <br>
       <br>
-      <div ngSwitch="switch.Data">
-        <div ngSwitch="l">
-      <h1 class="Title">Log in</h1>
-      <br>
-      <br>
-      <br>
-      <form action="/action_page.php" class="loginForm">
-        <div class="form">
-          <label for="email" style="font-size: 25px;padding-left: 50px; padding-right: 20px">Email Address:</label>
-          <input type="email"class="longform"id="email"placeholder="Enter Email"name="email">
-        </div>
-        <br>
-        <br>
-        <div class="form">
-          <label for="password" style="font-size: 25px;padding-left: 50px; padding-right: 20px">Password:</label>
-          <input type="password"class="longform"id="password"placeholder="Enter Password"name="password">
-        </div>
-        <br>
-        <br>
-      </form>
-      <button style="display: block;margin: 0 auto 0 auto">Log in</button>
-        </div>
-        <div ngSwitch="s">
+      <div>
+        <span *ngIf="login; then log else new"></span>
+        <ng-template #log>
+          <h1 class="Title">Log in</h1>
+          <br>
+          <br>
+          <br>
+          <form action="/action_page.php" class="loginForm">
+            <div class="form">
+              <label for="email" style="font-size: 25px;padding-left: 50px; padding-right: 20px">Email Address:</label>
+              <input type="email"class="longform"id="email"placeholder="Enter Email"name="email">
+            </div>
+            <br>
+            <br>
+            <div class="form">
+              <label for="password" style="font-size: 25px;padding-left: 50px; padding-right: 20px">Password:</label>
+              <input type="password"class="longform"id="password"placeholder="Enter Password"name="password">
+            </div>
+            <br>
+            <br>
+          </form>
+          <button style="display: block;margin: 0 auto 0 auto">Log in</button>
+        </ng-template>
+
+
+        <ng-template #new>
           hi
-        </div>
+        </ng-template>
       </div>
-    </div>
-  </div>
-</div>-->
-
-
-<h1 style="color:green;">GeeksforGeeks</h1>
-<h2>ng-switch Directive</h2>
-
-<div>
-  <form>
-    <label>
-      <input type="radio" value="search" ng-model="switch.Data">
-      Searching Algorithms
-    </label>
-    <label>
-      <input type="radio" value="sort" ng-model="switch.Data">
-      Sorting Algorithms
-    </label>
-  </form>
-
-  <div ng-switch="switch.Data" id="wrapper">
-    <div ng-switch-when="search">
-      <h2> Searching Algorithms</h2>
-      <ul>
-        <li>Binary Search
-        <li>Linear Search
-      </ul>
-    </div>
-    <div ng-switch-when="sort">
-      <h2>Sorting Algorithms</h2>
-      <ul>
-        <li>Merge Sort
-        <li>Quick Sort
-      </ul>
     </div>
   </div>
 </div>
