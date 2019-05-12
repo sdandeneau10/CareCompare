@@ -45,14 +45,11 @@
 
 
         <ng-template #sign>
-          <div class="side" style="float: left;width:50%; display: block;padding-top: 100px">
           <img src="http://www.stickpng.com/assets/images/5847ea22cef1014c0b5e4833.png" style="display: block;margin: 0 auto 0 auto;height: 200px;width:200px;"/>
           <h1 class="Title">CareCompare</h1>
-          </div>
           <br>
           <br>
           <br>
-          <div class="side">
           <form action="/action_page.php" class="signForm">
             <div class="form">
               <input type="name"class="longform"id="fullName"placeholder="Full Name"name="name">
@@ -79,12 +76,11 @@
             </div>
             <br>
           </form>
-          </div>
-          <button class="log" style="display: block;margin: 0 auto 0 auto">LOGIN</button>
+          <button class="log" style="display: block;margin: 0 auto 0 auto">SIGN UP</button>
           <br>
           <table>
             <tr>
-              <td (click)="changeBack($event)" class="btn btn-link" style="padding-left: 475px;color:white;">
+              <td value="sn" (click)="changeBack($event)" class="btn btn-link" style="padding-left: 250px;color:white;">
                 Already a member
               </td>
             </tr>
