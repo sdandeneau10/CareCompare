@@ -5,39 +5,44 @@
       <div class="sidebar-header">
         <h3>Filters</h3>
       </div>
-        <h6 class="filter-header">Distance</h6>
-        <div class="slidecontainer">
-          <input type="range" min="1" max="100" value="50" class="slider" id="distanceRange">
-        </div>
+      <h6 class="filter-header">Distance</h6>
+      <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="50" class="slider" #dist (change)="distanceChanged(dist.value)">
+      </div>
       <h6 class="filter-header">Rating</h6>
       <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="50" class="slider" id="ratingRange">
+        <input type="range" min="1" max="100" value="50" class="slider" #rat (change)="ratingChanged(rat.value)">
       </div>
       <h6 class="filter-header">Price</h6>
       <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="50" class="slider" id="priceRange">
+        <input type="range" min="1" max="100" value="100" class="slider" #prce (change)="priceChanged(prce.value)">
       </div>
     </nav>
   </div>
-    <div class="col">
-      <div *ngIf="loading == false; else loadingWheel">
+  <div class="col">
+    <div class="row">
+      map here
+    </div>
+    <div class="row">
+      <div class="col" *ngIf="loading == false; else loadingWheel">
         <h1>DRG Code: {{this.drgCode}}</h1>
         <div class="row" *ngFor="let hospitalRow of getHospitalsInRows(3)">
           <div class="col" *ngFor="let hospital of hospitalRow">
-            <div class="card mx-auto"
+            <div class="card mx-auto text-center"
                  (click)="selected(hospital)"
                  [class.selected]="hospital === activeHospital">
-              <img class="card-img-top" src="../../assets/img/placeholder.jpg">
+              <img class="card-img-top" [src]='hospital.imgUrl'>
               <div class="card-body">
                 <h6 class="card-title">{{hospital.name}}</h6>
-                <p class="card-text">Price: {{hospital.totalPayments}}</p>
+                <p class="card-text">Price: {{hospital.getApproxOutOfPocket() | currency}}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <ng-template #loadingWheel>
+      <ng-template #loadingWheel style="margin: 0 auto;">
         <img src="../../assets/img/loadingWheel.gif">
       </ng-template>
     </div>
+  </div>
 </div>
