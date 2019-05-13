@@ -2,6 +2,7 @@ export class Hospital {
   name: string;
   address: string;
   state: string;
+  imgUrl: string;
 
   // Providers average charges
   coveredCharges: number;

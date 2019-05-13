@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +9,7 @@ import { FAQComponent } from './faq/faq.component';
 import { AboutComponent } from './about/about.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AccountComponent } from './account/account.component';
+import {BrowserModule} from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AccountComponent } from './account/account.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
