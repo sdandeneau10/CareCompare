@@ -51,6 +51,9 @@ export class PriceCompareComponent implements OnInit {
           const temp = new Hospital(
             data[i]['Provider Name'],
             data[i]['Provider Street Address'],
+            data[i]['Provider City'],
+            data[i]['Provider State'],
+            data[i]['Provider Zip Code'],
             data[i]['Average Covered Charges'],
             data[i]['Average Total Payments'],
             data[i]['Average Medicare Payments']);
