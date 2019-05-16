@@ -33,13 +33,32 @@
           <div class="col" *ngFor="let hospital of hospitalRow">
             <div class="card mx-auto text-center"
                  (click)="selected(hospital)"
-                 [class.selected]="hospital === activeHospital">
+                 [class.selected]="hospital === activeHospital" data-toggle="modal" data-target="#fullDetails">
               <img class="card-img-top" [src]='hospital.imgUrl'>
               <div class="card-body">
                 <h6 class="card-title">{{hospital.name}}</h6>
                 <p class="card-text">Price: {{hospital.getApproxOutOfPocket() | currency}}</p>
               </div>
             </div>
+            <p>start</p>
+            <div class="modal fade" id="fullDetails" tabindex="-1" role="dialog" aria-labelledby="detailsLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <p style="font-size: 20px; text-align: center" class="modal-title" id="detailsLabel">{{activeHospital.name}}</p>
+                  </div>
+                  <div class="modal-body" style="text-align: center">
+                    {{activeHospital.address}}
+                    <br>
+                    {{activeHospital.city}}, {{activeHospital.state}} {{activeHospital.zip}}
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" ngbAutofocus class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p>end</p>
           </div>
         </div>
       </div>
