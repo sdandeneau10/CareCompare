@@ -25,11 +25,11 @@ export class PriceCompareComponent implements OnInit {
 
   ngOnInit() {
     // Init our variable
+    this.drgCode = null;
     this.loading = true;
     this.minPrice = 2000000000;
     this.maxPrice = 0;
     // TODO: allow a user to select this
-    this.drgCode = '001';
     this.requestData('');
   }
 

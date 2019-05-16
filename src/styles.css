@@ -1,4 +1,71 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
 li {
   font-family: "Fira Code Medium", "SansSerif", "Arial";
+  color: #ffffff;
+}
+
+.nav-link{
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.navbar-light {
+  background-color: dodgerblue;
+  opacity: 0.9;
+}
+
+.navbar-brand {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.whiteLink{
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  padding-right: 30px;
+  font-weight: bold;
+  -webkit-transition: color, font-size .4s; /* For Safari 3.0 to 6.0 */
+  transition: color, font-size .4s; /* For modern browsers */
+}
+
+.whiteLink:hover{
+  color: #c1e0f7;
+  text-decoration: none;
+}
+
+.imgLink {
+  width: 30px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.jumbotron {
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: #c1e0f7;
+  font-family: "Fira Code", "SansSerif", "Arial";
+}
+
+.card {
+  background-color: #3b3355;
+}
+
+.card-text {
+  color: #ffffff;
+}
+
+.btn-outline-primary {
+
+}
+
+.card-title {
+  color: #ffffff;
+}
+
+.card {
+  -webkit-transition: color .4s; /* For Safari 3.0 to 6.0 */
+  transition: color .4s; /* For modern browsers */
 }

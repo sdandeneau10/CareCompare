@@ -11,6 +11,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { AccountComponent } from './account/account.component';
 import {BrowserModule} from '@angular/platform-browser';
 
+// include bootstrap here
+
 @NgModule({
   declarations: [
     AppComponent,
