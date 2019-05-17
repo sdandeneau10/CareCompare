@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Hospital} from '../Hospital';
 import {MedicareDataService} from '../medicare-data.service';
-import {GoogleDataService} from '../google-data.service';
+/*import {GoogleDataService} from '../google-data.service';*/
 
 @Component({
   selector: 'app-price-compare',
@@ -21,7 +21,7 @@ export class PriceCompareComponent implements OnInit {
   maxPrice: number;
   minPrice: number;
 
-  constructor(private dataRequest: MedicareDataService, private gServ: GoogleDataService) { }
+  constructor(private dataRequest: MedicareDataService, /*private gServ: GoogleDataService*/) { }
 
   ngOnInit() {
     // Init our variable
@@ -35,13 +35,13 @@ export class PriceCompareComponent implements OnInit {
 
   getImgQuery(reqText: string): void {
     reqText = reqText.split(' ').join('%20');
-    const reqUrl = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=' + reqText +
+    /*const reqUrl = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=' + reqText +
       '&inputtype=textquery&fields=photos&key=AIzaSyAwzRGaPm9KP5ZjKvNs5qhFs3p0wePaI4c';
     console.log(reqUrl);
     this.gServ.getHospitalImgUrl(reqUrl).subscribe((data: any[]) => {
       console.log(data);
       // return this.gServ.getHospitalImgURL(data['canidates'], '400');
-    });
+    });*/
   }
 
   requestData(code: string): void {
@@ -51,6 +51,9 @@ export class PriceCompareComponent implements OnInit {
           const temp = new Hospital(
             data[i]['Provider Name'],
             data[i]['Provider Street Address'],
+            data[i]['Provider City'],
+            data[i]['Provider State'],
+            data[i]['Provider Zip Code'],
             data[i]['Average Covered Charges'],
             data[i]['Average Total Payments'],
             data[i]['Average Medicare Payments']);

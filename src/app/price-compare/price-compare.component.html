@@ -1,61 +1,70 @@
 <br>
-<div *ngIf="drgCode == null; else content">
-  <div class="jumbotron">
-    <h1 class="display-4">Hospital Price Compare Tool</h1>
-    <p class="lead">This tool use data from medicare to compare hospital pricing on specific inpatient procedures. Please see our FAQ section for more information on how calculations are performed. </p>
-    <hr class="my-4">
-    <p>Select a procedure:</p>
-    <p class="lead">
-      <a class="btn btn-outline-primary btn-lg" href="#" role="button">Learn more</a>
-    </p>
-  </div>
-</div>
-  <ng-template #content>
-  <div class="container-fluid row">
-    <div class="col-md-auto">
-      <nav class="sticky-top sidebar-offset" id="sidebar">
-        <div class="sidebar-header">
-          <h3>Filters</h3>
-        </div>
-        <h6 class="filter-header">Distance</h6>
-        <div class="slidecontainer">
-          <input type="range" min="1" max="100" value="50" class="slider" #dist (change)="distanceChanged(dist.value)">
-        </div>
-        <h6 class="filter-header">Rating</h6>
-        <div class="slidecontainer">
-          <input type="range" min="1" max="100" value="50" class="slider" #rat (change)="ratingChanged(rat.value)">
-        </div>
-        <h6 class="filter-header">Price</h6>
-        <div class="slidecontainer">
-          <input type="range" min="1" max="100" value="100" class="slider" #prce (change)="priceChanged(prce.value)">
-        </div>
-      </nav>
-    </div>
-    <div class="col">
-      <div class="row">
-        map here
+<div class="container-fluid row">
+  <div class="col-md-auto">
+    <nav class="sticky-top sidebar-offset" id="sidebar">
+      <div class="sidebar-header">
+        <h3>Filters</h3>
       </div>
-      <div class="row">
-        <div class="col" *ngIf="loading == false; else loadingWheel">
-          <h1>DRG Code: {{this.drgCode}}</h1>
-          <div class="row" *ngFor="let hospitalRow of getHospitalsInRows(3)">
-            <div class="col" *ngFor="let hospital of hospitalRow">
-              <div class="card mx-auto text-center"
-                   (click)="selected(hospital)"
-                   [class.selected]="hospital === activeHospital">
-                <img class="card-img-top" [src]='hospital.imgUrl'>
-                <div class="card-body">
-                  <h6 class="card-title">{{hospital.name}}</h6>
-                  <p class="card-text">Price: {{hospital.getApproxOutOfPocket() | currency}}</p>
+      <h6 class="filter-header">Distance</h6>
+      <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="50" class="slider" #dist (change)="distanceChanged(dist.value)">
+      </div>
+      <h6 class="filter-header">Rating</h6>
+      <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="50" class="slider" #rat (change)="ratingChanged(rat.value)">
+      </div>
+      <h6 class="filter-header">Price</h6>
+      <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="100" class="slider" #prce (change)="priceChanged(prce.value)">
+      </div>
+    </nav>
+  </div>
+  <div class="col">
+    <div class="row">
+      map here
+    </div>
+    <!--<agm-map [latitude]="42.491366" [longitude]="-71.102669">
+      <agm-marker [latitude]="42.491366" [longitude]="-71.102669"></agm-marker>
+    </agm-map>-->
+    <div class="row">
+      <div class="col" *ngIf="loading == false; else loadingWheel">
+        <h1>DRG Code: {{this.drgCode}}</h1>
+        <div class="row" *ngFor="let hospitalRow of getHospitalsInRows(3)">
+          <div class="col" *ngFor="let hospital of hospitalRow">
+            <div class="card mx-auto text-center"
+                 (click)="selected(hospital)"
+                 [class.selected]="hospital === activeHospital" data-toggle="modal" data-target="#fullDetails">
+              <img class="card-img-top" [src]='hospital.imgUrl'>
+              <div class="card-body">
+                <h6 class="card-title">{{hospital.name}}</h6>
+                <p class="card-text">Price: {{hospital.getApproxOutOfPocket() | currency}}</p>
+              </div>
+            </div>
+            <p>start</p>
+            <div class="modal fade" id="fullDetails" tabindex="-1" role="dialog" aria-labelledby="detailsLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <p style="font-size: 20px; text-align: center" class="modal-title" id="detailsLabel">{{activeHospital.name}}</p>
+                  </div>
+                  <div class="modal-body" style="text-align: center">
+                    {{activeHospital.address}}
+                    <br>
+                    {{activeHospital.city}}, {{activeHospital.state}} {{activeHospital.zip}}
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" ngbAutofocus class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
                 </div>
               </div>
             </div>
+            <p>end</p>
           </div>
         </div>
-        <ng-template #loadingWheel style="margin: 0 auto;">
-          <img src="../../assets/img/loadingWheel.gif">
-        </ng-template>
       </div>
+      <ng-template #loadingWheel style="margin: 0 auto;">
+        <img src="../../assets/img/loadingWheel.gif">
+      </ng-template>
     </div>
   </div>
-</ng-template>
+</div>

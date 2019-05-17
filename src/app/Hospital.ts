@@ -1,7 +1,9 @@
 export class Hospital {
   name: string;
   address: string;
+  city: string;
   state: string;
+  zip: string;
   imgUrl: string;
 
   // Providers average charges
@@ -11,9 +13,13 @@ export class Hospital {
   // Average total payment by medicare
   averageMedicarePayment: number;
 
-  constructor(name: string, address: string, coveredCharges: number, totalPayments: number, averageMedicarePayments: number) {
+  constructor(name: string, address: string, city: string, state: string, zip: string, coveredCharges: number,
+              totalPayments: number, averageMedicarePayments: number) {
     this.name = name;
     this.address = address;
+    this.city = city;
+    this.state = state;
+    this.zip = zip;
     this.coveredCharges = coveredCharges;
     this.totalPayments = totalPayments;
     this.averageMedicarePayment = averageMedicarePayments;
@@ -23,7 +29,7 @@ export class Hospital {
    * Gets hospital street address and state
    */
   getFullAddress(): string {
-    return this.address + ' ' + this.state;
+    return this.address + ' ' + this.city + ' ' + this.state + ' ' + this.zip;
   }
 
   /**
