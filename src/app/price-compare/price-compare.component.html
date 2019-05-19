@@ -24,7 +24,7 @@
       map here
     </div>
     <div></div>
-    <agm-map id="map">
+    <agm-map id="map"  [latitude]="42.491366" [longitude]="-71.102669">
       <div *ngFor="let location of relevantLocations">
         <agm-marker [latitude]="location.getLat()" [longitude]="location.getLong()"></agm-marker>
       </div>

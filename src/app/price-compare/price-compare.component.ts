@@ -28,12 +28,12 @@ export class PriceCompareComponent implements OnInit {
 
   ngOnInit() {
     // Init our variable
-    this.drgCode = null;
+    this.drgCode = '001';
     this.loading = true;
     this.minPrice = 2000000000;
     this.maxPrice = 0;
     // TODO: allow a user to select this
-    this.requestData();
+    this.requestData('');
     this.getAllLocations(this.relevantHospitals);
   }
 
@@ -48,7 +48,7 @@ export class PriceCompareComponent implements OnInit {
     });*/
   }
 
-  requestData(): void {
+  requestData(code: string): void {
     this.dataRequest.getData().subscribe(data => {
       for (let i = 0; i < 1000; i++) {
         if (data[i]['DRG Definition'].indexOf(this.drgCode) >= 0) {

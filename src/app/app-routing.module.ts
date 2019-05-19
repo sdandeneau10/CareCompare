@@ -8,13 +8,13 @@ import { AccountComponent } from './account/account.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: "/home", pathMatch: 'full' },
-  { path:"home", component: HomeComponent },
-  { path:"priceCompare", component: PriceCompareComponent },
-  { path:"faq", component: FAQComponent },
-  { path:"about", component: AboutComponent},
-  { path:"account", component: AccountComponent},
-  { path:"sign-up", component: SignUpComponent}
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'priceCompare', component: PriceCompareComponent },
+  { path: 'faq', component: FAQComponent },
+  { path: 'about', component: AboutComponent},
+  { path: 'account', component: AccountComponent},
+  { path: 'sign-up', component: SignUpComponent}
 ];
 
 @NgModule({
