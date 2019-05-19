@@ -23,9 +23,12 @@
     <div class="row">
       map here
     </div>
-    <!--<agm-map [latitude]="42.491366" [longitude]="-71.102669">
-      <agm-marker [latitude]="42.491366" [longitude]="-71.102669"></agm-marker>
-    </agm-map>-->
+    <div></div>
+    <agm-map id="map">
+      <div *ngFor="let location of relevantLocations">
+        <agm-marker [latitude]="location.getLat()" [longitude]="location.getLong()"></agm-marker>
+      </div>
+    </agm-map>
     <div class="row">
       <div class="col" *ngIf="loading == false; else loadingWheel">
         <h1>DRG Code: {{this.drgCode}}</h1>

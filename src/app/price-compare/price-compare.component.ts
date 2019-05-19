@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Hospital} from '../Hospital';
+import {Location} from '../Location';
 import {MedicareDataService} from '../medicare-data.service';
 /*import {GoogleDataService} from '../google-data.service';*/
+import {GmapsService} from '../gmaps.service';
 
 @Component({
   selector: 'app-price-compare',
@@ -11,6 +13,7 @@ import {MedicareDataService} from '../medicare-data.service';
 export class PriceCompareComponent implements OnInit {
 
   relevantHospitals: Hospital[] = [];
+  relevantLocations: Location[] = [];
   activeSubset: Hospital[] = [];
   hospitalImgURLs: string[][];
   activeHospital: Hospital;
@@ -21,7 +24,7 @@ export class PriceCompareComponent implements OnInit {
   maxPrice: number;
   minPrice: number;
 
-  constructor(private dataRequest: MedicareDataService, /*private gServ: GoogleDataService*/) { }
+  constructor(private dataRequest: MedicareDataService, private gmapsRequest: GmapsService /*private gServ: GoogleDataService*/) { }
 
   ngOnInit() {
     // Init our variable
@@ -30,7 +33,8 @@ export class PriceCompareComponent implements OnInit {
     this.minPrice = 2000000000;
     this.maxPrice = 0;
     // TODO: allow a user to select this
-    this.requestData('');
+    this.requestData();
+    this.getAllLocations(this.relevantHospitals);
   }
 
   getImgQuery(reqText: string): void {
@@ -44,7 +48,7 @@ export class PriceCompareComponent implements OnInit {
     });*/
   }
 
-  requestData(code: string): void {
+  requestData(): void {
     this.dataRequest.getData().subscribe(data => {
       for (let i = 0; i < 1000; i++) {
         if (data[i]['DRG Definition'].indexOf(this.drgCode) >= 0) {
@@ -75,6 +79,22 @@ export class PriceCompareComponent implements OnInit {
       this.getImgQuery(this.relevantHospitals[0].name);
 
     });
+  }
+
+  getAllLocations(list: Hospital[]): void {
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < list.length; i++) {
+      this.gmapsRequest.getLocation(list[i].address).subscribe((data: any) => {
+        const myLat = data.data.results[0].geometry.location.lat;
+        const myLong = data.data.results[0].geometry.location.long;
+        const adr = data.data.results[0].formatted_address;
+        const temp = new Location();
+        temp.setLat(myLat);
+        temp.setLong(myLong);
+        temp.setAddress(adr);
+        this.relevantLocations.push(temp);
+      });
+    }
   }
 
   selected(hospital: Hospital): void {
