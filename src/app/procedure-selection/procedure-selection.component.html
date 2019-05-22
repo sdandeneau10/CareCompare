@@ -1,0 +1,11 @@
+<div class="jumbotron">
+  <h1 class="display-4">Care Compare</h1>
+  <p class="lead">Let us help you compare procedure pricing</p>
+  <hr class="my-4">
+  <p>Dev note, only searches first 1000 DRGs for speed rn without using a database, 001-005 are fully or partially available</p>
+  <input placeholder="Enter a 3 digit DRG Code" [(ngModel)]="selectedDRG">
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" routerLink="/priceCompare" (click)="setCode()">Compare Pricing</a>
+  </p>
+</div>
+
