@@ -5,69 +5,70 @@
       <div class="sidebar-header">
         <h3>Filters</h3>
       </div>
-      <h6 class="filter-header">Distance</h6>
+      <h5 class="filter-header">Distance</h5>
       <div class="slidecontainer">
         <input type="range" min="1" max="100" value="50" class="slider" #dist (change)="distanceChanged(dist.value)">
       </div>
-      <h6 class="filter-header">Rating</h6>
+      <h5 class="filter-header">Rating</h5>
       <div class="slidecontainer">
         <input type="range" min="1" max="100" value="50" class="slider" #rat (change)="ratingChanged(rat.value)">
       </div>
-      <h6 class="filter-header">Price</h6>
+      <h5 class="filter-header">Price</h5>
       <div class="slidecontainer">
         <input type="range" min="1" max="100" value="100" class="slider" #prce (change)="priceChanged(prce.value)">
       </div>
     </nav>
   </div>
   <div class="col">
-    <div class="row">
-      map here
-    </div>
-    <div></div>
-    <agm-map id="map"  [latitude]="42.491366" [longitude]="-71.102669">
-      <div *ngFor="let location of relevantLocations">
-        <agm-marker [latitude]="location.getLat()" [longitude]="location.getLong()"></agm-marker>
+    <div class="col" *ngIf="activeSubset && loading === false; else loadingWheel">
+      <div class="row">
+        <!--<agm-map id="map" [latitude]="42.491366" [longitude]="-71.102669">-->
+        <!--<div *ngFor="let location of activeSubset | async">-->
+        <!--<agm-marker [latitude]="location.getLat()" [longitude]="location.getLong()"></agm-marker>-->
+        <!--</div>-->
+        <!--</agm-map>-->
       </div>
-    </agm-map>
-    <div class="row">
-      <div class="col" *ngIf="loading == false; else loadingWheel">
-        <h1>DRG Code: {{this.drgCode}}</h1>
-        <div class="row" *ngFor="let hospitalRow of getHospitalsInRows(3)">
-          <div class="col" *ngFor="let hospital of hospitalRow">
+      <div class="row">
+        <h1>Showing {{activeSubset.length}} results for {{this.drgCode}} </h1>
+      </div>
+      <table>
+        <tr *ngFor="let hospitals of getHospitalsInRows(3); let i = index">
+          <td *ngFor="let hospital of hospitals">
             <div class="card mx-auto text-center"
+                 *ngIf="hospital"
                  (click)="selected(hospital)"
                  [class.selected]="hospital === activeHospital" data-toggle="modal" data-target="#fullDetails">
               <img class="card-img-top" [src]='hospital.imgUrl'>
               <div class="card-body">
                 <h6 class="card-title">{{hospital.name}}</h6>
-                <p class="card-text">Price: {{hospital.getApproxOutOfPocket() | currency}}</p>
+                <p class="card-text">Price: {{hospital.getApproxOutOfPocket() | currency }}</p>
               </div>
             </div>
-            <p>start</p>
-            <div class="modal fade" id="fullDetails" tabindex="-1" role="dialog" aria-labelledby="detailsLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <p style="font-size: 20px; text-align: center" class="modal-title" id="detailsLabel">{{activeHospital.name}}</p>
-                  </div>
-                  <div class="modal-body" style="text-align: center">
-                    {{activeHospital.address}}
-                    <br>
-                    {{activeHospital.city}}, {{activeHospital.state}} {{activeHospital.zip}}
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" ngbAutofocus class="btn btn-danger" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
+          </td>
+        </tr>
+        <div class="modal fade" id="fullDetails" tabindex="-1" role="dialog" aria-labelledby="detailsLabel"
+             aria-hidden="true">
+          <div *ngIf="activeHospital" class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <p style="font-size: 20px; text-align: center" class="modal-title"
+                   id="detailsLabel">{{activeHospital.name}}</p>
+              </div>
+              <div class="modal-body" style="text-align: center">
+                {{activeHospital.address}}
+                <br>
+                {{activeHospital.city}}, {{activeHospital.state}} {{activeHospital.zip}}
+              </div>
+              <div class="modal-footer">
+                <button type="button" ngbAutofocus class="btn btn-danger" data-dismiss="modal">Close</button>
               </div>
             </div>
-            <p>end</p>
           </div>
         </div>
-      </div>
-      <ng-template #loadingWheel style="margin: 0 auto;">
-        <img src="../../assets/img/loadingWheel.gif">
-      </ng-template>
-    </div>
-  </div>
+      </table>
+</div>
+<ng-template #loadingWheel style="margin: 0 auto;">
+  <img src="../../assets/img/loadingWheel.gif">
+</ng-template>
+</div>
 </div>

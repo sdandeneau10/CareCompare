@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Hospital} from '../Hospital';
 import {Location} from '../Location';
 import {MedicareDataService} from '../medicare-data.service';
-/*import {GoogleDataService} from '../google-data.service';*/
 import {GmapsService} from '../gmaps.service';
 
 @Component({
@@ -12,9 +11,11 @@ import {GmapsService} from '../gmaps.service';
 })
 export class PriceCompareComponent implements OnInit {
 
+  // Array with all the hospitals with the DRG
   relevantHospitals: Hospital[] = [];
-  relevantLocations: Location[] = [];
+  // Array with all active hospitals according to the selection
   activeSubset: Hospital[] = [];
+  relevantLocations: Location[] = [];
   hospitalImgURLs: string[][];
   activeHospital: Hospital;
   loading: boolean;
@@ -24,67 +25,31 @@ export class PriceCompareComponent implements OnInit {
   maxPrice: number;
   minPrice: number;
 
-  constructor(private dataRequest: MedicareDataService, private gmapsRequest: GmapsService /*private gServ: GoogleDataService*/) { }
+  constructor(private dataRequest: MedicareDataService, private gmapsRequest: GmapsService) { }
 
   ngOnInit() {
-    // Init our variable
-    this.drgCode = '001';
     this.loading = true;
     this.minPrice = 2000000000;
     this.maxPrice = 0;
-    // TODO: allow a user to select this
-    this.requestData('');
-    this.getAllLocations(this.relevantHospitals);
-  }
+    // TODO: get DRG code
+    this.drgCode = MedicareDataService.selectedDRG;
 
-  getImgQuery(reqText: string): void {
-    reqText = reqText.split(' ').join('%20');
-    /*const reqUrl = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=' + reqText +
-      '&inputtype=textquery&fields=photos&key=AIzaSyAwzRGaPm9KP5ZjKvNs5qhFs3p0wePaI4c';
-    console.log(reqUrl);
-    this.gServ.getHospitalImgUrl(reqUrl).subscribe((data: any[]) => {
-      console.log(data);
-      // return this.gServ.getHospitalImgURL(data['canidates'], '400');
-    });*/
-  }
+    this.dataRequest.getData().subscribe(
+      data => {
+        this.relevantHospitals = this.dataRequest.formatData(data, this.drgCode);
+        this.activeSubset = this.relevantHospitals;
+        // this.getAllLocations(this.relevantHospitals);
+        this.loading = false;
+      });
 
-  requestData(code: string): void {
-    this.dataRequest.getData().subscribe(data => {
-      for (let i = 0; i < 1000; i++) {
-        if (data[i]['DRG Definition'].indexOf(this.drgCode) >= 0) {
-          const temp = new Hospital(
-            data[i]['Provider Name'],
-            data[i]['Provider Street Address'],
-            data[i]['Provider City'],
-            data[i]['Provider State'],
-            data[i]['Provider Zip Code'],
-            data[i]['Average Covered Charges'],
-            data[i]['Average Total Payments'],
-            data[i]['Average Medicare Payments']);
-          this.relevantHospitals.push(temp);
-          const cost = temp.getApproxOutOfPocket();
-          if (cost > this.maxPrice) { this.maxPrice = cost; }
-          if (cost < this.minPrice) { this.minPrice = cost; }
-        }
-      }
-      this.loading = false;
-      this.activeSubset = this.relevantHospitals;
-      for (const entry of this.relevantHospitals) {
-        // entry.imgUrl = this.getImgQuery(entry.name);
-        if (entry.imgUrl == null) {
-          entry.imgUrl = '../../assets/img/placeholder.jpg';
-        }
-      }
-      console.log('yo');
-      this.getImgQuery(this.relevantHospitals[0].name);
 
-    });
   }
 
   getAllLocations(list: Hospital[]): void {
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < list.length; i++) {
-      this.gmapsRequest.getLocation(list[i].address).subscribe((data: any) => {
+      console.log(list[i]);
+      this.gmapsRequest.getLocation(list[i].getFullAddress()).subscribe((data: any) => {
         const myLat = data.data.results[0].geometry.location.lat;
         const myLong = data.data.results[0].geometry.location.long;
         const adr = data.data.results[0].formatted_address;
@@ -99,10 +64,6 @@ export class PriceCompareComponent implements OnInit {
 
   selected(hospital: Hospital): void {
     this.activeHospital = hospital;
-  }
-
-  getRelevantHospitals(): Hospital[] {
-    return this.relevantHospitals;
   }
 
   getHospitalsInRows(col: number): Hospital[][] {

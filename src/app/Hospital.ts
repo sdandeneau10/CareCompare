@@ -13,7 +13,7 @@ export class Hospital {
   // Average total payment by medicare
   averageMedicarePayment: number;
 
-  constructor(name: string, address: string, city: string, state: string, zip: string, coveredCharges: number,
+  constructor(name: string, address: string, city: string, state: string, zip: string, totalDischarges: number, coveredCharges: number,
               totalPayments: number, averageMedicarePayments: number) {
     this.name = name;
     this.address = address;
@@ -23,6 +23,7 @@ export class Hospital {
     this.coveredCharges = coveredCharges;
     this.totalPayments = totalPayments;
     this.averageMedicarePayment = averageMedicarePayments;
+    this.imgUrl = '../../assets/img/placeholder.jpg';
   }
 
   /**
