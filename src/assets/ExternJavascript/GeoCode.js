@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-function geocoder(loc){}
+function geocoder(){}
 geocoder.prototype.geocode = function geocode(loc){
     axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
       params: {
