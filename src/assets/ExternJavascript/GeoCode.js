@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-function geocode(address){
-  if(address) {
+function geocoder(loc){}
+geocoder.prototype.geocode = function geocode(loc){
     axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
       params: {
-        address: address,
+        address: loc,
         key: 'AIzaSyAwzRGaPm9KP5ZjKvNs5qhFs3p0wePaI4c'
       }
     })
@@ -15,9 +15,6 @@ function geocode(address){
       .catch(function (error) {
         console.log(error);
       });
-  }
-}
-
-var geocodeModule = new geocode();
-
-export {geocodeModule};
+};
+var geocodemodule = new geocoder();
+export {geocodemodule};
