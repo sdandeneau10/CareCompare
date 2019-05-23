@@ -3,6 +3,7 @@ import {Hospital} from '../Hospital';
 import {Location} from '../Location';
 import {MedicareDataService} from '../medicare-data.service';
 import {GmapsService} from '../gmaps.service';
+import {geocodeModule} from 'src/assets/ExternJavascript/GeoCode.js';
 
 @Component({
   selector: 'app-price-compare',
@@ -41,13 +42,14 @@ export class PriceCompareComponent implements OnInit {
         // this.getAllLocations(this.relevantHospitals);
         this.loading = false;
       });
+    this.getAllLocations(this.activeSubset);
 
 
   }
 
   getAllLocations(list: Hospital[]): void {
     // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < list.length; i++) {
+    /*for (let i = 0; i < list.length; i++) {
       console.log(list[i]);
       this.gmapsRequest.getLocation(list[i].getFullAddress()).subscribe((data: any) => {
         const myLat = data.data.results[0].geometry.location.lat;
@@ -59,6 +61,11 @@ export class PriceCompareComponent implements OnInit {
         temp.setAddress(adr);
         this.relevantLocations.push(temp);
       });
+    }*/
+    for (const i of list) {
+      const coord = geocodeModule.geocode(i.getFullAddress());
+      i.setLat(coord.lat);
+      i.setLong(coord.lng);
     }
   }
 

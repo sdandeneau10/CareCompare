@@ -22,11 +22,9 @@
   <div class="col">
     <div class="col" *ngIf="activeSubset && loading === false; else loadingWheel">
       <div class="row">
-        <!--<agm-map id="map" [latitude]="42.491366" [longitude]="-71.102669">-->
-        <!--<div *ngFor="let location of activeSubset | async">-->
-        <!--<agm-marker [latitude]="location.getLat()" [longitude]="location.getLong()"></agm-marker>-->
-        <!--</div>-->
-        <!--</agm-map>-->
+        <agm-map id="map" [latitude]="42.491366" [longitude]="-71.102669">
+          <agm-marker *ngFor="let location of this.activeSubset" [latitude]="location.getLat()" [longitude]="location.getLong()"></agm-marker>
+        </agm-map>
       </div>
       <div class="row">
         <h1>Showing {{activeSubset.length}} results for {{this.drgCode}} </h1>

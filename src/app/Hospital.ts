@@ -5,6 +5,8 @@ export class Hospital {
   state: string;
   zip: string;
   imgUrl: string;
+  lat: number;
+  long: number;
 
   // Providers average charges
   coveredCharges: number;
@@ -45,5 +47,18 @@ export class Hospital {
    */
   gethospitalPrice(): number {
     return this.coveredCharges;
+  }
+
+  getLat(): number {
+    return this.lat;
+  }
+  setLat(num: number): void {
+    this.lat = num;
+  }
+  getLong(): number {
+    return this.long;
+  }
+  setLong(num: number): void {
+    this.long = num;
   }
 }
