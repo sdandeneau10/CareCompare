@@ -3,7 +3,6 @@ import {Hospital} from '../Hospital';
 import {Location} from '../Location';
 import {MedicareDataService} from '../medicare-data.service';
 import {GmapsService} from '../gmaps.service';
-import {geocodemodule} from 'src/assets/ExternJavascript/GeoCode.js';
 
 @Component({
   selector: 'app-price-compare',
@@ -63,9 +62,6 @@ export class PriceCompareComponent implements OnInit {
       });
     }*/
     for (const i of list) {
-      const coord = geocodemodule.geocode(i.getFullAddress());
-      i.setLat(coord.lat);
-      i.setLong(coord.lng);
     }
   }
 
