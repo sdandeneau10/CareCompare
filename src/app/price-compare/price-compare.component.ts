@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Hospital} from '../Hospital';
 import {Location} from '../Location';
 import {MedicareDataService} from '../medicare-data.service';
-import {GmapsService} from '../gmaps.service';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-price-compare',
@@ -19,49 +19,47 @@ export class PriceCompareComponent implements OnInit {
   hospitalImgURLs: string[][];
   activeHospital: Hospital;
   loading: boolean;
+  userLat: number;
+  userLong: number;
 
   procedureName: string;
   drgCode: string;
   maxPrice: number;
   minPrice: number;
 
-  constructor(private dataRequest: MedicareDataService, private gmapsRequest: GmapsService) { }
+  constructor(private dataRequest: MedicareDataService, private http: HttpClient) { }
 
   ngOnInit() {
     this.loading = true;
     this.minPrice = 2000000000;
     this.maxPrice = 0;
+    // default worcester ma
+    this.userLong = -71.8078491;
+    this.userLat = 42.275093;
     // TODO: get DRG code
     this.drgCode = MedicareDataService.selectedDRG;
+    this.getUserLocation();
 
     this.dataRequest.getData().subscribe(
-      data => {
+      (data) => {
         this.relevantHospitals = this.dataRequest.formatData(data, this.drgCode);
         this.activeSubset = this.relevantHospitals;
-        // this.getAllLocations(this.relevantHospitals);
+        this.getAllLocations(this.activeSubset);
         this.loading = false;
       });
-    this.getAllLocations(this.activeSubset);
-
-
   }
 
   getAllLocations(list: Hospital[]): void {
-    // tslint:disable-next-line:prefer-for-of
-    /*for (let i = 0; i < list.length; i++) {
-      console.log(list[i]);
-      this.gmapsRequest.getLocation(list[i].getFullAddress()).subscribe((data: any) => {
-        const myLat = data.data.results[0].geometry.location.lat;
-        const myLong = data.data.results[0].geometry.location.long;
-        const adr = data.data.results[0].formatted_address;
-        const temp = new Location();
-        temp.setLat(myLat);
-        temp.setLong(myLong);
-        temp.setAddress(adr);
-        this.relevantLocations.push(temp);
-      });
-    }*/
+    const baseurl = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAwzRGaPm9KP5ZjKvNs5qhFs3p0wePaI4c&address=';
     for (const i of list) {
+      const loc = i.getFullAddress();
+      const url = baseurl + loc;
+      this.http.get(url).subscribe((res) => {
+        // @ts-ignore
+        i.setLat(res.results[0].geometry.location.lat);
+        // @ts-ignore
+        i.setLong(res.results[0].geometry.location.lng);
+      });
     }
   }
 
@@ -108,6 +106,16 @@ export class PriceCompareComponent implements OnInit {
       if (hospital.getApproxOutOfPocket() < TARG_PRICE) {
         this.activeSubset.push(hospital);
       }
+    }
+  }
+  getUserLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const long = position.coords.longitude;
+        const lat = position.coords.latitude;
+        this.userLong = long;
+        this.userLat = lat;
+      });
     }
   }
 }

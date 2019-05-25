@@ -1,4 +1,4 @@
-import {AxiosInstance as axios} from "axios";
+import {AxiosInstance as axios} from 'axios';
 
 function geocode(loc){
     axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
@@ -8,10 +8,11 @@ function geocode(loc){
       }
     })
       .then(function (response) {
-        const coordinates = response.data.results[0].geometry.location;
+        var coordinates = response.data.results[0].geometry.location;
         return coordinates;
       })
       .catch(function (error) {
         console.log(error);
       });
 };
+export {geocode};

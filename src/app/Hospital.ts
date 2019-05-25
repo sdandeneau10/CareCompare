@@ -61,4 +61,7 @@ export class Hospital {
   setLong(num: number): void {
     this.long = num;
   }
+  getName() {
+    return this.name;
+  }
 }
