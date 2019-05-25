@@ -7,6 +7,7 @@ export class Hospital {
   imgUrl: string;
   lat: number;
   long: number;
+  distance: number;
 
   // Providers average charges
   coveredCharges: number;
