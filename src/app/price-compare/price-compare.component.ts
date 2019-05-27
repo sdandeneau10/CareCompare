@@ -38,13 +38,13 @@ export class PriceCompareComponent implements OnInit {
     this.userLat = 42.275093;
     // TODO: get DRG code
     this.drgCode = MedicareDataService.selectedDRG;
-    this.getUserLocation();
+    // this.getUserLocation();
 
     this.dataRequest.getData().subscribe(
       (data) => {
         this.relevantHospitals = this.dataRequest.formatData(data, this.drgCode);
         this.activeSubset = this.relevantHospitals;
-        this.getAllLocations(this.activeSubset);
+        // this.getAllLocations(this.activeSubset);
         this.loading = false;
       });
   }

@@ -29,6 +29,11 @@ export class ProcedureSelectionComponent implements OnInit {
    *  3 - ask if there's any known complications, minor or major.
    */
 
+  /**
+   * This page should be heavily integrated with a good FAQs page to make this process as easy as possible. Ease of use
+   * and transparency are key
+   */
+
   knowsCode: boolean;
   foundProc: boolean;
 
