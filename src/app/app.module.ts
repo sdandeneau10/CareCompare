@@ -13,8 +13,6 @@ import { AgmCoreModule } from '@agm/core';
 import { ProcedureSelectionComponent } from './procedure-selection/procedure-selection.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-// include bootstrap here
-
 @NgModule({
   declarations: [
     AppComponent,
