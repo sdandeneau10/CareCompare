@@ -11,13 +11,21 @@ import { FormControl } from '@angular/forms';
 export class ProcedureSelectionComponent implements OnInit {
 
   /**
+   * See bootstrap scroll spy, possible improvement for this page
+   */
+
+  /**
+   * Also how about that gaussian blur transition???
+   */
+
+  /**
    * Current process for selection
    *
    *  1 - Do you have a DRG Code?
-   *    - yes >>> let them enter a drg code
-   *    - no cont to 2
-   *  2 - type in the procedure name
-   *    - have option for if cant find procedure. Show them the list of DRGs
+   *    - yes, let them enter a drg code (autocomplete? see MEDICARE_DRG_CODES from medicareConstatns
+   *      - Search for that code
+   *    - no, continue to 2
+   *  2 - Enter the name of the procedure
    *  3 - ask if there's any known complications, minor or major.
    */
 
@@ -36,7 +44,10 @@ export class ProcedureSelectionComponent implements OnInit {
     this.foundProc = null;
   }
 
-  // I'm so sorry, i threw OOP out the window
+  /**
+   * This function is garbage
+   *
+   */
   setCode() {
     MedicareDataService.selectedDRG = this.selectedDRG;
     console.log(MedicareDataService.selectedDRG);

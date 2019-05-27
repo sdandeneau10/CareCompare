@@ -12,13 +12,7 @@
   <h1 class="display-4">What is the procedure's DRG code</h1>
   <p class="lead">A diagnosis related group is classification system that standardize patient health care</p>
   <hr class="my-4">
-  <form class="example-form">
-    <label for="inp" class="inp">
-      <input type="text" id="inp" placeholder="&nbsp;" [(ngModel)]="selectedDRG">
-      <span class="label">Enter a DRG Code</span>
-      <span class="border"></span>
-    </label>
-  </form>
+  <input type="text" [(ngModel)]="selectedDRG" placeholder="Enter a DRG">
   <p class="lead">
     <a class="btn btn-primary btn-lg" routerLink="/priceCompare" (click)="setCode()">Compare Pricing</a>
   </p>

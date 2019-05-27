@@ -23,6 +23,7 @@ export class MedicareDataService {
    * Replicates sql style commands like get * where
    */
   formatData(data: Observable<any>, drgCode: string): Hospital[] {
+    if (drgCode === '') { return null; }
     const MAX_LINES_SEARCHED = 1000;
     const hospitals: Hospital[] = [];
     for  (let i = 0; i < MAX_LINES_SEARCHED; i++) {
