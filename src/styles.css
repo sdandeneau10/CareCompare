@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
+
 li {
   font-family: "Fira Code Medium", "SansSerif", "Arial";
   color: #ffffff;
@@ -43,12 +44,10 @@ li {
 }
 
 .jumbotron {
-  margin-left: 20px;
-  margin-right: 20px;
-  background-color: #c1e0f7;
-  margin-top: 20px;
+  margin: 0px;
   font-family: "Fira Code", "SansSerif", "Arial";
 }
+
 
 .card {
   background-color: #3b3355;
@@ -56,10 +55,6 @@ li {
 
 .card-text {
   color: #ffffff;
-}
-
-.btn-outline-primary {
-
 }
 
 .card-title {
