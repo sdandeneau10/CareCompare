@@ -4,6 +4,7 @@ import { MedicareDataService } from '../medicare-data.service';
 import { FormControl } from '@angular/forms';
 import { Router} from '@angular/router'
 
+
 @Component({
   selector: 'app-procedure-selection',
   templateUrl: './procedure-selection.component.html',
@@ -49,6 +50,7 @@ export class ProcedureSelectionComponent implements OnInit {
 
   knowsCode: boolean;
   foundProc: boolean;
+  incorrectDRG: boolean;
 
   drgCodes: string[];
   selectedDRG = '';
@@ -60,6 +62,7 @@ export class ProcedureSelectionComponent implements OnInit {
     this.drgCodes = MEDICARE_DRG_CODES;
     this.knowsCode = null;
     this.foundProc = null;
+    this.incorrectDRG = false;
   }
 
   /**
@@ -74,7 +77,9 @@ export class ProcedureSelectionComponent implements OnInit {
       this.router.navigate(['/', 'priceCompare']);
     }
     else{
-      console.log("this input is not valid; enter a 3 digit number")
+      this.incorrectDRG = true;
+      console.log("this input is not valid; enter a 3 digit number");
+      console.log(this.incorrectDRG);
     }
     
   }

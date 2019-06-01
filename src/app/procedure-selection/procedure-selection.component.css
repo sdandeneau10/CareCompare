@@ -87,6 +87,10 @@
   color: #5a667f;
   transform: translateY(-26px) scale(0.75);
 }
+p.error-text{
+  color: red;
+  font-style: italic;
+}
 .inp input:focus {
   background: none;
   outline: none;
