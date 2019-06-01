@@ -26,6 +26,7 @@ export class PriceCompareComponent implements OnInit {
   drgCode: string;
   maxPrice: number;
   minPrice: number;
+  allowUserLocation: boolean;
 
   constructor(private dataRequest: MedicareDataService, private http: HttpClient) { }
 
@@ -44,27 +45,28 @@ export class PriceCompareComponent implements OnInit {
       (data) => {
         this.relevantHospitals = this.dataRequest.formatData(data, this.drgCode);
         this.activeSubset = this.relevantHospitals;
-        // this.getAllLocations(this.activeSubset);
         this.loading = false;
       });
   }
 
-  getAllLocations(list: Hospital[]): void {
+  getLocation(hos: Hospital): void {
     const baseurl = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAwzRGaPm9KP5ZjKvNs5qhFs3p0wePaI4c&address=';
-    for (const i of list) {
-      const loc = i.getFullAddress();
-      const url = baseurl + loc;
-      this.http.get(url).subscribe((res) => {
+    const loc = hos.getFullAddress();
+    const url = baseurl + loc;
+    if (hos.isGeocoded() !== true) {
+      this.http.get(url).subscribe( (res) => {
         // @ts-ignore
-        i.setLat(res.results[0].geometry.location.lat);
+        hos.setLat(res.results[0].geometry.location.lat);
         // @ts-ignore
-        i.setLong(res.results[0].geometry.location.lng);
+        hos.setLong(res.results[0].geometry.location.lng);
       });
+      hos.setGeocoded();
     }
   }
 
   selected(hospital: Hospital): void {
     this.activeHospital = hospital;
+   // this.getLocation(hospital);
   }
 
   getHospitalsInRows(col: number): Hospital[][] {
@@ -116,6 +118,9 @@ export class PriceCompareComponent implements OnInit {
         this.userLong = long;
         this.userLat = lat;
       });
+      this.allowUserLocation = true;
+    } else {
+      this.allowUserLocation = false;
     }
   }
 }
