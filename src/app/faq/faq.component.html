@@ -24,34 +24,23 @@
   </button>
   <br>
   <div class="collapse" id="pricingAnswer">
-    <div class="card card-body">
-      <div class="card">
-        <div class="card-header" id="headingOne">
-          <h5 class="mb-0">
-            <button class="btn-link collapsed" type="button" data-toggle="collapse" data-target="#PriceAnswer1" aria-expanded="false" aria-controls="collapseOne" style="font-size: 30px; display: block; margin: 0 auto 0 auto;">
-              Question #1
-            </button>
-          </h5>
-        </div>
-
-        <div id="PriceAnswer1" class="collapse " aria-labelledby="headingOne">
-          <h3 class="card-body" style="text-align: center;">
-            Answer #1
-          </h3>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="headingTwo">
-          <h5 class="mb-0">
-            <button class="btn-link collapsed" type="button" data-toggle="collapse" data-target="#PriceAnswer2" aria-expanded="false" aria-controls="collapseTwo" style="font-size: 30px;display: block; margin: 0 auto 0 auto;">
-              Question #2
-            </button>
-          </h5>
-        </div>
-        <div id="PriceAnswer2" class="collapse" aria-labelledby="headingTwo">
-          <h3 class="card-body" style="text-align: center;">
-            Answer #2
-          </h3>
+    <div *ngIf="drgQandA">
+      <div *ngFor="let entry of this.drgQandA">
+        <div class="card card-body">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn-link collapsed" type="button" data-toggle="collapse" data-target="#PriceAnswer1" aria-expanded="false" aria-controls="collapseOne" style="font-size: 30px; display: block; margin: 0 auto 0 auto;">
+                  {{entry['question']}}
+                </button>
+              </h5>
+            </div>
+            <div id="PriceAnswer1" class="collapse " aria-labelledby="headingOne">
+              <h3 class="card-body" style="text-align: center;">
+                {{entry['answer']}}
+              </h3>
+            </div>
+          </div>
         </div>
       </div>
     </div>
