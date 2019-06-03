@@ -25,11 +25,27 @@ div.title{
 .card-header{
   background-color: white;
 }
+
+.card {
+  background-color: #c1e0f7;
+}
+
+
 .btn-link{
   background-color: white;
   border-width: 0;
+  text-decoration: none;
+  color: black;
+}
+
+.btn-link:hover {
+  color: #c1e0f7;
 }
 
 .card-body{
   border-width: 0;
+}
+
+.table {
+  width: 100%
 }

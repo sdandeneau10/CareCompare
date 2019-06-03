@@ -3,39 +3,42 @@
 <div class="container-fluid">
   <div class="title">
     <h1 style="font-size: 50px;">
-      Care Compare: FAQ
+      Frequently Asked Questions
     </h1>
   </div>
   <br>
   <br>
   <br>
   <br>
-  <button class="categoryButton" type="button" data-toggle="collapse" data-target="#pricingAnswer" aria-expanded="false" aria-controls="collapseExample">
+  <button class="categoryButton" type="button" data-toggle="collapse" data-target="#drgCodes" aria-expanded="false"
+          aria-controls="collapseExample">
     <table>
       <tr>
         <td>
           <img src="https://img.icons8.com/ios/420/price-tag-usd.png" class="FAQImages"/>
         </td>
         <td>
-          <p class="categoryTitles">Pricing</p>
+          <p class="categoryTitles">DRG Codes</p>
         </td>
       </tr>
     </table>
   </button>
   <br>
-  <div class="collapse" id="pricingAnswer">
+  <div class="collapse" id="drgCodes">
     <div *ngIf="drgQandA">
       <div *ngFor="let entry of this.drgQandA">
         <div class="card card-body">
           <div class="card">
-            <div class="card-header" id="headingOne">
+            <div class="card-header">
               <h5 class="mb-0">
-                <button class="btn-link collapsed" type="button" data-toggle="collapse" data-target="#PriceAnswer1" aria-expanded="false" aria-controls="collapseOne" style="font-size: 30px; display: block; margin: 0 auto 0 auto;">
+                <button class="btn-link collapsed" type="button" data-toggle="collapse"
+                        [attr.data-target]="getNextTargetID()" aria-expanded="false" aria-controls="collapseOne"
+                        style="font-size: 30px; display: block; margin: 0 auto 0 auto;">
                   {{entry['question']}}
                 </button>
               </h5>
             </div>
-            <div id="PriceAnswer1" class="collapse " aria-labelledby="headingOne">
+            <div id="{{getCurrentTargetID()}}" class="collapse" aria-labelledby="headingOne">
               <h3 class="card-body" style="text-align: center;">
                 {{entry['answer']}}
               </h3>
@@ -46,50 +49,72 @@
     </div>
   </div>
   <br>
-  <button class="categoryButton" type="button" data-toggle="collapse" data-target="#accountAnswer" aria-expanded="false" aria-controls="collapseExample">
+  <button class="categoryButton" type="button" data-toggle="collapse" data-target="#ourData" aria-expanded="false"
+          aria-controls="collapseExample">
     <table>
       <tr>
         <td>
-          <img src="https://cdn.iconscout.com/icon/free/png-256/account-269-866236.png" class="FAQImages"/>
+          <img src="../../assets/img/analysis.png" class="FAQImages"/>
         </td>
         <td>
-          <p class="categoryTitles">Account</p>
+          <p class="categoryTitles">Our Data</p>
         </td>
       </tr>
     </table>
   </button>
   <br>
-  <div class="collapse" id="accountAnswer">
-    <div class="card card-body">
-      <div class="card">
-        <div class="card-header" id="headingOne1">
-          <h5 class="mb-0">
-            <button class="btn-link collapsed" type="button" data-toggle="collapse" data-target="#AccountAnswer1" aria-expanded="false" aria-controls="collapseOne" style="font-size: 30px;display: block; margin: 0 auto 0 auto;">
-              Question #1
-            </button>
-          </h5>
-        </div>
-
-        <div id="AccountAnswer1" class="collapse " aria-labelledby="headingOne1" >
-          <h3 class="card-body"style="text-align: center;">
-            Answer #1
-          </h3>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="headingTwo2">
-          <h5 class="mb-0">
-            <button class="btn-link collapsed" type="button" data-toggle="collapse" data-target="#AccountAnswer2" aria-expanded="false" aria-controls="collapseTwo" style="font-size: 30px;display: block; margin: 0 auto 0 auto;">
-              Question #2
-            </button>
-          </h5>
-        </div>
-        <div id="AccountAnswer2" class="collapse" aria-labelledby="headingTwo2">
-          <h3 class="card-body"style="text-align: center;">
-            Answer #2
-          </h3>
+  <div class="collapse" id="ourData">
+    <div *ngIf="ourDataQandA">
+      <div *ngFor="let entry of this.ourDataQandA">
+        <div class="card card-body">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="mb-0">
+                <button class="btn-link collapsed" type="button" data-toggle="collapse"
+                        [attr.data-target]="getNextTargetID()" aria-expanded="false" aria-controls="collapseOne"
+                        style="font-size: 30px; display: block; margin: 0 auto 0 auto;">
+                  {{entry['question']}}
+                </button>
+              </h5>
+            </div>
+            <div id="{{getCurrentTargetID()}}" class="collapse " aria-labelledby="headingOne">
+              <h3 class="card-body" style="text-align: center;">
+                {{entry['answer']}}
+              </h3>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <button class="categoryButton" type="button" data-toggle="collapse" data-target="#drgCodesTable" aria-expanded="false"
+          aria-controls="collapseExample">
+    <table>
+      <tr>
+        <td>
+          <img src="../../assets/img/analysis.png" class="FAQImages"/>
+        </td>
+        <td>
+          <p class="categoryTitles">List of DRG Codes</p>
+        </td>
+      </tr>
+    </table>
+  </button>
+  <div class="collapse" id="drgCodesTable">
+    <table class='table'>
+      <thead>
+        <tr>
+          <th scope ="col">DRG Code</th>
+        </tr>
+      </thead>
+      <tbody>
+        <div *ngFor="let entry of this.drgCodes">
+          <tr>
+            <th>{{entry}}</th>
+          </tr>
+        </div>
+      </tbody>
+    </table>
+  </div>
+  <br>
 </div>
