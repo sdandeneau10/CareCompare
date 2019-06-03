@@ -7,8 +7,24 @@
   transition: .5s -webkit-filter ease-out;
 }
 .btn {
-  margin-top: 20px;
-  margin-right: 20px;
+  margin-top: 0px;
+  margin-right: 0px;
+}
+
+.drg-input{
+  border-radius: 5px;
+  margin-right: 10px;
+  opacity: 75%; 
+}
+
+.explain-btn{
+  text-decoration: underline !important;
+  text-decoration-color: blue;
+  background: none;
+  color: blue !important;
+  font-size: 10px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .white {
@@ -70,6 +86,10 @@
 .inp input:not(:placeholder-shown) + span {
   color: #5a667f;
   transform: translateY(-26px) scale(0.75);
+}
+p.error-text{
+  color: red;
+  font-style: italic;
 }
 .inp input:focus {
   background: none;

@@ -1,22 +1,32 @@
 <div [ngClass]="getPanelClass((knowsCode === null))">
-  <h1 class="display-4">Price Compare</h1>
+  <h1 class="display-4" id="price compare header">Price Compare</h1>
   <p class="lead">Please answer the following questions to compare pricing for a specific procedure</p>
   <hr class="my-4">
-  <p>Do you know your procedures DRG?</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" activ="false" (click)="knowsCode = false;">No</a>
-    <a class="btn btn-primary btn-lg" (click)="knowsCode = true;">Yes</a>
+  <p>Enter your 3-digit procedure DRG code</p>
+  <p>
+    <label>
+      <input class="input-sm drg-input" type = "string" [(ngModel)]="selectedDRG" placeholder="enter DRG code" id='drg input'>
+    </label>
+    <a class="btn btn-primary btn-sm" (click)="setCode()" id='compare price button'>Compare Pricing</a>
+    <br>
+    <a class="btn explain-btn" (click)="knowsCode = false;" >DRG Code?</a>
+    <br> 
   </p>
+  <p *ngIf="incorrectDRG" class="error-text">Code must be 3 digits in length</p>
 </div>
+<!--Connor - Figured I would cut out the redundency of this; if they know what a DRG is then they should enter it as soon as possible
+    rather than going through the extra effort of identifying whether they know their DRG or not-->
+<!--
 <div *ngIf="knowsCode" class="jumbotron">
   <h1 class="display-4">What is the procedure's DRG code</h1>
   <p class="lead">A diagnosis related group is classification system that standardize patient health care</p>
   <hr class="my-4">
   <input type="text" [(ngModel)]="selectedDRG" placeholder="Enter a DRG">
   <p class="lead">
-    <a class="btn btn-primary btn-lg" routerLink="/priceCompare" (click)="setCode()">Compare Pricing</a>
+    <a class="btn btn-primary btn-lg">Compare Pricing</a>
   </p>
 </div>
+-->
 <div [ngClass]="getPanelClass((foundProc === null))" *ngIf="knowsCode === false;">
   <h1 class="display-4">Enter the name of the procedure</h1>
   <p class="lead">something</p>

@@ -89,6 +89,11 @@ h5 {
 }
 #map{
   height: 800px;
-  width: 800px;
+  width: 1200px;
+}
+
+.align-center {
+  text-align: center; 
+  margin-top: 200px; 
 }
 
