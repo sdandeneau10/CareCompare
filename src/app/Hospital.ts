@@ -8,6 +8,7 @@ export class Hospital {
   lat: number;
   long: number;
   distance: number;
+  geocode: boolean;
 
   // Providers average charges
   coveredCharges: number;
@@ -64,5 +65,11 @@ export class Hospital {
   }
   getName() {
     return this.name;
+  }
+  isGeocoded() {
+    return this.geocode;
+  }
+  setGeocoded() {
+    this.geocode = true;
   }
 }

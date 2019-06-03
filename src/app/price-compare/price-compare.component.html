@@ -22,14 +22,6 @@
   <div class="col">
     <div class="col" *ngIf="activeSubset && loading === false; else loadingWheel">
       <div class="row">
-        <p>
-          <agm-map id="map" [latitude]="this.userLat" [longitude]="this.userLong">
-            <agm-marker [longitude]="this.userLong" [latitude]="this.userLat" title="me"></agm-marker>
-            <agm-marker *ngFor="let location of this.activeSubset; let i = index" [latitude]="location.getLat()" [longitude]="location.getLong()" [title]="location.getName()"></agm-marker>
-          </agm-map>
-        </p>
-      </div>
-      <div class="row">
         <h1>Showing {{activeSubset.length}} results for {{this.drgCode}} </h1>
       </div>
       <table>
@@ -49,10 +41,10 @@
         </tr>
         <div class="modal fade" id="fullDetails" tabindex="-1" role="dialog" aria-labelledby="detailsLabel"
              aria-hidden="true">
-          <div *ngIf="activeHospital" class="modal-dialog" role="document">
+          <div *ngIf="activeHospital" class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <p style="font-size: 20px; text-align: center" class="modal-title"
+                <p class="modal-title"
                    id="detailsLabel">{{activeHospital.name}}</p>
               </div>
               <div class="modal-body" style="text-align: center">
@@ -60,18 +52,35 @@
                 <br>
                 {{activeHospital.city}}, {{activeHospital.state}} {{activeHospital.zip}}
               </div>
+              <br>
+              <div class="collapse" id="myMap">
+                <div class="card-body">
+                  <agm-map id="map" [latitude]="this.userLat" [longitude]="this.userLong">
+                    <agm-marker *ngIf="allowUserLocation" [longitude]="this.userLong" [latitude]="this.userLat" title="me"></agm-marker>
+                    <agm-marker [latitude]="activeHospital.getLat()" [longitude]="activeHospital.getLong()" [title]="activeHospital.getName()"></agm-marker>
+                  </agm-map>
+                </div>
+              </div>
               <div class="modal-footer">
-                <button type="button" ngbAutofocus class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-toggle="collapse" aria-expanded="false" aria-controls="myMap" data-target="#myMap" id="mapButton">Show Map</button>
+                <!--<script>
+                    document.getElementById('mapButton').onclick = function() {
+                      if(document.getElementById('mapButton').innerHTML === 'Show Map'){
+                        document.getElementById('mapButton').innerHTML = 'Hide Map'
+                      } else {
+                        document.getElementById('mapButton').innerHTML = 'Show Map'
+                      }
+                    }
+                </script>-->
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
         </div>
       </table>
 </div>
-<ng-template #loadingWheel>
-  <p class="align-center">
-      <img src="../../assets/img/loadingWheel.gif">
-  </p>
+<ng-template #loadingWheel style="margin: 0 auto;">
+  <img src="../../assets/img/loadingWheel.gif">
 </ng-template>
 </div>
 </div>
