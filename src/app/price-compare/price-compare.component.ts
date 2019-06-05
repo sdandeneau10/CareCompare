@@ -28,7 +28,8 @@ export class PriceCompareComponent implements OnInit {
   minPrice: number;
   allowUserLocation: boolean;
 
-  constructor(private dataRequest: MedicareDataService, private http: HttpClient) { }
+  constructor(private dataRequest: MedicareDataService, private http: HttpClient) {
+  }
 
   ngOnInit() {
     this.loading = true;
@@ -46,6 +47,7 @@ export class PriceCompareComponent implements OnInit {
         this.relevantHospitals = this.dataRequest.formatData(data, this.drgCode);
         this.activeSubset = this.relevantHospitals;
         this.loading = false;
+        this.loadImages();
       });
   }
 
@@ -54,7 +56,7 @@ export class PriceCompareComponent implements OnInit {
     const loc = hos.getFullAddress();
     const url = baseurl + loc;
     if (hos.isGeocoded() !== true) {
-      this.http.get(url).subscribe( (res) => {
+      this.http.get(url).subscribe((res) => {
         // @ts-ignore
         hos.setLat(res.results[0].geometry.location.lat);
         // @ts-ignore
@@ -66,13 +68,13 @@ export class PriceCompareComponent implements OnInit {
 
   selected(hospital: Hospital): void {
     this.activeHospital = hospital;
-   // this.getLocation(hospital);
+    this.getLocation(hospital);
   }
 
   getHospitalsInRows(col: number): Hospital[][] {
     const listOfHospitals = this.activeSubset;
     const formattedList = new Array<Array<Hospital>>();
-    for (let i = 0; i <  listOfHospitals.length; i += col) {
+    for (let i = 0; i < listOfHospitals.length; i += col) {
       formattedList.push(listOfHospitals.slice(i, i + col));
     }
     return formattedList;
@@ -110,6 +112,7 @@ export class PriceCompareComponent implements OnInit {
       }
     }
   }
+
   getUserLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -121,6 +124,23 @@ export class PriceCompareComponent implements OnInit {
       this.allowUserLocation = true;
     } else {
       this.allowUserLocation = false;
+    }
+  }
+
+  loadImages() {
+    // tslint:disable-next-line:max-line-length
+    // api key: AIzaSyAjTxBehThv0yV7fu92frwHZ8iirhawO8s
+    // custom search engine key: 017661927765718392632:g5y2ligvqqm
+    // tslint:disable-next-line:max-line-length
+    const baseurl = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyAjTxBehThv0yV7fu92frwHZ8iirhawO8s&cx=017661927765718392632:g5y2ligvqqm&q=';
+    for (const hos of this.activeSubset) {
+      const query = hos.getName() + ' ' + hos.getCity() + ' ' + hos.getState();
+      const url = baseurl + query;
+      this.http.get(url).subscribe((res) => {
+        // @ts-ignore
+        hos.setImageUrl(res.items[0].pagemap.cse_image[0].src);
+        console.log(res);
+      });
     }
   }
 }

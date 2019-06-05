@@ -27,7 +27,7 @@ export class Hospital {
     this.coveredCharges = coveredCharges;
     this.totalPayments = totalPayments;
     this.averageMedicarePayment = averageMedicarePayments;
-    this.imgUrl = '../../assets/img/placeholder.jpg';
+    /*this.imgUrl = '../../assets/img/placeholder.jpg';*/
   }
 
   /**
@@ -71,5 +71,14 @@ export class Hospital {
   }
   setGeocoded() {
     this.geocode = true;
+  }
+  setImageUrl(img: string) {
+    this.imgUrl = img;
+  }
+  getCity() {
+    return this.city;
+  }
+  getState() {
+    return this.state;
   }
 }
