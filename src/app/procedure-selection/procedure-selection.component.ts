@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MEDICARE_DRG_CODES } from '../medicareConstants';
 import { MedicareDataService } from '../medicare-data.service';
 import { FormControl } from '@angular/forms';
-import { Router} from '@angular/router'
+import { Router} from '@angular/router';
 
 
 @Component({
@@ -33,10 +33,10 @@ export class ProcedureSelectionComponent implements OnInit {
 
    /**
     * New process for selection
-    * 
+    *
     *  1 - enter the DRG Code
     *  2 - click enter and you will be navigated to the procedure comparison page
-    * 
+    *
     *  Alternate Flow:
     *  3 - click "what is a DRG?" button
     *  4 - enter the name of the procedure
@@ -71,17 +71,17 @@ export class ProcedureSelectionComponent implements OnInit {
    */
   setCode() {
     console.log(this.selectedDRG.length);
-    if(this.selectedDRG.length == 3){
-      MedicareDataService.selectedDRG = this.selectedDRG;
-      console.log(MedicareDataService.selectedDRG);
-      this.router.navigate(['/', 'priceCompare']);
+    for (const drg of this.drgCodes) {
+      if (this.selectedDRG === drg.substr(0, 3)) {
+        MedicareDataService.selectedDRG = this.selectedDRG;
+        console.log(MedicareDataService.selectedDRG);
+        this.router.navigate(['/', 'priceCompare']);
+      } else {
+        this.incorrectDRG = true;
+        console.log('this input is not valid!');
+        console.log(this.incorrectDRG);
+      }
     }
-    else{
-      this.incorrectDRG = true;
-      console.log("this input is not valid; enter a 3 digit number");
-      console.log(this.incorrectDRG);
-    }
-    
   }
 
   getPanelClass(active: boolean): string {
