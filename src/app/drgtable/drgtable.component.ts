@@ -14,5 +14,5 @@ export class DrgtableComponent implements OnInit {
   ngOnInit() {
     this.drgCodes = MEDICARE_DRG_CODES;
   }
-
 }
+
