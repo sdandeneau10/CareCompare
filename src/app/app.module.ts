@@ -12,6 +12,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AgmCoreModule } from '@agm/core';
 import { ProcedureSelectionComponent } from './procedure-selection/procedure-selection.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DrgtableComponent } from './drgtable/drgtable.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SignUpComponent,
     AccountComponent,
     ProcedureSelectionComponent,
+    DrgtableComponent,
   ],
   imports: [
     BrowserModule,
