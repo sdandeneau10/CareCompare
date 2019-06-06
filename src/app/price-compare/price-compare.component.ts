@@ -46,7 +46,7 @@ export class PriceCompareComponent implements OnInit {
         this.relevantHospitals = this.dataRequest.formatData(data, this.drgCode);
         this.activeSubset = this.relevantHospitals;
         this.loading = false;
-        this.loadImages();
+        // this.loadImages();
       });
   }
 
