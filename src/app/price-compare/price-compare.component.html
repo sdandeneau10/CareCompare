@@ -34,7 +34,7 @@
               <img class="card-img-top" [src]='hospital.imgUrl'>
               <div class="card-body">
                 <h6 class="card-title">{{hospital.name}}</h6>
-                <p class="card-text">Price: {{hospital.getApproxOutOfPocket() | currency }}</p>
+                <p class="card-text">Estimated Price: {{hospital.getApproxOutOfPocket() | currency }}</p>
               </div>
             </div>
           </td>
@@ -48,9 +48,23 @@
                    id="detailsLabel">{{activeHospital.name}}</p>
               </div>
               <div class="modal-body" style="text-align: center">
+                <label>Address</label>
                 {{activeHospital.address}}
                 <br>
-                {{activeHospital.city}}, {{activeHospital.state}} {{activeHospital.zip}}
+                <label>City</label>
+                {{activeHospital.city}}
+                <br>
+                <label>State</label>
+                {{activeHospital.state}}
+                <br>
+                <label>Price Charged</label>
+                {{activeHospital.totalPayments | currency}}
+                <br>
+                <label>Avg Payment by Medicare</label>
+                {{activeHospital.averageMedicarePayment | currency}}
+                <br>
+                <label>Average total payment</label>
+                {{activeHospital.averageMedicarePayment | currency}}
               </div>
               <br>
               <div class="collapse" id="myMap">
