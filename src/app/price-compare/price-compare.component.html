@@ -24,7 +24,7 @@
       <div class="row">
         <h1>Showing {{activeSubset.length}} results for {{this.drgCode}} </h1>
       </div>
-      <table>
+      <table align="center">
         <tr *ngFor="let hospitals of getHospitalsInRows(3); let i = index">
           <td *ngFor="let hospital of hospitals">
             <div class="card mx-auto text-center"
