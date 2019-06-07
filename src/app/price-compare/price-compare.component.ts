@@ -46,8 +46,17 @@ export class PriceCompareComponent implements OnInit {
         this.relevantHospitals = this.dataRequest.formatData(data, this.drgCode);
         this.activeSubset = this.relevantHospitals;
         this.loading = false;
+        this.calculatePriceExtremes();
         // this.loadImages();
       });
+  }
+
+  calculatePriceExtremes() {
+    for (const h of this.relevantHospitals) {
+      const cost = h.getApproxOutOfPocket();
+      if (cost < this.minPrice) { this.minPrice = cost; }
+      if (cost > this.maxPrice) { this.maxPrice = cost; }
+    }
   }
 
   getLocation(hos: Hospital): void {
@@ -84,7 +93,8 @@ export class PriceCompareComponent implements OnInit {
    * Updates activeSubset to reflect the hospitals that fit in the updated range
    * @param value - The value of the slide 0 < value < 10
    */
-  distanceChanged(value: number) {
+  distanceChanged(value: string) {
+    const val = parseInt(value, 10);
     return null;
   }
 
@@ -93,7 +103,8 @@ export class PriceCompareComponent implements OnInit {
    * Updates activeSubset to reflect the hospitals that fit in the updated range
    * @param value - The value of the slide 0 < value < 10
    */
-  ratingChanged(value: number) {
+  ratingChanged(value: string) {
+    const val = parseInt(value, 10);
     return null;
   }
 
@@ -101,9 +112,11 @@ export class PriceCompareComponent implements OnInit {
    * Updates activeSubset to reflect the hospitals that fit in the updated range
    * @param value - The value of the slide 0 < value < 10
    */
-  priceChanged(value: number) {
+  priceChanged(value: string) {
     // First convert value to a price
-    const TARG_PRICE = (value / 100.0) * (this.maxPrice - this.minPrice) + this.minPrice;
+    const val = parseInt(value, 10);
+    // tslint:disable-next-line:max-line-length
+    const TARG_PRICE = (val / 100.0) * (this.maxPrice - this.minPrice) + this.minPrice; // who's good at math, range can be top heavy, can we make a normal distribution here???
     this.activeSubset = [];
     for (const hospital of this.relevantHospitals) {
       if (hospital.getApproxOutOfPocket() < TARG_PRICE) {
