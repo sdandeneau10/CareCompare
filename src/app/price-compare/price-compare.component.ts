@@ -138,18 +138,17 @@ export class PriceCompareComponent implements OnInit {
     }
   }
   loadImages() {
-    // tslint:disable-next-line:max-line-length
     // api key: AIzaSyAjTxBehThv0yV7fu92frwHZ8iirhawO8s
     // custom search engine key: 017661927765718392632:g5y2ligvqqm
     // tslint:disable-next-line:max-line-length
-    const baseurl = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyAjTxBehThv0yV7fu92frwHZ8iirhawO8s&cx=017661927765718392632:g5y2ligvqqm&q=';
+    const baseurl = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyAjTxBehThv0yV7fu92frwHZ8iirhawO8s&cx=017661927765718392632:g5y2ligvqqm&searchType=image&q=';
     for (const hos of this.activeSubset) {
       const query = hos.getName() + ' ' + hos.getCity() + ' ' + hos.getState();
       const url = baseurl + query;
       this.http.get(url).subscribe((res) => {
         // @ts-ignore
-        hos.setImageUrl(res.items[0].pagemap.cse_image[0].src);
-        console.log(res);
+         hos.setImageUrl(res.items[0].link);
+         // console.log(res);
       });
     }
   }

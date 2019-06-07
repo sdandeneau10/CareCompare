@@ -31,7 +31,7 @@
                  *ngIf="hospital"
                  (click)="selected(hospital)"
                  [class.selected]="hospital === activeHospital" data-toggle="modal" data-target="#fullDetails">
-              <img class="card-img-top" [src]='hospital.imgUrl'>
+              <img class="card-img-top" [src]='hospital.imgUrl' style="width: 450px; height: 350px">
               <div class="card-body">
                 <h6 class="card-title">{{hospital.name}}</h6>
                 <p class="card-text">Estimated Price: {{hospital.getApproxOutOfPocket() | currency }}</p>
