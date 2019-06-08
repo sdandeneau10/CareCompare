@@ -44,10 +44,10 @@ export class PriceCompareComponent implements OnInit {
     this.dataRequest.getData().subscribe(
       (data) => {
         this.relevantHospitals = this.dataRequest.formatData(data, this.drgCode);
+        // this.loadImages();
         this.activeSubset = this.relevantHospitals;
         this.loading = false;
         this.calculatePriceExtremes();
-        // this.loadImages();
       });
   }
 
@@ -142,7 +142,7 @@ export class PriceCompareComponent implements OnInit {
     // custom search engine key: 017661927765718392632:g5y2ligvqqm
     // tslint:disable-next-line:max-line-length
     const baseurl = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyAjTxBehThv0yV7fu92frwHZ8iirhawO8s&cx=017661927765718392632:g5y2ligvqqm&searchType=image&q=';
-    for (const hos of this.activeSubset) {
+    for (const hos of this.relevantHospitals) {
       const query = hos.getName() + ' ' + hos.getCity() + ' ' + hos.getState();
       const url = baseurl + query;
       this.http.get(url).subscribe((res) => {
