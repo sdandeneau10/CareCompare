@@ -1,0 +1,25 @@
+<br>
+<div class="container-fluid">
+  <div class="title">
+    <h1 style="font-size: 50px; text-align: center">
+      DRG Codes
+    </h1>
+  </div>
+  <br>
+  <br>
+  <br>
+  <table class="table table-striped table-bordered" id="drgTable">
+    <thead>
+    <tr>
+      <th scope="col">Code</th>
+      <th scope="col">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="data" *ngFor="let entry of this.drgCodes">
+      <td class="code">{{entry.substr(0,3)}}</td>
+      <td>{{entry.substr(6, (entry.length))}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

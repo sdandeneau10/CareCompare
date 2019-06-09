@@ -7,6 +7,7 @@ import { AboutComponent } from './about/about.component';
 import { AccountComponent } from './account/account.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ProcedureSelectionComponent } from './procedure-selection/procedure-selection.component';
+import {DrgtableComponent} from './drgtable/drgtable.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent},
   { path: 'account', component: AccountComponent},
   { path: 'sign-up', component: SignUpComponent},
-  { path: 'procedureSelection', component: ProcedureSelectionComponent}
+  { path: 'procedureSelection', component: ProcedureSelectionComponent},
+  { path: 'drgtable', component: DrgtableComponent}
 ];
 
 @NgModule({
