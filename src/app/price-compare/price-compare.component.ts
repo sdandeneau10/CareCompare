@@ -28,6 +28,8 @@ export class PriceCompareComponent implements OnInit {
   minPrice: number;
   allowUserLocation: boolean;
 
+  mapButtonStatus: string;
+
   constructor(private dataRequest: MedicareDataService, private http: HttpClient) { }
 
   ngOnInit() {
@@ -40,6 +42,7 @@ export class PriceCompareComponent implements OnInit {
     // TODO: get DRG code
     this.drgCode = MedicareDataService.selectedDRG;
     // this.getUserLocation();
+    this.mapButtonStatus = "Open Map"
 
     this.dataRequest.getData().subscribe(
       (data) => {
@@ -57,6 +60,15 @@ export class PriceCompareComponent implements OnInit {
       if (cost < this.minPrice) { this.minPrice = cost; }
       if (cost > this.maxPrice) { this.maxPrice = cost; }
     }
+  }
+  changeButtonText(){
+    if(this.mapButtonStatus === "Open Map"){
+      this.mapButtonStatus = "Close Map";
+    }
+    else{
+      this.mapButtonStatus = "Open Map";
+    }
+    document.getElementById("mapButton").innerText = this.mapButtonStatus;
   }
 
   getLocation(hos: Hospital): void {
