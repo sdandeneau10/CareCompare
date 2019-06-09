@@ -38,6 +38,11 @@
 * {
   box-sizing: border-box;
 }
+
+.btn-sm {
+  color: white !important
+}
+
 .inp {
   position: relative;
   margin: auto;
