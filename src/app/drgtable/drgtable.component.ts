@@ -8,6 +8,7 @@ import { MEDICARE_DRG_CODES } from '../medicareConstants';
 })
 export class DrgtableComponent implements OnInit {
   drgCodes: string[];
+  p: number = 1;
 
   constructor() { }
 

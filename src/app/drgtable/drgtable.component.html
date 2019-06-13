@@ -16,10 +16,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="data" *ngFor="let entry of this.drgCodes">
+    <tr class="data" *ngFor="let entry of this.drgCodes | paginate: {itemsPerPage:10, currentPage: p}">
       <td class="code">{{entry.substr(0,3)}}</td>
       <td>{{entry.substr(6, (entry.length))}}</td>
     </tr>
     </tbody>
   </table>
+  <pagination-controls (pageChange)="p =$event"></pagination-controls>
 </div>
