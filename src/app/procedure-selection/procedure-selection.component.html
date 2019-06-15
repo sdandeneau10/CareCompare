@@ -1,4 +1,4 @@
-<div [ngClass]="getPanelClass((knowsCode === null))">
+<div [@flyInOut] class='jumbotron' *ngIf='showFirstDiv === true'>
   <h1 class="display-4" id="price compare header">Price Compare</h1>
   <p class="lead">Please answer the following questions to compare pricing for a specific procedure</p>
   <hr class="my-4">
@@ -9,7 +9,7 @@
     </label>
     <a class="btn btn-primary btn-sm" (click)="setCode()" id='compare price button'>Compare Pricing</a>
     <br>
-    <a class="btn btn-primary btn-sm" (click)="knowsCode = false;" >DRG Code?</a>
+    <a class="btn btn-primary btn-sm" (click)="switchDiv()" >DRG Code?</a>
     <br> 
   </p>
   <p *ngIf="incorrectDRG" class="error-text">this DRG code does not exist!</p>
@@ -27,7 +27,7 @@
   </p>
 </div>
 -->
-<div [ngClass]="getPanelClass((foundProc === null))" *ngIf="knowsCode === false;">
+<div [@flyInOut] class='jumbotron' *ngIf="showSecondDiv === true">
   <h1 class="display-4">Enter the name of the procedure</h1>
   <p class="lead">something</p>
   <hr class="my-4">

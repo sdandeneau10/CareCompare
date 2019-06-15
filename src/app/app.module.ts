@@ -13,6 +13,7 @@ import { AgmCoreModule } from '@agm/core';
 import { ProcedureSelectionComponent } from './procedure-selection/procedure-selection.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DrgtableComponent } from './drgtable/drgtable.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DrgtableComponent } from './drgtable/drgtable.component';
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAwzRGaPm9KP5ZjKvNs5qhFs3p0wePaI4c'
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

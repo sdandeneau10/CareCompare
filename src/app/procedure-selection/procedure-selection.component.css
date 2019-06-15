@@ -5,6 +5,7 @@
 .jumbotron {
   -webkit-transition: .5s -webkit-filter ease-out;
   transition: .5s -webkit-filter ease-out;
+  background-color: white !important;
 }
 .btn {
   margin-top: 0px;
