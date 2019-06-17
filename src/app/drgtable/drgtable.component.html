@@ -9,11 +9,11 @@
   <br>
   <br>
   <ng-autocomplete
-    [data]="this.drgcodes"
+    [data]="this.fulldrgCodes"
     placeHolder="Enter the DRG Code..."
     [itemTemplate]="listing"
     [notFoundTemplate]="doesnotexist"
-    [historyIdentifier]="this.drgcodes">
+    [historyIdentifier]="this.fulldrgCodes">
   </ng-autocomplete>
   <ng-template #listing let-item>
     <a [innerHTML]="item"></a>
