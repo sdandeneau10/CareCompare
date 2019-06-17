@@ -14,6 +14,7 @@ import { ProcedureSelectionComponent } from './procedure-selection/procedure-sel
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DrgtableComponent } from './drgtable/drgtable.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    AutocompleteLibModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAwzRGaPm9KP5ZjKvNs5qhFs3p0wePaI4c'
     }),

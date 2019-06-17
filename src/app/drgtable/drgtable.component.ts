@@ -7,13 +7,24 @@ import { MEDICARE_DRG_CODES } from '../medicareConstants';
   styleUrls: ['./drgtable.component.css']
 })
 export class DrgtableComponent implements OnInit {
-  drgCodes: string[];
-  p: number = 1;
+  fulldrgCodes: string[];
+  drgcodes: string[] = [];
+  p: number;
+  nope: string;
 
   constructor() { }
 
   ngOnInit() {
-    this.drgCodes = MEDICARE_DRG_CODES;
+    this.p = 1;
+    this.nope = 'This drg does not exist!';
+    this.fulldrgCodes = MEDICARE_DRG_CODES;
+    this.getCodes();
+  }
+  getCodes() {
+    for (const drg of this.fulldrgCodes) {
+      const code = drg.substr(0, 3);
+      this.drgcodes.push(code);
+    }
   }
 }
 
