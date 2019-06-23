@@ -2,13 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import { MEDICARE_DRG_CODES } from '../medicareConstants';
 import { MedicareDataService } from '../medicare-data.service';
 import { FormControl } from '@angular/forms';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
+import { trigger, transition, animate, style } from '@angular/animations';
+import { delay } from 'q';
 
 
 @Component({
   selector: 'app-procedure-selection',
   templateUrl: './procedure-selection.component.html',
-  styleUrls: ['./procedure-selection.component.css']
+  styleUrls: ['./procedure-selection.component.css'],
+  animations: [
+    trigger("flyInOut", [
+      transition('void => *', [
+        style({ opacity: 0, transform: 'translateX(100%)'}),
+        animate('250ms')
+      ]),
+      transition('* => void', [
+        animate('250ms', style({ opacity: 1, transform: 'translateX(-100%)'}))
+      ])
+    ])
+  ]
 })
 export class ProcedureSelectionComponent implements OnInit {
 
@@ -52,6 +65,9 @@ export class ProcedureSelectionComponent implements OnInit {
   foundProc: boolean;
   incorrectDRG: boolean;
 
+  showFirstDiv: boolean;
+  showSecondDiv: boolean;
+
   drgCodes: string[];
   selectedDRG = '';
   myControl = new FormControl();
@@ -63,6 +79,9 @@ export class ProcedureSelectionComponent implements OnInit {
     this.knowsCode = null;
     this.foundProc = null;
     this.incorrectDRG = false;
+
+    this.showFirstDiv = true;
+    this.showSecondDiv = false;
   }
 
   /**
@@ -84,7 +103,14 @@ export class ProcedureSelectionComponent implements OnInit {
     }
   }
 
-  getPanelClass(active: boolean): string {
-    return active ? 'jumbotron' : 'jumbotron blur';
+  async switchDiv(){
+    this.knowsCode = false;
+    this.showFirstDiv = false;
+    await delay(250);
+    this.showSecondDiv = true;
+  }
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 }

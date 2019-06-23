@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DrgtableComponent } from './drgtable/drgtable.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAwzRGaPm9KP5ZjKvNs5qhFs3p0wePaI4c'
     }),
+    BrowserAnimationsModule,
     NgxPaginationModule
   ],
   providers: [],
