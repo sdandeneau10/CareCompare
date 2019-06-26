@@ -1,3 +1,19 @@
-<p>
-  home works!
-</p>
+<div class="top-area">
+  <video [@fade-in] *ngIf="video === true"autoplay muted loop >
+    <source src="assets/stock-footage/empty modern surgery new surgery room with medical electronic equipment free stock Video footage.mp4" type="video/mp4">
+  </video>
+  <div class="opaque-plane"></div>
+  <div class="content">
+    <div id="title" [@fade-in] *ngIf="title === true;">
+        <h1 class="name" id="care">Care</h1>
+        <h1 class="name" id="compare">Compare</h1>
+    </div>
+    <div class="phrase">
+      <p [@fade-in] *ngIf="phrase1 === true;"> Click</p>
+      <div class="spacing"></div>
+      <p [@fade-in] *ngIf="phrase2 === true;" id="offset">Compare</p>
+      <div class="spacing"></div>
+      <p [@fade-in] *ngIf="phrase3 === true;">Save</p>
+    </div>
+  </div>
+</div>
