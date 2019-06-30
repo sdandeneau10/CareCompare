@@ -3,3 +3,14 @@ img.logo {
   height: auto;
 }
 
+#navbar{
+  opacity: 1 !important;
+  background: dodgerblue;
+  width: 100%;
+}
+
+li.nav-item{
+  opacity: 1;
+  color: dodgerblue !important;
+}
+
