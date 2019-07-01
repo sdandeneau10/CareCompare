@@ -3,6 +3,7 @@ import {Hospital} from '../Hospital';
 import {Location} from '../Location';
 import {MedicareDataService} from '../medicare-data.service';
 import {HttpClient} from '@angular/common/http';
+import {HotObservable} from 'rxjs/internal/testing/HotObservable';
 
 @Component({
   selector: 'app-price-compare',
@@ -72,23 +73,32 @@ export class PriceCompareComponent implements OnInit {
   }
 
   getLocation(hos: Hospital): void {
-    const baseurl = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAwzRGaPm9KP5ZjKvNs5qhFs3p0wePaI4c&address=';
-    const loc = hos.getFullAddress();
-    const url = baseurl + loc;
-    if (hos.isGeocoded() !== true) {
-      this.http.get(url).subscribe( (res) => {
-        // @ts-ignore
-        hos.setLat(res.results[0].geometry.location.lat);
-        // @ts-ignore
-        hos.setLong(res.results[0].geometry.location.lng);
-      });
-      hos.setGeocoded();
-    }
+    const medicareapi = 'https://data.medicare.gov/resource/rbry-mqwu.json?provider_id=' + hos.getID();
+    this.http.get(medicareapi).subscribe((jsonresult) => {
+      if (hos.isGeocoded() !== true) {
+        if (jsonresult[0].location) {
+          hos.setLat(jsonresult[0].location.coordinates[1]);
+          hos.setLong(jsonresult[0].location.coordinates[0]);
+          hos.setGeocoded();
+        } else {
+          const baseurl = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAwzRGaPm9KP5ZjKvNs5qhFs3p0wePaI4c&address=';
+          const loc = hos.getFullAddress();
+          const url = baseurl + loc;
+          this.http.get(url).subscribe( (res) => {
+            // @ts-ignore
+            hos.setLat(res.results[0].geometry.location.lat);
+            // @ts-ignore
+            hos.setLong(res.results[0].geometry.location.lng);
+          });
+          hos.setGeocoded();
+        }
+      }
+    });
   }
 
   selected(hospital: Hospital): void {
     this.activeHospital = hospital;
-   // this.getLocation(hospital);
+    // this.getLocation(hospital);
   }
 
   getHospitalsInRows(col: number): Hospital[][] {

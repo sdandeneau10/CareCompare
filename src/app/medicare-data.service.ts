@@ -24,8 +24,11 @@ export class MedicareDataService {
    */
   formatData(data: Observable<any>, drgCode: string): Hospital[] {
     const hospitals: Hospital[] = [];
+    // @ts-ignore
     for (let i = 0; i < data.length; i++) { // this error is incorrect, it works, switch to a for of loop in future
-      hospitals.push(new Hospital(data[i].provider_name,
+      hospitals.push(new Hospital(
+        data[i].provider_id,
+        data[i].provider_name,
         data[i].provider_street_address,
         data[i].provider_city,
         data[i].provider_state,

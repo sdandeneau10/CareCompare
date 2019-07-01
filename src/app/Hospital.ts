@@ -10,6 +10,9 @@ export class Hospital {
   distance: number;
   geocodeLoaded: boolean;
   imgLoaded: boolean;
+  providerID: number;
+  rating: string;
+  phone: number;
 
   // Providers average charges
   coveredCharges: number;
@@ -18,8 +21,9 @@ export class Hospital {
   // Average total payment by medicare
   averageMedicarePayment: number;
 
-  constructor(name: string, address: string, city: string, state: string, zip: string, totalDischarges: number, coveredCharges: number,
-              totalPayments: number, averageMedicarePayments: number) {
+  constructor(providerid: number, name: string, address: string, city: string, state: string, zip: string, totalDischarges: number,
+              coveredCharges: number, totalPayments: number, averageMedicarePayments: number) {
+    this.providerID = providerid;
     this.name = name;
     this.address = address;
     this.city = city;
@@ -87,5 +91,20 @@ export class Hospital {
   }
   getState() {
     return this.state;
+  }
+  getID() {
+    return this.providerID;
+  }
+  getRating() {
+    return this.rating;
+  }
+  getPhone() {
+    return this.phone;
+  }
+  setRating(s: string) {
+    this.rating = s;
+  }
+  setPhone(n: number) {
+    this.phone = n;
   }
 }
