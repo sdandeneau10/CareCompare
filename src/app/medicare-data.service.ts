@@ -13,8 +13,8 @@ export class MedicareDataService {
   constructor(private http: HttpClient) {
   }
 
-  getData(): Observable<any> {
-    return this.http.get('../assets/data/medicare-inpatient-data.json');
+  getData(drgDefinition): Observable<any> {
+    return this.http.get('https://data.cms.gov/resource/t8zw-d33c.json?drg_definition=' + drgDefinition);
   }
 
   /**
@@ -23,21 +23,17 @@ export class MedicareDataService {
    * Replicates sql style commands like get * where
    */
   formatData(data: Observable<any>, drgCode: string): Hospital[] {
-    if (drgCode === '') { return null; }
-    const MAX_LINES_SEARCHED = 1000;
     const hospitals: Hospital[] = [];
-    for  (let i = 0; i < MAX_LINES_SEARCHED; i++) {
-      if (data[i]['DRG Definition'].indexOf(drgCode) >= 0) {
-        hospitals.push(new Hospital(data[i]['Provider Name'],
-          data[i]['Provider Street Address'],
-          data[i]['Provider City'],
-          data[i]['Provider State'],
-          data[i]['Provider Zip Code'],
-          data[i]['Total Discharges'],
-          data[i]['Average Covered Charges'],
-          data[i]['Average Total Payments'],
-          data[i]['Average Medicare Payments']));
-      }
+    for (let i = 0; i < data.length; i++) { // this error is incorrect, it works, switch to a for of loop in future
+      hospitals.push(new Hospital(data[i].provider_name,
+        data[i].provider_street_address,
+        data[i].provider_city,
+        data[i].provider_state,
+        data[i].provider_zip_code,
+        data[i].total_discharges,
+        data[i].average_covered_charges,
+        data[i].average_total_payments,
+        data[i].average_medicare_payments));
     }
     return hospitals;
   }

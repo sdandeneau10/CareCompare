@@ -25,22 +25,22 @@ li {
 .whiteLink{
   color: #ffffff;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 18px;
   padding-left: 30px;
   font-weight: bold;
-  -webkit-transition: color .4s; /* For Safari 3.0 to 6.0 */
-  transition: color .4s; /* For modern browsers */
+  -webkit-transition: color .6s; /* For Safari 3.0 to 6.0 */
+  transition: color .6s; /* For modern browsers */
 }
 
 .whiteLink:hover{
-  color: #c1e0f7;
+  color: #3b3355;
   text-decoration: none;
 }
 
 .imgLink {
   width: 30px;
   height: auto;
-  margin-right: 20px;
+  margin-left: 25px;
 }
 
 .jumbotron {

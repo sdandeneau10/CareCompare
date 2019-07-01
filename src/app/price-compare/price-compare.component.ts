@@ -44,7 +44,7 @@ export class PriceCompareComponent implements OnInit {
     // this.getUserLocation();
     this.mapButtonStatus = "Open Map"
 
-    this.dataRequest.getData().subscribe(
+    this.dataRequest.getData('001 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC').subscribe(
       (data) => {
         this.relevantHospitals = this.dataRequest.formatData(data, this.drgCode);
         // this.loadImages();
