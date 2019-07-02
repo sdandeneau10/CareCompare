@@ -89,16 +89,13 @@ export class ProcedureSelectionComponent implements OnInit {
    *
    */
   setCode() {
-    console.log(this.selectedDRG.length);
     for (const drg of this.drgCodes) {
       if (this.selectedDRG === drg.substr(0, 3)) {
-        MedicareDataService.selectedDRG = this.selectedDRG;
-        console.log(MedicareDataService.selectedDRG);
+        MedicareDataService.selectedDRG = drg;
         this.router.navigate(['/', 'priceCompare']);
+        return;
       } else {
         this.incorrectDRG = true;
-        console.log('this input is not valid!');
-        console.log(this.incorrectDRG);
       }
     }
   }

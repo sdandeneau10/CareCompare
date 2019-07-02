@@ -14,7 +14,7 @@ export class MedicareDataService {
   }
 
   getData(drgDefinition): Observable<any> {
-    return this.http.get('https://data.cms.gov/resource/t8zw-d33c.json?drg_definition=' + drgDefinition);
+    return this.http.get('https://data.cms.gov/resource/t8zw-d33c.json', {params: {drg_definition: drgDefinition}});
   }
 
   /**
@@ -24,7 +24,7 @@ export class MedicareDataService {
    */
   formatData(data: Observable<any>, drgCode: string): Hospital[] {
     const hospitals: Hospital[] = [];
-    for (let i = 0; i < data.length; i++) { // this error is incorrect, it works, switch to a for of loop in future
+    for (let i = 0; i < data['length']; i++) { // this error is incorrect, it works, switch to a for of loop in future
       hospitals.push(new Hospital(data[i].provider_name,
         data[i].provider_street_address,
         data[i].provider_city,
