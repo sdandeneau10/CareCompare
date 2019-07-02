@@ -42,7 +42,7 @@ export class PriceCompareComponent implements OnInit {
     this.userLat = 42.275093;
     // TODO: get DRG code
     this.drgCode = MedicareDataService.selectedDRG;
-    // this.getUserLocation();
+    this.getUserLocation();
     this.mapButtonStatus = "Open Map"
 
     this.dataRequest.getData('001 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC').subscribe(
