@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PriceCompareComponent } from './price-compare/price-compare.component';
 import { FAQComponent } from './faq/faq.component';
-import { AboutComponent } from './about/about.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AccountComponent } from './account/account.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,6 +16,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HospitalPopupComponent } from './hospital-popup/hospital-popup.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -24,12 +24,12 @@ import { HospitalPopupComponent } from './hospital-popup/hospital-popup.componen
     HomeComponent,
     PriceCompareComponent,
     FAQComponent,
-    AboutComponent,
     SignUpComponent,
     AccountComponent,
     ProcedureSelectionComponent,
     DrgtableComponent,
     HospitalPopupComponent,
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule,
