@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PriceCompareComponent } from './price-compare/price-compare.component';
 import { FAQComponent } from './faq/faq.component';
-import { AboutComponent } from './about/about.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AccountComponent } from './account/account.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,7 +23,6 @@ import { HospitalPopupComponent } from './hospital-popup/hospital-popup.componen
     HomeComponent,
     PriceCompareComponent,
     FAQComponent,
-    AboutComponent,
     SignUpComponent,
     AccountComponent,
     ProcedureSelectionComponent,
