@@ -14,7 +14,7 @@ export class MedicareDataService {
   }
 
   getData(drgDefinition): Observable<any> {
-    return this.http.get('https://data.cms.gov/resource/t8zw-d33c.json?drg_definition=' + drgDefinition);
+    return this.http.get('https://data.cms.gov/resource/t8zw-d33c.json', {params: {drg_definition: drgDefinition}});
   }
   getGeneralData(id: number) {
     return this.http.get('https://data.medicare.gov/resource/rbry-mqwu.json?provider_id=' + id);
@@ -27,11 +27,9 @@ export class MedicareDataService {
    */
   formatData(data: Observable<any>, drgCode: string): Hospital[] {
     const hospitals: Hospital[] = [];
-    let array: any[] = [];
-    // @ts-ignore
-    for (let i = 0; i < data.length; i++) { // this error is incorrect, it works, switch to a for of loop in future
+    for (let i = 0; i < data['length']; i++) { // this error is incorrect, it works, switch to a for of loop in future
       const res = this.getGeneralData(data[i].provider_id);
-      const hos = new Hospital(
+      const tempHos = new Hospital(
         data[i].provider_id,
         data[i].provider_name,
         data[i].provider_street_address,
@@ -43,8 +41,8 @@ export class MedicareDataService {
         data[i].average_total_payments,
         data[i].average_medicare_payments);
       res.subscribe((resp) => {
-        hos.setPhone(resp[0].phone_number);
-        hos.setRating(resp[0].hospital_overall_rating);
+        tempHos.setPhone(resp[0].phone_number);
+        tempHos.setRating(resp[0].hospital_overall_rating);
       });
       hospitals.push(hos);
     }

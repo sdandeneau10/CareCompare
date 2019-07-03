@@ -43,7 +43,7 @@ export class PriceCompareComponent implements OnInit {
     this.drgCode = MedicareDataService.selectedDRG;
     // this.getUserLocation();
 
-    this.dataRequest.getData('001 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC').subscribe(
+    this.dataRequest.getData(this.drgCode).subscribe(
       (data) => {
         this.relevantHospitals = this.dataRequest.formatData(data, this.drgCode);
         // this.loadImages();
