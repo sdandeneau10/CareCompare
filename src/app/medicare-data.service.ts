@@ -14,10 +14,11 @@ export class MedicareDataService {
   }
 
   getData(drgDefinition): Observable<any> {
-    return this.http.get('https://data.cms.gov/resource/t8zw-d33c.json', {params: {drg_definition: drgDefinition}});
+    // tslint:disable-next-line:max-line-length
+    return this.http.get('https://data.cms.gov/resource/t8zw-d33c.json?$$app_token=wawW1EcHvX5JhsX60wSxIyVKj', {params: {drg_definition: drgDefinition}});
   }
   getGeneralData(id: number) {
-    return this.http.get('https://data.medicare.gov/resource/rbry-mqwu.json?provider_id=' + id);
+    return this.http.get('https://data.medicare.gov/resource/rbry-mqwu.json?$$app_token=wawW1EcHvX5JhsX60wSxIyVKj&provider_id=' + id);
   }
 
   /**

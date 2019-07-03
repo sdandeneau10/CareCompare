@@ -62,7 +62,8 @@ export class PriceCompareComponent implements OnInit {
   }
 
   getLocation(hos: Hospital): void {
-    const medicareapi = 'https://data.medicare.gov/resource/rbry-mqwu.json?provider_id=' + hos.getID();
+    // tslint:disable-next-line:max-line-length
+    const medicareapi = 'https://data.medicare.gov/resource/rbry-mqwu.json?$$app_token=wawW1EcHvX5JhsX60wSxIyVKj&provider_id=' + hos.getID();
     this.http.get(medicareapi).subscribe((jsonresult) => {
       if (hos.isGeocoded() !== true) {
         if (jsonresult[0].location) {
