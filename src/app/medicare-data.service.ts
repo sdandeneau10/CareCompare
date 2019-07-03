@@ -40,11 +40,19 @@ export class MedicareDataService {
         data[i].average_covered_charges,
         data[i].average_total_payments,
         data[i].average_medicare_payments);
-      res.subscribe((resp) => {
+      res.subscribe((resp) => { // is there a way to do this in bulk, i bet so using some SODA filter queries
         tempHos.setPhone(resp[0].phone_number);
-        tempHos.setRating(resp[0].hospital_overall_rating);
+        tempHos.setRatingMetrics(
+          resp[0].hospital_overall_rating,
+          resp[0].mortality_national_comparison,
+          resp[0].safety_of_care_national_comparison,
+          resp[0].readmission_national_comparison,
+          resp[0].patient_experience_national_comparison,
+          resp[0].effectiveness_of_care_national_comparison,
+          resp[0].timeliness_of_care_national_comparison,
+          resp[0].efficient_use_of_medical_imaging_national_comparison);
       });
-      hospitals.push(hos);
+      hospitals.push(tempHos);
     }
     return hospitals;
   }

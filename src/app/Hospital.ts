@@ -13,6 +13,13 @@ export class Hospital {
   providerID: number;
   rating: number;
   phone: number;
+  mortalityComparison: string;
+  safetyComparison: string;
+  readmissionComparison: string;
+  patientComparison: string;
+  effectivenessComparison: string;
+  timelinessComparison: string;
+  imagingComparison: string;
 
   // Providers average charges
   coveredCharges: number;
@@ -33,6 +40,19 @@ export class Hospital {
     this.totalPayments = totalPayments;
     this.averageMedicarePayment = averageMedicarePayments;
     /*this.imgUrl = '../../assets/img/placeholder.jpg';*/
+  }
+
+
+  setRatingMetrics(overall: number, mortality: string, safety: string, readmission: string, patient: string,
+                   effectiveness: string, timeliness: string, imaging: string) {
+    this.rating = overall;
+    this.mortalityComparison = mortality;
+    this.safetyComparison = safety;
+    this.readmissionComparison = readmission;
+    this.patientComparison = patient;
+    this.effectivenessComparison = effectiveness;
+    this.timelinessComparison = timeliness;
+    this.imagingComparison = imaging;
   }
 
   /**
