@@ -1,0 +1,132 @@
+<div class="modal fade" data-toggle="modal" id="fullDetails" tabindex="-1" role="dialog" aria-labelledby="detailsLabel"
+     aria-hidden="true">
+  <div *ngIf="hospitalData" class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>{{hospitalData.name}}</h3>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="tab" role="tabpanel">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#Section1" aria-controls="home" role="tab" data-toggle="tab">Overview</a></li>
+          <li role="presentation"><a href="#Section2" aria-controls="profile" role="tab" data-toggle="tab">Pricing Details</a></li>
+          <li role="presentation"><a href="#Section3" aria-controls="messages" role="tab" data-toggle="tab">Rating Details</a></li>
+          <li role="presentation"><a href="#Section4" aria-controls="messages" role="tab" data-toggle="tab">View Map</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content tabs">
+          <div role="tabpanel" class="tab-pane fade in active" id="Section1">
+            <div class = "row">
+              <div class = "col">
+                <h6>Price</h6>
+              </div>
+              <div class = "col">
+                <h6>{{this.hospitalData.getApproxOutOfPocket() | currency}}</h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class = "col">
+                <h6>Rating</h6>
+              </div>
+              <div class = "col">
+                <h6>{{this.hospitalData.getRating()}}</h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class = "col">
+                <h6>Distance</h6>
+              </div>
+              <div class = "col">
+                <h6>null</h6>
+              </div>
+            </div>
+<!--            add image here TODO-->
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="Section2">
+            <div class = "row">
+              <div class = "col">
+                <h6>Average covered charges</h6>
+              </div>
+              <div class = "col">
+                <h6>{{this.hospitalData.coveredCharges | currency}}</h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class = "col">
+                <h6>Average total payment</h6>
+              </div>
+              <div class = "col">
+                <h6>{{this.hospitalData.totalPayments | currency}}</h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class = "col">
+                <h6>Average Medicare payments</h6>
+              </div>
+              <div class = "col">
+                <h6>{{this.hospitalData.averageMedicarePayment | currency}}</h6>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="Section3">
+            <div class = "row">
+              <div class = "col">
+                <h6>Mortality comparison</h6>
+              </div>
+              <div class = "col">
+                <h6>{{this.hospitalData.mortalityComparison}}</h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class = "col">
+                <h6>Safety rate</h6>
+              </div>
+              <div class = "col">
+                <h6>{{this.hospitalData.safetyComparison}}</h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class = "col">
+                <h6>Readmission rate</h6>
+              </div>
+              <div class = "col">
+                <h6>{{this.hospitalData.readmissionComparison}}</h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class = "col">
+                <h6>Patient experience</h6>
+              </div>
+              <div class = "col">
+                <h6>{{this.hospitalData.patientComparison}}</h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class = "col">
+                <h6>Timeliness of care</h6>
+              </div>
+              <div class = "col">
+                <h6>{{this.hospitalData.timelinessComparison}}</h6>
+              </div>
+            </div>
+            <div class="row">
+              <div class = "col">
+                <h6>Effective imaging use</h6>
+              </div>
+              <div class = "col">
+                <h6>{{this.hospitalData.imagingComparison}}</h6>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="Section4">
+            <agm-map id="map" [latitude]="this.userLat" [longitude]="this.userLong">
+              <agm-marker *ngIf="allowUserLocation" [longitude]="this.userLong" [latitude]="this.userLat" title="me"></agm-marker>
+              <agm-marker [latitude]="hospitalData.getLat()" [longitude]="hospitalData.getLong()" [title]="hospitalData.getName()"></agm-marker>
+            </agm-map>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
