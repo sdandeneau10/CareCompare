@@ -16,6 +16,7 @@ import { DrgtableComponent } from './drgtable/drgtable.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HospitalPopupComponent } from './hospital-popup/hospital-popup.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AccountComponent,
     ProcedureSelectionComponent,
     DrgtableComponent,
+    HospitalPopupComponent,
   ],
   imports: [
     BrowserModule,

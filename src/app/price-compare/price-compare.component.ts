@@ -20,30 +20,25 @@ export class PriceCompareComponent implements OnInit {
   hospitalImgURLs: string[][];
   activeHospital: Hospital;
   loading: boolean;
-  userLat: number;
-  userLong: number;
 
   procedureName: string;
   drgCode: string;
   maxPrice: number;
   minPrice: number;
   allowUserLocation: boolean;
-
-  mapButtonStatus: string;
-
+  userLat: number;
+  userLong: number;
   constructor(private dataRequest: MedicareDataService, private http: HttpClient) { }
 
   ngOnInit() {
     this.loading = true;
     this.minPrice = 2000000000;
     this.maxPrice = 0;
-    // default worcester ma
     this.userLong = -71.8078491;
     this.userLat = 42.275093;
     // TODO: get DRG code
     this.drgCode = MedicareDataService.selectedDRG;
     // this.getUserLocation();
-    this.mapButtonStatus = "Open Map"
 
     this.dataRequest.getData('001 - HEART TRANSPLANT OR IMPLANT OF HEART ASSIST SYSTEM W MCC').subscribe(
       (data) => {
@@ -61,15 +56,6 @@ export class PriceCompareComponent implements OnInit {
       if (cost < this.minPrice) { this.minPrice = cost; }
       if (cost > this.maxPrice) { this.maxPrice = cost; }
     }
-  }
-  changeButtonText(){
-    if(this.mapButtonStatus === "Open Map"){
-      this.mapButtonStatus = "Close Map";
-    }
-    else{
-      this.mapButtonStatus = "Open Map";
-    }
-    document.getElementById("mapButton").innerText = this.mapButtonStatus;
   }
 
   getLocation(hos: Hospital): void {

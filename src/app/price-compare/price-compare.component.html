@@ -39,49 +39,11 @@
             </div>
           </td>
         </tr>
-        <div class="modal fade" id="fullDetails" tabindex="-1" role="dialog" aria-labelledby="detailsLabel"
-             aria-hidden="true">
-          <div *ngIf="activeHospital" class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <p class="modal-title"
-                   id="detailsLabel">{{activeHospital.name}}</p>
-              </div>
-              <div class="modal-body" style="text-align: center">
-                <label>Address</label>
-                {{activeHospital.address}}
-                <br>
-                <label>City</label>
-                {{activeHospital.city}}
-                <br>
-                <label>State</label>
-                {{activeHospital.state}}
-                <br>
-                <label>Price Charged</label>
-                {{activeHospital.totalPayments | currency}}
-                <br>
-                <label>Avg Payment by Medicare</label>
-                {{activeHospital.averageMedicarePayment | currency}}
-                <br>
-                <label>Average total payment</label>
-                {{activeHospital.averageMedicarePayment | currency}}
-              </div>
-              <br>
-              <div class="collapse" id="myMap">
-                <div class="card-body">
-                  <agm-map id="map" [latitude]="this.userLat" [longitude]="this.userLong">
-                    <agm-marker *ngIf="allowUserLocation" [longitude]="this.userLong" [latitude]="this.userLat" title="me"></agm-marker>
-                    <agm-marker [latitude]="activeHospital.getLat()" [longitude]="activeHospital.getLong()" [title]="activeHospital.getName()"></agm-marker>
-                  </agm-map>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-toggle="collapse" aria-expanded="false" aria-controls="myMap" data-target="#myMap" id="mapButton" (click)="changeButtonText()">Show Map</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <app-hospital-popup
+          [hospitalData]="this.activeHospital"
+          [userLat]="this.userLat"
+          [userLong]="this.userLong"
+          [allowUserLocation]="this.allowUserLocation"></app-hospital-popup>
       </table>
 </div>
   <ng-template #loadingWheel>
