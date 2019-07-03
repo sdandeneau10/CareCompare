@@ -119,7 +119,7 @@ export class PriceCompareComponent implements OnInit {
     this.activeSubset = [];
     for (const hos of this.relevantHospitals) {
       const norm = (((99) * (hos.getRating() - 1)) / (5 - 1)) + 1;
-      if (norm <= val) {
+      if (norm >= val) {
         this.activeSubset.push(hos);
       }
     }
