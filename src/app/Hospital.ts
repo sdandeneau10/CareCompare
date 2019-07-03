@@ -11,7 +11,7 @@ export class Hospital {
   geocodeLoaded: boolean;
   imgLoaded: boolean;
   providerID: number;
-  rating: string;
+  rating: number;
   phone: number;
 
   // Providers average charges
@@ -101,7 +101,7 @@ export class Hospital {
   getPhone() {
     return this.phone;
   }
-  setRating(s: string) {
+  setRating(s: number) {
     this.rating = s;
   }
   setPhone(n: number) {

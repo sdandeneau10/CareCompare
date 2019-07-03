@@ -20,14 +20,17 @@ export class PriceCompareComponent implements OnInit {
   hospitalImgURLs: string[][];
   activeHospital: Hospital;
   loading: boolean;
+  userLat: number;
+  userLong: number;
 
   procedureName: string;
   drgCode: string;
   maxPrice: number;
   minPrice: number;
   allowUserLocation: boolean;
-  userLat: number;
-  userLong: number;
+
+  mapButtonStatus: string;
+
   constructor(private dataRequest: MedicareDataService, private http: HttpClient) { }
 
   ngOnInit() {
@@ -113,7 +116,13 @@ export class PriceCompareComponent implements OnInit {
    */
   ratingChanged(value: string) {
     const val = parseInt(value, 10);
-    return null;
+    this.activeSubset = [];
+    for (const hos of this.relevantHospitals) {
+      const norm = (((99) * (hos.getRating() - 1)) / (5 - 1)) + 1;
+      if (norm <= val) {
+        this.activeSubset.push(hos);
+      }
+    }
   }
 
   /**
@@ -121,14 +130,12 @@ export class PriceCompareComponent implements OnInit {
    * @param value - The value of the slide 0 < value < 10
    */
   priceChanged(value: string) {
-    // First convert value to a price
     const val = parseInt(value, 10);
-    // tslint:disable-next-line:max-line-length
-    const TARG_PRICE = (val / 100.0) * (this.maxPrice - this.minPrice) + this.minPrice; // who's good at math, range can be top heavy, can we make a normal distribution here???
     this.activeSubset = [];
-    for (const hospital of this.relevantHospitals) {
-      if (hospital.getApproxOutOfPocket() < TARG_PRICE) {
-        this.activeSubset.push(hospital);
+    for (const hos of this.relevantHospitals) {
+      const norm = (((99) * (hos.getApproxOutOfPocket() - this.minPrice)) / (this.maxPrice - this.minPrice)) + 1;
+      if (norm <= val) {
+        this.activeSubset.push(hos);
       }
     }
   }
