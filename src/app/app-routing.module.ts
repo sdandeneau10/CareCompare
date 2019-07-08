@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { PriceCompareComponent } from './price-compare/price-compare.component';
 import { FAQComponent } from './faq/faq.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AccountComponent } from './account/account.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ProcedureSelectionComponent } from './procedure-selection/procedure-selection.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'priceCompare', component: PriceCompareComponent },
   { path: 'faq', component: FAQComponent },
+  { path: 'contact-us', component: ContactUsComponent},
   { path: 'account', component: AccountComponent},
   { path: 'sign-up', component: SignUpComponent},
   { path: 'procedureSelection', component: ProcedureSelectionComponent},

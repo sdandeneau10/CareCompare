@@ -16,6 +16,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HospitalPopupComponent } from './hospital-popup/hospital-popup.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { HospitalPopupComponent } from './hospital-popup/hospital-popup.componen
     ProcedureSelectionComponent,
     DrgtableComponent,
     HospitalPopupComponent,
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule,
