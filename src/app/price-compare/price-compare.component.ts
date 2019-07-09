@@ -41,12 +41,12 @@ export class PriceCompareComponent implements OnInit {
     this.userLat = 42.275093;
     // TODO: get DRG code
     this.drgCode = MedicareDataService.selectedDRG;
-    this.getUserLocation();
+    // this.getUserLocation();
 
     this.dataRequest.getData(this.drgCode).subscribe(
       (data) => {
         this.relevantHospitals = this.dataRequest.formatData(data, this.drgCode);
-        this.loadImages();
+        // this.loadImages();
         this.activeSubset = this.relevantHospitals;
         this.loading = false;
         this.calculatePriceExtremes();
@@ -88,7 +88,7 @@ export class PriceCompareComponent implements OnInit {
 
   selected(hospital: Hospital): void {
     this.activeHospital = hospital;
-    this.getLocation(hospital);
+    // this.getLocation(hospital);
   }
 
   getHospitalsInRows(col: number): Hospital[][] {
