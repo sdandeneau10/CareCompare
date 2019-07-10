@@ -30,7 +30,7 @@
             <div class="card mx-auto text-center"
                  *ngIf="hospital"
                  (click)="selected(hospital)"
-                 [class.selected]="hospital === activeHospital" data-toggle="modal" data-target="#fullDetails">
+                 data-toggle="modal" data-target="#fullDetails">
               <img class="card-img-top" [src]='hospital.imgUrl' style="width: 450px; height: 350px">
               <div class="card-body">
                 <h6 class="card-title">{{hospital.name}}</h6>
