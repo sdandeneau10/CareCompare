@@ -4,8 +4,22 @@
   <hr class="my-4">
   <p>Enter your 3-digit procedure DRG code</p>
   <p>
-    <label>
-      <input class="input-sm drg-input" type = "string" [(ngModel)]="selectedDRG" placeholder="enter DRG code" aria-controls="hidden" id='drg input'>
+    <label style="width: 500px">
+      <!--<input class="input-sm drg-input" type = "string" [(ngModel)]="selectedDRG" placeholder="enter DRG code" aria-controls="hidden" id='drg input'>-->
+      <ng-autocomplete
+        [data]="this.drgCodes"
+        placeHolder="Enter the DRG Code..."
+        [itemTemplate]="listing"
+        [notFoundTemplate]="doesnotexist"
+        [(ngModel)]="selectedDRG"
+        [historyIdentifier]="this.drgCodes">
+      </ng-autocomplete>
+      <ng-template #listing let-item>
+        <a [innerHTML]="item"></a>
+      </ng-template>
+      <ng-template #doesnotexist>
+        <div [innerText]="this.nope"></div>
+      </ng-template>
     </label>
     <a class="btn btn-primary btn-sm" (click)="setCode()" id='compare price button'>Compare Pricing</a>
     <br>
