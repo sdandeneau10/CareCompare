@@ -13,8 +13,14 @@ export class HospitalPopupComponent implements OnInit {
   @Input() userLong: number;
   @Input() allowUserLocation: boolean;
 
+  public pageIndex = 0;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public setActivePage(index: number): void {
+    this.pageIndex = index;
   }
 }

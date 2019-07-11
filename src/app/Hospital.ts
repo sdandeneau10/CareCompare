@@ -1,3 +1,5 @@
+import {Observable} from "rxjs";
+
 export class Hospital {
   name: string;
   address: string;
@@ -39,12 +41,13 @@ export class Hospital {
     this.coveredCharges = coveredCharges;
     this.totalPayments = totalPayments;
     this.averageMedicarePayment = averageMedicarePayments;
-    /*this.imgUrl = '../../assets/img/placeholder.jpg';*/
+    this.geocodeLoaded = false;
+    this.imgUrl = '../../assets/img/placeholder.jpg';
   }
 
 
   setRatingMetrics(overall: number, mortality: string, safety: string, readmission: string, patient: string,
-                   effectiveness: string, timeliness: string, imaging: string) {
+                   effectiveness: string, timeliness: string, imaging: string, phone: number, lat: number, long: number) {
     this.rating = overall;
     this.mortalityComparison = mortality;
     this.safetyComparison = safety;
@@ -53,6 +56,12 @@ export class Hospital {
     this.effectivenessComparison = effectiveness;
     this.timelinessComparison = timeliness;
     this.imagingComparison = imaging;
+    this.phone = phone;
+    this.setLat(lat);
+    this.setLong(long);
+    if (lat !== 181 && long !== 181) {
+      this.setGeocoded();
+    }
   }
 
   /**

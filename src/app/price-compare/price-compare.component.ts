@@ -4,6 +4,7 @@ import {Location} from '../Location';
 import {MedicareDataService} from '../medicare-data.service';
 import {HttpClient} from '@angular/common/http';
 import {HotObservable} from 'rxjs/internal/testing/HotObservable';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-price-compare',
@@ -30,8 +31,11 @@ export class PriceCompareComponent implements OnInit {
   allowUserLocation: boolean;
 
   mapButtonStatus: string;
+  drgDisplayedCode: string;
 
-  constructor(private dataRequest: MedicareDataService, private http: HttpClient) { }
+  constructor(private dataRequest: MedicareDataService,
+              private http: HttpClient,
+              private router: Router) { }
 
   ngOnInit() {
     this.loading = true;
@@ -41,15 +45,27 @@ export class PriceCompareComponent implements OnInit {
     this.userLat = 42.275093;
     // TODO: get DRG code
     this.drgCode = MedicareDataService.selectedDRG;
+    if (this.drgCode == null || this.drgCode === '') {
+      this.router.navigate(['/', 'procedureSelection']);
+    }
     // this.getUserLocation();
+    this.drgDisplayedCode = this.drgCode.substring(0, 3);
 
     this.dataRequest.getData(this.drgCode).subscribe(
       (data) => {
-        this.relevantHospitals = this.dataRequest.formatData(data, this.drgCode);
+        this.relevantHospitals = this.dataRequest.formatData(data);
         // this.loadImages();
         this.activeSubset = this.relevantHospitals;
-        this.loading = false;
         this.calculatePriceExtremes();
+        const providerIDList: number[] = [];
+        for (const hospital of this.relevantHospitals) {
+          providerIDList.push(hospital.providerID);
+        }
+        this.dataRequest.getGeneralData(providerIDList).subscribe(
+          (data2) => {
+            this.dataRequest.addRatings(data2, this.relevantHospitals);
+            this.loading = false;
+          });
       });
   }
 
@@ -63,27 +79,18 @@ export class PriceCompareComponent implements OnInit {
 
   getLocation(hos: Hospital): void {
     // tslint:disable-next-line:max-line-length
-    const medicareapi = 'https://data.medicare.gov/resource/rbry-mqwu.json?$$app_token=wawW1EcHvX5JhsX60wSxIyVKj&provider_id=' + hos.getID();
-    this.http.get(medicareapi).subscribe((jsonresult) => {
-      if (hos.isGeocoded() !== true) {
-        if (jsonresult[0].location) {
-          hos.setLat(jsonresult[0].location.coordinates[1]);
-          hos.setLong(jsonresult[0].location.coordinates[0]);
-          hos.setGeocoded();
-        } else {
-          const baseurl = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAwzRGaPm9KP5ZjKvNs5qhFs3p0wePaI4c&address=';
-          const loc = hos.getFullAddress();
-          const url = baseurl + loc;
-          this.http.get(url).subscribe( (res) => {
-            // @ts-ignore
-            hos.setLat(res.results[0].geometry.location.lat);
-            // @ts-ignore
-            hos.setLong(res.results[0].geometry.location.lng);
-          });
-          hos.setGeocoded();
-        }
-      }
-    });
+    if (hos.isGeocoded() !== true) {
+      const baseurl = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAwzRGaPm9KP5ZjKvNs5qhFs3p0wePaI4c&address=';
+      const loc = hos.getFullAddress();
+      const url = baseurl + loc;
+      this.http.get(url).subscribe( (res) => {
+        // @ts-ignore
+        hos.setLat(res.results[0].geometry.location.lat);
+        // @ts-ignore
+        hos.setLong(res.results[0].geometry.location.lng);
+      });
+      hos.setGeocoded();
+    }
   }
 
   selected(hospital: Hospital): void {

@@ -67,6 +67,7 @@ export class ProcedureSelectionComponent implements OnInit {
 
   showFirstDiv: boolean;
   showSecondDiv: boolean;
+  nope: string;
 
   drgCodes: string[];
   selectedDRG = '';
@@ -75,11 +76,11 @@ export class ProcedureSelectionComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.nope = 'This DRG code does not exist!';
     this.drgCodes = MEDICARE_DRG_CODES;
     this.knowsCode = null;
     this.foundProc = null;
     this.incorrectDRG = false;
-
     this.showFirstDiv = true;
     this.showSecondDiv = false;
   }
@@ -90,7 +91,7 @@ export class ProcedureSelectionComponent implements OnInit {
    */
   setCode() {
     for (const drg of this.drgCodes) {
-      if (this.selectedDRG === drg.substr(0, 3)) {
+      if (this.selectedDRG.substr(0, 3) === drg.substr(0, 3)) {
         MedicareDataService.selectedDRG = drg;
         this.router.navigate(['/', 'priceCompare']);
         return;
