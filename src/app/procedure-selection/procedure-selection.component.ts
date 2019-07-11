@@ -100,12 +100,23 @@ export class ProcedureSelectionComponent implements OnInit {
       }
     }
   }
+  chooseFromList(code: string) {
+    if (this.selectedDRG.length < 3) {
+      this.selectedDRG = code;
+      this.setCode();
+    } else {
+      this.setCode();
+    }
+  }
 
   async switchDiv(){
     this.knowsCode = false;
     this.showFirstDiv = false;
     await delay(250);
     this.showSecondDiv = true;
+  }
+  goToDRG() {
+    this.router.navigate(['/drgtable']);
   }
 
   delay(ms: number) {
