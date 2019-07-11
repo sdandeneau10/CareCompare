@@ -48,7 +48,7 @@ export class PriceCompareComponent implements OnInit {
     if (this.drgCode == null || this.drgCode === '') {
       this.router.navigate(['/', 'procedureSelection']);
     }
-    this.getUserLocation();
+    // this.getUserLocation();
     this.drgDisplayedCode = this.drgCode.substring(0, 3);
 
     this.dataRequest.getData(this.drgCode).subscribe(
@@ -95,7 +95,7 @@ export class PriceCompareComponent implements OnInit {
 
   selected(hospital: Hospital): void {
     this.activeHospital = hospital;
-    this.getLocation(hospital);
+    // this.getLocation(hospital);
   }
 
   getHospitalsInRows(col: number): Hospital[][] {
