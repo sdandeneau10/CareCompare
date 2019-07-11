@@ -7,12 +7,17 @@ div.card:hover {
   background-color: gray;
 }
 
+.sidebar-style {
+  margin-bottom: -5000px; /* any large number will do */
+  padding-bottom: 5000px;
+  background-color: #1E90FF;
+}
+
 .sidebar-offset {
-  top: 60px
+  top: 60px;
 }
 
 td {
-  padding-right:20px;
   padding-top: 20px;
 }
 
@@ -21,9 +26,12 @@ label {
   margin-right: 10px;
 }
 
+table.fixedColumns {
+  table-layout: fixed;
+  width: 100%;
+}
 
 h3 {
-  text-align: center;
   margin-bottom: 10px;
 }
 
@@ -34,6 +42,21 @@ h3 {
 
 .slidecontainer {
   width: 100%; /* Width of the outside container */
+}
+
+.card {
+  width: 95%;
+}
+td.row-container {
+  width: 100px;
+}
+
+.card-title {
+  text-align: center;
+  overflow: paged-x-controls;
+  width:100%;
+  white-space: nowrap;
+  font-size: 24px;
 }
 
 /* The slider itself */
@@ -102,4 +125,8 @@ h5 {
   margin-top: 200px; 
 }
 
+h3.prevent-overflow {
+  text-overflow: ellipsis;
+  font-size: 20px;
+}
 

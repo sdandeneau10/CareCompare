@@ -79,7 +79,6 @@ export class ProcedureSelectionComponent implements OnInit {
     this.knowsCode = null;
     this.foundProc = null;
     this.incorrectDRG = false;
-
     this.showFirstDiv = true;
     this.showSecondDiv = false;
   }

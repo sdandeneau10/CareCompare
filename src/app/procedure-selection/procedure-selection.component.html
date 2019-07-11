@@ -5,7 +5,7 @@
   <p>Enter your 3-digit procedure DRG code</p>
   <p>
     <label>
-      <input class="input-sm drg-input" type = "string" [(ngModel)]="selectedDRG" placeholder="enter DRG code" id='drg input'>
+      <input class="input-sm drg-input" type = "string" [(ngModel)]="selectedDRG" placeholder="enter DRG code" aria-controls="hidden" id='drg input'>
     </label>
     <a class="btn btn-primary btn-sm" (click)="setCode()" id='compare price button'>Compare Pricing</a>
     <br>
@@ -14,40 +14,4 @@
   </p>
   <p *ngIf="incorrectDRG" class="error-text">this DRG code does not exist!</p>
 </div>
-<!--Connor - Figured I would cut out the redundency of this; if they know what a DRG is then they should enter it as soon as possible
-    rather than going through the extra effort of identifying whether they know their DRG or not-->
-<!--
-<div *ngIf="knowsCode" class="jumbotron">
-  <h1 class="display-4">What is the procedure's DRG code</h1>
-  <p class="lead">A diagnosis related group is classification system that standardize patient health care</p>
-  <hr class="my-4">
-  <input type="text" [(ngModel)]="selectedDRG" placeholder="Enter a DRG">
-  <p class="lead">
-    <a class="btn btn-primary btn-lg">Compare Pricing</a>
-  </p>
-</div>
--->
-<div [@flyInOut] class='jumbotron' *ngIf="showSecondDiv === true">
-  <h1 class="display-4">Enter the name of the procedure</h1>
-  <p class="lead">something</p>
-  <hr class="my-4">
-  <label for="inp" class="inp">
-    <input type="text" id="inp" placeholder="&nbsp;">
-    <span class="label">Enter procedure name</span>
-    <span class="border"></span>
-  </label>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" (click)="foundProc = true;">Continue</a>
-  </p>
-</div>
-<div class="jumbotron" *ngIf="foundProc === true;">
-  <h1 class="display-4">Are there any complexities with this procedure?</h1>
-  <p class="lead">something</p>
-  <hr class="my-4">
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" (click)="foundProc = true;">No</a>
-    <a class="btn btn-primary btn-lg" (click)="foundProc = true;">Minor</a>
-    <a class="btn btn-primary btn-lg" (click)="foundProc = true;">Major</a>
-    <a class="btn btn-primary btn-lg" (click)="foundProc = true;">I don't know</a>
-  </p>
-</div>
+
