@@ -29,7 +29,6 @@ export class PriceCompareComponent implements OnInit {
   userLong: number;
   states: any[];
   stateslist: any[];
-  nope = 'hi';
   input = '';
 
   procedureName: string;

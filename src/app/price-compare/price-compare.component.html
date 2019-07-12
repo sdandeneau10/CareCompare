@@ -11,17 +11,9 @@
         <div class="dropdown-menu">
           <ng-autocomplete
             placeHolder="Enter a State..."
-            [itemTemplate]="listing"
             [(ngModel)]="input"
-            (inputChanged)="refine(input)"
-            [notFoundTemplate]="doesnotexist">
+            (inputChanged)="refine(input)">
           </ng-autocomplete>
-          <ng-template #listing let-item>
-            <a [innerHTML]="item"></a>
-          </ng-template>
-          <ng-template #doesnotexist>
-            <div [innerText]="this.nope"></div>
-          </ng-template>
           <div class="checkboxes">
           <div class="custom-control custom-checkbox dropdown-item" *ngFor="let state of this.stateslist">
             <label>
