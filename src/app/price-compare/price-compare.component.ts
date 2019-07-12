@@ -30,7 +30,7 @@ export class PriceCompareComponent implements OnInit {
   states: any[];
   stateslist: any[];
   nope = 'hi';
-  inpu = '';
+  input = '';
 
   procedureName: string;
   drgCode: string;

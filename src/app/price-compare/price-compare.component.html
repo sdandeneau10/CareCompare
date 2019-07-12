@@ -12,8 +12,8 @@
           <ng-autocomplete
             placeHolder="Enter a State..."
             [itemTemplate]="listing"
-            [(ngModel)]="inpu"
-            (inputChanged)="refine(inpu)"
+            [(ngModel)]="input"
+            (inputChanged)="refine(input)"
             [notFoundTemplate]="doesnotexist">
           </ng-autocomplete>
           <ng-template #listing let-item>
