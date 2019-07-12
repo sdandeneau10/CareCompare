@@ -8,15 +8,20 @@
   <br>
   <br>
   <br>
+  <h2>What is a DRG Code?</h2>
+  <h4 style="width: 60%">A DRG (Diagnosis-related group) code is a grouping metric used to simplify determining costs of procedures at hospitals.
+  Through this system, similar procedures are grouped together in order to make pricing easier. To somebody with Medicare coverage, this
+  code is can be used to determine how much of a procedure Medicare will cover for versus how much will be out of pocket.</h4>
   <ng-autocomplete
     [data]="this.fulldrgCodes"
     placeHolder="Enter the DRG Code..."
     [itemTemplate]="listing"
-    [notFoundTemplate]="doesnotexist"
-    [historyIdentifier]="this.fulldrgCodes">
+    [(ngModel)]="s"
+    (inputChanged)="update(s)"
+    [notFoundTemplate]="doesnotexist">
   </ng-autocomplete>
   <ng-template #listing let-item>
-    <a [innerHTML]="item"></a>
+    <!--<a [innerHTML]="item"></a>-->
   </ng-template>
   <ng-template #doesnotexist>
     <div [innerText]="this.nope"></div>
@@ -29,7 +34,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="data" *ngFor="let entry of this.fulldrgCodes | paginate: {itemsPerPage:10, currentPage: p}">
+    <tr class="data" *ngFor="let entry of this.codes | paginate: {itemsPerPage:10, currentPage: p}" (click)="compare(entry)">
       <td class="code">{{entry.substr(0,3)}}</td>
       <td>{{entry.substr(6, (entry.length))}}</td>
     </tr>
