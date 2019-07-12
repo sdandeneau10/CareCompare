@@ -6,7 +6,6 @@ import {HttpClient} from '@angular/common/http';
 import {HotObservable} from 'rxjs/internal/testing/HotObservable';
 import {Router} from "@angular/router";
 import {STATES} from '../States';
-import {chown} from 'fs';
 
 @Component({
   selector: 'app-price-compare',
