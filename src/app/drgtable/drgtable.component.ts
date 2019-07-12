@@ -33,7 +33,7 @@ export class DrgtableComponent implements OnInit {
   }
   compare(s: string) {
     MedicareDataService.selectedDRG = s;
-    this.router.navigate(['/', 'priceCompare'])
+    this.router.navigate(['/', 'priceCompare']);
   }
 }
 
