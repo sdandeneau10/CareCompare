@@ -192,14 +192,10 @@ export class PriceCompareComponent implements OnInit {
     this.activeSubset = [];
     for (const hos of this.relevantHospitals) {
       for (const state of this.states) {
-        const w = hos.getState();
         if ((hos.getState() === state.name) && (state.checked === true)) {
           this.activeSubset.push(hos);
         }
       }
-    }
-    if (this.activeSubset.length === 0) {
-      this.activeSubset = this.relevantHospitals;
     }
   }
 }
