@@ -125,3 +125,7 @@ h3.prevent-overflow {
   font-size: 20px;
 }
 
+.checkboxes{
+  height: 250px;
+  overflow: auto;
+}

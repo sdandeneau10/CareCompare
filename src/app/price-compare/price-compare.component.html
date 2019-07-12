@@ -5,9 +5,29 @@
       <div class="sidebar-header">
         <h3>Filters</h3>
       </div>
-      <h5 class="filter-header">Distance</h5>
+      <h5 class="filter-header">Location</h5>
       <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="50" class="slider" #dist (change)="distanceChanged(dist.value)">
+        <!--<input type="range" min="1" max="100" value="50" class="slider" #dist (change)="distanceChanged(dist.value)">-->
+        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">States</button>
+        <div class="dropdown-menu">
+          <div class="checkboxes">
+          <div class="custom-control custom-checkbox dropdown-item" *ngFor="let state of this.states">
+            <label>
+              <input style="font-size: 20px" type="checkbox" [(ngModel)]="state.checked"> {{state.name}}
+            </label>
+          </div>
+          </div>
+          <div class="dropdown-buttons">
+            <table>
+              <tr>
+                <td>
+                  <button class="btn btn-primary" (click)="filterByState()">Apply</button>
+                </td>
+              </tr>
+
+            </table>
+          </div>
+        </div>
       </div>
       <h5 class="filter-header">Rating</h5>
       <div class="slidecontainer">

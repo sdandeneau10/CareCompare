@@ -5,6 +5,7 @@ import {MedicareDataService} from '../medicare-data.service';
 import {HttpClient} from '@angular/common/http';
 import {HotObservable} from 'rxjs/internal/testing/HotObservable';
 import {Router} from "@angular/router";
+import {STATES} from '../States';
 
 @Component({
   selector: 'app-price-compare',
@@ -23,6 +24,7 @@ export class PriceCompareComponent implements OnInit {
   loading: boolean;
   userLat: number;
   userLong: number;
+  states: any[];
 
   procedureName: string;
   drgCode: string;
@@ -39,6 +41,8 @@ export class PriceCompareComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
+    this.states = [];
+    this.formatStates();
     this.minPrice = 2000000000;
     this.maxPrice = 0;
     this.userLong = -71.8078491;
@@ -175,6 +179,23 @@ export class PriceCompareComponent implements OnInit {
           // console.log(res);
         });
         hos.setImgLoaded();
+      }
+    }
+  }
+  formatStates() {
+    for (const state of STATES) {
+      const formattedState = {name: state.substr(0, 2), checked: false};
+      this.states.push(formattedState);
+    }
+  }
+  filterByState() {
+    this.activeSubset = [];
+    for (const hos of this.relevantHospitals) {
+      for (const state of this.states) {
+        const w = hos.getState();
+        if ((hos.getState() === state.name) && (state.checked === true)) {
+          this.activeSubset.push(hos);
+        }
       }
     }
   }
