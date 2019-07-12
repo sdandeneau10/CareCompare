@@ -198,5 +198,8 @@ export class PriceCompareComponent implements OnInit {
         }
       }
     }
+    if (this.activeSubset.length === 0) {
+      this.activeSubset = this.relevantHospitals;
+    }
   }
 }
