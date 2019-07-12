@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class DrgtableComponent implements OnInit {
   fulldrgCodes: string[];
   p: number;
-  nope: string;
   codes: string[];
   s = '';
 
@@ -19,7 +18,6 @@ export class DrgtableComponent implements OnInit {
 
   ngOnInit() {
     this.p = 1;
-    this.nope = 'This drg does not exist!';
     this.fulldrgCodes = MEDICARE_DRG_CODES;
     this.codes = this.fulldrgCodes;
   }

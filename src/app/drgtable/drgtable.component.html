@@ -13,18 +13,12 @@
   Through this system, similar procedures are grouped together in order to make pricing easier. To somebody with Medicare coverage, this
   code is can be used to determine how much of a procedure Medicare will cover for versus how much will be out of pocket.</h4>
   <ng-autocomplete
-    [data]="this.fulldrgCodes"
     placeHolder="Enter the DRG Code..."
-    [itemTemplate]="listing"
     [(ngModel)]="s"
-    (inputChanged)="update(s)"
-    [notFoundTemplate]="doesnotexist">
+    (inputChanged)="update(s)">
   </ng-autocomplete>
   <ng-template #listing let-item>
     <!--<a [innerHTML]="item"></a>-->
-  </ng-template>
-  <ng-template #doesnotexist>
-    <div [innerText]="this.nope"></div>
   </ng-template>
   <table class="table table-striped table-bordered" id="drgTable">
     <thead>
