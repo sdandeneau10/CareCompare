@@ -184,18 +184,25 @@ export class PriceCompareComponent implements OnInit {
   }
   formatStates() {
     for (const state of STATES) {
-      const formattedState = {name: state.substr(0, 2), checked: false};
+      const formattedState = {name: state.substr(3, state.length), code: state.substr(0, 2), checked: false};
       this.states.push(formattedState);
     }
   }
   filterByState() {
+    let count = 0;
     this.activeSubset = [];
     for (const hos of this.relevantHospitals) {
       for (const state of this.states) {
-        if ((hos.getState() === state.name) && (state.checked === true)) {
-          this.activeSubset.push(hos);
+        if (state.checked === true) {
+          count++;
+          if (hos.getState() === state.code) {
+            this.activeSubset.push(hos);
+          }
         }
       }
+    }
+    if (count === 0) {
+      this.activeSubset = this.relevantHospitals;
     }
   }
 }

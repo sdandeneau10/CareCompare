@@ -1,7 +1,6 @@
 export const STATES =  [
   'AL Alabama',
   'AK Alaska',
-  'AS American Samoa',
   'AZ Arizona',
   'AR Arkansas',
   'CA California',
@@ -9,10 +8,8 @@ export const STATES =  [
   'CT Connecticut',
   'DE Delaware',
   'DC District Of Columbia',
-  'FM Federated States Of Micronesia',
   'FL Florida',
   'GA Georgia',
-  'GU Guam',
   'HI Hawaii',
   'ID Idaho',
   'IL Illinois',
