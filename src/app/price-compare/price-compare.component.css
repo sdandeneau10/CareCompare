@@ -129,3 +129,7 @@ h3.prevent-overflow {
   height: 250px;
   overflow: auto;
 }
+
+.statedropdown{
+  width: 100%;
+}
