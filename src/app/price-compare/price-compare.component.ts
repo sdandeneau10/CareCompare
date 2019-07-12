@@ -28,6 +28,9 @@ export class PriceCompareComponent implements OnInit {
   userLat: number;
   userLong: number;
   states: any[];
+  stateslist: any[];
+  nope = 'hi';
+  inpu = '';
 
   procedureName: string;
   drgCode: string;
@@ -46,6 +49,7 @@ export class PriceCompareComponent implements OnInit {
     this.loading = true;
     this.states = [];
     this.formatStates();
+    this.stateslist = this.states;
     this.minPrice = 2000000000;
     this.maxPrice = 0;
     this.userLong = -71.8078491;
@@ -219,6 +223,14 @@ export class PriceCompareComponent implements OnInit {
     for (const hos of this.relevantHospitals) {
       if (this.distancelist.includes(hos) && this.pricelist.includes(hos) && this.ratinglist.includes(hos)) {
         this.activeSubset.push(hos);
+      }
+    }
+  }
+  refine(s: string) {
+    this.stateslist = [];
+    for (const st of this.states) {
+      if (st.name.toLowerCase().includes(s.toLowerCase())) {
+        this.stateslist.push(st);
       }
     }
   }

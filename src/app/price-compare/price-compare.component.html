@@ -9,8 +9,21 @@
       <div class="slidecontainer">
         <button class="btn btn-primary dropdown-toggle statedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">States</button>
         <div class="dropdown-menu">
+          <ng-autocomplete
+            placeHolder="Enter a State..."
+            [itemTemplate]="listing"
+            [(ngModel)]="inpu"
+            (inputChanged)="refine(inpu)"
+            [notFoundTemplate]="doesnotexist">
+          </ng-autocomplete>
+          <ng-template #listing let-item>
+            <a [innerHTML]="item"></a>
+          </ng-template>
+          <ng-template #doesnotexist>
+            <div [innerText]="this.nope"></div>
+          </ng-template>
           <div class="checkboxes">
-          <div class="custom-control custom-checkbox dropdown-item" *ngFor="let state of this.states">
+          <div class="custom-control custom-checkbox dropdown-item" *ngFor="let state of this.stateslist">
             <label>
               <input style="font-size: 20px" type="checkbox" [(ngModel)]="state.checked"> {{state.name}}
             </label>
