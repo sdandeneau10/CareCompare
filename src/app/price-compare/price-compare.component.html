@@ -9,8 +9,13 @@
       <div class="slidecontainer">
         <button class="btn btn-primary dropdown-toggle statedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">States</button>
         <div class="dropdown-menu">
+          <ng-autocomplete
+            placeHolder="Enter a State..."
+            [(ngModel)]="input"
+            (inputChanged)="filterByState(input)">
+          </ng-autocomplete>
           <div class="checkboxes">
-          <div class="custom-control custom-checkbox dropdown-item" *ngFor="let state of this.states">
+          <div class="custom-control custom-checkbox dropdown-item" *ngFor="let state of this.filteredstates">
             <label>
               <input style="font-size: 20px" type="checkbox" [(ngModel)]="state.checked"> {{state.name}}
             </label>
@@ -20,7 +25,7 @@
             <table>
               <tr>
                 <td>
-                  <button class="btn btn-primary" (click)="filterByState()">Apply</button>
+                  <button class="btn btn-primary" (click)="distance()">Apply</button>
                 </td>
               </tr>
 

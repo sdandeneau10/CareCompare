@@ -4,7 +4,7 @@ import {Location} from '../Location';
 import {MedicareDataService} from '../medicare-data.service';
 import {HttpClient} from '@angular/common/http';
 import {HotObservable} from 'rxjs/internal/testing/HotObservable';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 import {STATES} from '../States';
 
 @Component({
@@ -19,16 +19,17 @@ export class PriceCompareComponent implements OnInit {
   // Array with all active hospitals according to the selection
   activeSubset: Hospital[] = [];
   relevantLocations: Location[] = [];
-  distancelist: Hospital[] = [];
-  pricelist: Hospital[] = [];
-  ratinglist: Hospital[] = [];
+  distancelist: string[] = [];
   hospitalImgURLs: string[][];
   activeHospital: Hospital;
   loading: boolean;
   userLat: number;
   userLong: number;
-  states: any[];
-
+  statecodes: string[] = [];
+  states: any[] = [];
+  filteredstates: any[] = [];
+  currentprice: number;
+  currentrating: number;
   procedureName: string;
   drgCode: string;
   maxPrice: number;
@@ -37,6 +38,7 @@ export class PriceCompareComponent implements OnInit {
 
   mapButtonStatus: string;
   drgDisplayedCode: string;
+  input = '';
 
   constructor(private dataRequest: MedicareDataService,
               private http: HttpClient,
@@ -44,8 +46,11 @@ export class PriceCompareComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
-    this.states = [];
+    this.currentprice = 100000000;
+    this.currentrating = 1;
     this.formatStates();
+    this.distancelist  = this.statecodes;
+    this.filteredstates = this.states;
     this.minPrice = 2000000000;
     this.maxPrice = 0;
     this.userLong = -71.8078491;
@@ -63,9 +68,6 @@ export class PriceCompareComponent implements OnInit {
         this.relevantHospitals = this.dataRequest.formatData(data);
         // this.loadImages();
         this.activeSubset = this.relevantHospitals;
-        this.ratinglist = this.relevantHospitals;
-        this.distancelist = this.relevantHospitals;
-        this.pricelist = this.relevantHospitals;
         this.calculatePriceExtremes();
         const providerIDList: number[] = [];
         for (const hospital of this.relevantHospitals) {
@@ -122,9 +124,23 @@ export class PriceCompareComponent implements OnInit {
    * Updates activeSubset to reflect the hospitals that fit in the updated range
    * @param value - The value of the slide 0 < value < 10
    */
-  distanceChanged(value: string) {
-    const val = parseInt(value, 10);
-    return null;
+  distance() {
+    let count = 0;
+    this.distancelist = [];
+    for (const hos of this.relevantHospitals) {
+      for (const state of this.states) {
+        if (state.checked === true) {
+          count++;
+          if (hos.getState() === state.code) {
+            this.distancelist.push(state.code);
+          }
+        }
+      }
+    }
+    if (count === 0) {
+      this.distancelist = this.statecodes;
+    }
+    this.filterAll();
   }
 
   // TODO: implement
@@ -133,15 +149,8 @@ export class PriceCompareComponent implements OnInit {
    * @param value - The value of the slide 0 < value < 10
    */
   ratingChanged(value: string) {
-    this.ratinglist = [];
-    const val = parseInt(value, 10);
-    for (const hos of this.relevantHospitals) {
-      const norm = (((99) * (hos.getRating() - 1)) / (5 - 1)) + 1;
-      if (norm >= val) {
-        this.ratinglist.push(hos);
-        this.filterAll();
-      }
-    }
+    this.currentrating = parseInt(value, 10);
+    this.filterAll();
   }
 
   /**
@@ -149,15 +158,8 @@ export class PriceCompareComponent implements OnInit {
    * @param value - The value of the slide 0 < value < 10
    */
   priceChanged(value: string) {
-    this.pricelist = [];
-    const val = parseInt(value, 10);
-    for (const hos of this.relevantHospitals) {
-      const norm = (((99) * (hos.getApproxOutOfPocket() - this.minPrice)) / (this.maxPrice - this.minPrice)) + 1;
-      if (norm <= val) {
-        this.pricelist.push(hos);
-        this.filterAll();
-      }
-    }
+    this.currentprice = parseInt(value, 10);
+    this.filterAll();
   }
   getUserLocation() {
     if (navigator.geolocation) {
@@ -194,30 +196,24 @@ export class PriceCompareComponent implements OnInit {
     for (const state of STATES) {
       const formattedState = {name: state.substr(3, state.length), code: state.substr(0, 2), checked: false};
       this.states.push(formattedState);
+      this.statecodes.push(state.substr(0, 2));
     }
   }
-  filterByState() {
-    let count = 0;
-    this.distancelist = [];
-    for (const hos of this.relevantHospitals) {
-      for (const state of this.states) {
-        if (state.checked === true) {
-          count++;
-          if (hos.getState() === state.code) {
-            this.distancelist.push(hos);
-          }
-        }
+  filterByState(s: string) {
+    this.filteredstates = [];
+    for (const state of this.states) {
+      const name = state.name.toLowerCase();
+      if (name.includes(s.toLowerCase())) {
+        this.filteredstates.push(state);
       }
     }
-    if (count === 0) {
-      this.distancelist = this.relevantHospitals;
-    }
-    this.filterAll();
   }
   filterAll() {
     this.activeSubset = [];
     for (const hos of this.relevantHospitals) {
-      if (this.distancelist.includes(hos) && this.pricelist.includes(hos) && this.ratinglist.includes(hos)) {
+      const price = (((99) * (hos.getApproxOutOfPocket() - this.minPrice)) / (this.maxPrice - this.minPrice)) + 1;
+      const rating = (((99) * (hos.getRating() - 1)) / (5 - 1)) + 1;
+      if (this.distancelist.includes(hos.getState()) && price <= this.currentprice && rating >= this.currentrating) {
         this.activeSubset.push(hos);
       }
     }
