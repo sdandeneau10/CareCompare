@@ -60,7 +60,11 @@
             </div>
             <div class="row">
               <div class = "col">
-                <h6>Average Medicare payments</h6>
+                <h6 data-toggle="tooltip"
+                    data-placement="left"
+                    data-container="body"
+                    title="The average amount that Medicare pays to the provider for Medicare's share of the MS-DRG. Average Medicare payment amounts include the MS-DRG amount, teaching, disproportionate share, capital, and outlier payments for all cases. Medicare payments DO NOT include beneficiary co-payments and deductible amounts nor any additional payments from third parties for coordination of benefits. Note: In general, Medicare FFS claims with dates-of-service or dates-of-discharge on or after April 1, 2013, incurred a 2 percent reduction in Medicare payment. This is in response to mandatory across-the-board reductions in Federal spending, also known as sequestration."
+                    onmouseover="$(this).tooltip('show')">Average Medicare payments</h6>
               </div>
               <div class = "col">
                 <h6>{{this.hospitalData.averageMedicarePayment | currency}}</h6>
