@@ -12,7 +12,7 @@ export class DrgtableComponent implements OnInit {
   fulldrgCodes: string[];
   p: number;
   codes: string[];
-  s = '';
+  input = '';
 
   constructor(private router: Router) { }
 
