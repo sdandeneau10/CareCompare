@@ -36,15 +36,23 @@
           <div role="tabpanel" class="tab-pane fade" id="Section2">
             <div class = "row">
               <div class = "col">
-                <h6>Average covered charges</h6>
+                <h6 data-toggle="tooltip"
+                    data-container="body"
+                    data-placement="left"
+                    title="The provider's average charge for services covered by Medicare for all discharges in the MS-DRG. These will vary from hospital to hospital because of differences in hospital charge structures."
+                    onmouseover="$(this).tooltip('show')">Average covered charges</h6>
               </div>
               <div class = "col">
-                <h6 placement="top" ngbTooltip="Tooltip on top">{{this.hospitalData.coveredCharges | currency}}</h6>
+                <h6>{{this.hospitalData.coveredCharges | currency}}</h6>
               </div>
             </div>
             <div class="row">
               <div class = "col">
-                <h6>Average total payment</h6>
+                <h6 data-toggle="tooltip"
+                    data-placement="left"
+                    data-container="body"
+                    title="The average total payments to all providers for the MS-DRG including the MS-DRG amount, teaching, disproportionate share, capital, and outlier payments for all cases. Also included in average total payments are co-payment and deductible amounts that the patient is responsible for and any additional payments by third parties for coordination of benefits."
+                    onmouseover="$(this).tooltip('show')">Average total payment</h6>
               </div>
               <div class = "col">
                 <h6>{{this.hospitalData.totalPayments | currency}}</h6>
