@@ -83,7 +83,9 @@ h6 {
   width: 750px;
 }
 
-
-
-
+::ng-deep .tooltip-inner {
+  background-color: white;
+  color: black;
+  max-width: 450px;
+}
 
