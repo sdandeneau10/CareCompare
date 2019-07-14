@@ -11,11 +11,10 @@
         placeHolder="Enter the DRG Code..."
         [itemTemplate]="listing"
         [notFoundTemplate]="doesnotexist"
-        [(ngModel)]="selectedDRG"
-        [historyIdentifier]="this.drgCodes">
+        [(ngModel)]="selectedDRG">
       </ng-autocomplete>
       <ng-template #listing let-item>
-        <a [innerHTML]="item"></a>
+        <a [innerHTML]="item" (click)="chooseFromList(item)"></a>
       </ng-template>
       <ng-template #doesnotexist>
         <div [innerText]="this.nope"></div>
@@ -23,7 +22,7 @@
     </label>
     <a class="btn btn-primary btn-sm" (click)="setCode()" id='compare price button'>Compare Pricing</a>
     <br>
-    <a class="btn btn-primary btn-sm" (click)="switchDiv()" >DRG Code?</a>
+    <a class="btn btn-primary btn-sm" (click)="goToDRG()" >DRG Code?</a>
     <br> 
   </p>
   <p *ngIf="incorrectDRG" class="error-text">this DRG code does not exist!</p>
