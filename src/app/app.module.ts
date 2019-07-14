@@ -17,6 +17,7 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HospitalPopupComponent } from './hospital-popup/hospital-popup.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { MaintenancePageComponent } from './maintenance-page/maintenance-page.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     DrgtableComponent,
     HospitalPopupComponent,
     ContactUsComponent,
+    MaintenancePageComponent,
   ],
   imports: [
     BrowserModule,

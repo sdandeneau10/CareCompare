@@ -7,7 +7,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AccountComponent } from './account/account.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ProcedureSelectionComponent } from './procedure-selection/procedure-selection.component';
-import {DrgtableComponent} from './drgtable/drgtable.component';
+import { DrgtableComponent } from './drgtable/drgtable.component';
+import { MaintenancePageComponent } from "./maintenance-page/maintenance-page.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'account', component: AccountComponent},
   { path: 'sign-up', component: SignUpComponent},
   { path: 'procedureSelection', component: ProcedureSelectionComponent},
-  { path: 'drgtable', component: DrgtableComponent}
+  { path: 'drgtable', component: DrgtableComponent},
+  { path: 'oops', component: MaintenancePageComponent }
 ];
 
 @NgModule({

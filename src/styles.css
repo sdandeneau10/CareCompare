@@ -51,6 +51,10 @@ li {
 
 .card {
   background-color: #3b3355;
+  overflow: hidden;
+  /*white-space: nowrap;*/
+  -webkit-transition: color .4s; /* For Safari 3.0 to 6.0 */
+  transition: color .4s; /* For modern browsers */
 }
 
 .card-text {
@@ -59,9 +63,4 @@ li {
 
 .card-title {
   color: #ffffff;
-}
-
-.card {
-  -webkit-transition: color .4s; /* For Safari 3.0 to 6.0 */
-  transition: color .4s; /* For modern browsers */
 }
