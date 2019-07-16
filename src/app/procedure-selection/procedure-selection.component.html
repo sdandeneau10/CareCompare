@@ -4,23 +4,15 @@
   <hr class="my-4">
   <p>Enter your 3-digit procedure DRG code</p>
   <p>
-    <label style="width: 500px">
-      <!--<input class="input-sm drg-input" type = "string" [(ngModel)]="selectedDRG" placeholder="enter DRG code" aria-controls="hidden" id='drg input'>-->
-      <ng-autocomplete
-        [data]="this.drgCodes"
-        placeHolder="Enter the DRG Code..."
-        [itemTemplate]="listing"
-        [notFoundTemplate]="doesnotexist"
-        [(ngModel)]="selectedDRG">
-      </ng-autocomplete>
-      <ng-template #listing let-item>
-        <a [innerHTML]="item" (click)="chooseFromList(item)"></a>
-      </ng-template>
-      <ng-template #doesnotexist>
-        <div [innerText]="this.nope"></div>
-      </ng-template>
-    </label>
-    <a class="btn btn-primary btn-sm" (click)="setCode()" id='compare price button'>Compare Pricing</a>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Enter a DRG Code..." [matAutocomplete]="auto" [formControl]="control" [(ngModel)]="selectedDRG" (ngModelChange)="filter()">
+    </mat-form-field>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let code of filteredCodes" [value]="code" (click)="setCode(code)">
+        {{code}}
+      </mat-option>
+    </mat-autocomplete>
+    <a class="btn btn-primary btn-sm" (click)="setCode(this.selectedDRG)" id='compare price button'>Compare Pricing</a>
     <br>
     <a class="btn btn-primary btn-sm" (click)="goToDRG()" >DRG Code?</a>
     <br> 

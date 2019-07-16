@@ -18,7 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HospitalPopupComponent } from './hospital-popup/hospital-popup.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { MaintenancePageComponent } from './maintenance-page/maintenance-page.component';
-import {MatFormFieldModule, MatInputModule} from '@angular/material'
+import {MatAutocompleteModule, MatFormFieldModule, MatInputModule} from '@angular/material'
 
 @NgModule({
   declarations: [
@@ -47,7 +47,8 @@ import {MatFormFieldModule, MatInputModule} from '@angular/material'
     BrowserAnimationsModule,
     NgxPaginationModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
