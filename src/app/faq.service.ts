@@ -10,7 +10,7 @@ export class FaqService {
   constructor(private http: HttpClient) { }
 
   getQuestions(url: string): Observable<any> {
-    const baseURL = '../assets/data/FAQs/' + url;
+    const baseURL = 'assets/data/FAQs/' + url;
     return this.http.get(baseURL);
   }
 }

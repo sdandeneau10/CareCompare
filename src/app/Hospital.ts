@@ -42,7 +42,7 @@ export class Hospital {
     this.totalPayments = totalPayments;
     this.averageMedicarePayment = averageMedicarePayments;
     this.geocodeLoaded = false;
-    this.imgUrl = '../../assets/img/placeholder.jpg';
+    this.imgUrl = 'assets/img/placeholder.jpg';
   }
 
 

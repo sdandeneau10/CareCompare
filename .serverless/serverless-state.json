@@ -6,12 +6,12 @@
     },
     "provider": {
       "stage": "production",
+      "region": "us-east-1",
       "variableSyntax": "\\${([ ~:a-zA-Z0-9._@'\",\\-\\/\\(\\)*]+?)}",
       "name": "aws",
       "runtime": "nodejs8.10",
       "memorySize": 192,
       "timeout": 10,
-      "region": "eu-central-1",
       "versionFunctions": true,
       "remoteFunctionData": null,
       "compiledCloudFormationTemplate": {
@@ -79,7 +79,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/carecompare-production*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/carecompare-production-api:*"
                           }
                         ]
                       },
@@ -90,7 +90,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/carecompare-production*:*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/carecompare-production-api:*:*"
                           }
                         ]
                       }
@@ -105,9 +105,7 @@
                   [
                     "carecompare",
                     "production",
-                    {
-                      "Ref": "AWS::Region"
-                    },
+                    "us-east-1",
                     "lambdaRole"
                   ]
                 ]
@@ -121,7 +119,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/carecompare/production/1561929752856-2019-06-30T21:22:32.856Z/carecompare.zip"
+                "S3Key": "serverless/carecompare/production/1563240280034-2019-07-16T01:24:40.034Z/carecompare.zip"
               },
               "FunctionName": "carecompare-production-api",
               "Handler": "lambda.universal",
@@ -140,14 +138,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "ApiLambdaVersionCQuznDKsUaWa6ul22s4it8NGlLLJw99DSPrs7IPQ": {
+          "ApiLambdaVersionp2ijcKPWZUVUTxnOMeGJiVjzvv2slDYo0SBwAAusk": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ApiLambdaFunction"
               },
-              "CodeSha256": "OJXezIWa9mYVLEx1snZL7CFK61RKzTHtu9iOKSvuLho="
+              "CodeSha256": "t+gwuIqIfRJ6DfKnQxoDFDj9yj20MF2qdW84iZTP+wo="
             }
           },
           "ApiGatewayRestApi": {
@@ -265,7 +263,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1561929700902": {
+          "ApiGatewayDeployment1563240224174": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -288,7 +286,17 @@
                 ]
               },
               "Action": "lambda:InvokeFunction",
-              "Principal": "apigateway.amazonaws.com",
+              "Principal": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "apigateway.",
+                    {
+                      "Ref": "AWS::URLSuffix"
+                    }
+                  ]
+                ]
+              },
               "SourceArn": {
                 "Fn::Join": [
                   "",
@@ -325,7 +333,7 @@
           "ApiLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ApiLambdaVersionCQuznDKsUaWa6ul22s4it8NGlLLJw99DSPrs7IPQ"
+              "Ref": "ApiLambdaVersionp2ijcKPWZUVUTxnOMeGJiVjzvv2slDYo0SBwAAusk"
             }
           },
           "ServiceEndpoint": {
@@ -338,11 +346,7 @@
                   {
                     "Ref": "ApiGatewayRestApi"
                   },
-                  ".execute-api.",
-                  {
-                    "Ref": "AWS::Region"
-                  },
-                  ".",
+                  ".execute-api.us-east-1.",
                   {
                     "Ref": "AWS::URLSuffix"
                   },
@@ -412,12 +416,11 @@
         "vpc": {}
       }
     },
-    "serviceFilename": "serverless.yml",
     "layers": {},
-    "artifact": "E:\\WebStormPtojects\\CC\\CareCompare\\.serverless\\carecompare.zip"
+    "artifact": "C:\\Users\\Ken\\Desktop\\CareCompare\\.serverless\\carecompare.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/carecompare/production/1561929752856-2019-06-30T21:22:32.856Z",
+    "artifactDirectoryName": "serverless/carecompare/production/1563240280034-2019-07-16T01:24:40.034Z",
     "artifact": "carecompare.zip"
   }
 }
