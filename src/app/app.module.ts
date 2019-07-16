@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HospitalPopupComponent } from './hospital-popup/hospital-popup.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { MaintenancePageComponent } from './maintenance-page/maintenance-page.component';
+import {MatFormFieldModule, MatInputModule} from '@angular/material'
 
 @NgModule({
   declarations: [
@@ -44,7 +45,9 @@ import { MaintenancePageComponent } from './maintenance-page/maintenance-page.co
       apiKey: 'AIzaSyAwzRGaPm9KP5ZjKvNs5qhFs3p0wePaI4c'
     }),
     BrowserAnimationsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

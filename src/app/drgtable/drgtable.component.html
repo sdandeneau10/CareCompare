@@ -16,11 +16,9 @@
     comparing.</h4>
   <br>
   <br>
-  <ng-autocomplete
-    placeHolder="Enter the DRG Code..."
-    [(ngModel)]="input"
-    (inputChanged)="update(input)">
-  </ng-autocomplete>
+  <mat-form-field>
+    <input matInput placeholder="Enter the DRG Code..." [(ngModel)]="input" (ngModelChange)="update(input)">
+  </mat-form-field>
   <table class="table table-striped table-bordered" id="drgTable">
     <thead>
     <tr>
