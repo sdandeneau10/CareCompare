@@ -70,14 +70,16 @@ export class ProcedureSelectionComponent implements OnInit {
   nope: string;
 
   drgCodes: string[];
+  filteredCodes: string[];
   selectedDRG = '';
-  myControl = new FormControl();
+  control = new FormControl();
 
   constructor(private router: Router) { }
 
   ngOnInit() {
     this.nope = 'This DRG code does not exist!';
     this.drgCodes = MEDICARE_DRG_CODES;
+    this.filteredCodes = this.drgCodes;
     this.knowsCode = null;
     this.foundProc = null;
     this.incorrectDRG = false;
@@ -89,7 +91,8 @@ export class ProcedureSelectionComponent implements OnInit {
    * This function is garbage
    *
    */
-  setCode() {
+  setCode(s: string) {
+    this.selectedDRG = s;
     for (const drg of this.drgCodes) {
       if (this.selectedDRG.substr(0, 3) === drg.substr(0, 3)) {
         MedicareDataService.selectedDRG = drg;
@@ -100,12 +103,12 @@ export class ProcedureSelectionComponent implements OnInit {
       }
     }
   }
-  chooseFromList(code: string) {
-    if (this.selectedDRG.length < 3) {
-      this.selectedDRG = code;
-      this.setCode();
-    } else {
-      this.setCode();
+  filter() {
+    this.filteredCodes = [];
+    for (const code of this.drgCodes) {
+      if (code.toLowerCase().includes(this.selectedDRG.toLowerCase())) {
+        this.filteredCodes.push(code);
+      }
     }
   }
 
