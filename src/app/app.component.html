@@ -35,8 +35,8 @@
     <router-outlet></router-outlet>
     <footer class="footer">
       <div>
-        <a class="whiteLink" data-toggle="modal" data-target="#terms">Terms of Service</a>
-        <a class="whiteLink" data-toggle="modal" data-target="privacy">Privacy Statement</a>
+        <a id="terms" onmouseover="$(this).tooltip('show')" class="whiteLink" data-toggle="tooltip"data-placement="top" title="Terms of Service">Terms of Service</a>
+        <a id="privacy" onmouseover="$(this).tooltip('show')" class="whiteLink" data-toggle="tooltip"data-placement="top" title="Privacy Statement">Privacy</a>
       </div>
       <div>
         <a>&copy; {{this.currentyear}} CareCompare</a>

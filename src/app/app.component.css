@@ -26,6 +26,13 @@ li.nav-item{
   text-align: center;
 }
 
+#terms:hover{
+  color: dodgerblue;
+}
+#privacy:hover{
+  color: dodgerblue;
+}
+
 
 body{
   padding-bottom: 55px;
