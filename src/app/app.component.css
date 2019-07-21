@@ -14,3 +14,19 @@ li.nav-item{
   color: dodgerblue !important;
 }
 
+.footer{
+  position: fixed;
+  left: 0;
+  height: 55px;
+  bottom: 0;
+  color: white;
+  width: 100%;
+  background-color: #312619;
+  clear: both;
+  text-align: center;
+}
+
+
+body{
+  padding-bottom: 55px;
+}
