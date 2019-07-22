@@ -9,6 +9,12 @@ export class AppComponent implements OnInit{
   title = 'CareCompare';
   date = new Date();
   currentyear: number;
+  termsTitle = 'Terms of Service';
+  privacyTitle = 'Privacy Statement';
+  termsBody =  '';
+  privacyBody =  '';
+  termsID = 'termsmodal';
+  privacyID = 'privacymodal';
 
   ngOnInit(): void {
     this.currentyear = this.date.getFullYear();

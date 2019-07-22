@@ -18,7 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HospitalPopupComponent } from './hospital-popup/hospital-popup.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { MaintenancePageComponent } from './maintenance-page/maintenance-page.component';
-import {MatAutocompleteModule, MatFormFieldModule, MatInputModule} from '@angular/material'
+import {MatAutocompleteModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import { FooterModalComponent } from './footer-modal/footer-modal.component'
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {MatAutocompleteModule, MatFormFieldModule, MatInputModule} from '@angula
     HospitalPopupComponent,
     ContactUsComponent,
     MaintenancePageComponent,
+    FooterModalComponent,
   ],
   imports: [
     BrowserModule,
