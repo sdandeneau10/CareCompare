@@ -20,10 +20,6 @@ export class AppComponent implements OnInit{
   privacyID = 'privacymodal';
   avatar: string;
 
-  ngOnInit(): void {
-    this.currentyear = this.date.getFullYear();
-  }
-
   constructor(
     public auth: AuthService,
   ) {
@@ -36,8 +32,9 @@ export class AppComponent implements OnInit{
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.checkSession();
+    this.currentyear = this.date.getFullYear();
   }
 
   async checkSession() {
