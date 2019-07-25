@@ -60,7 +60,7 @@ export class PriceCompareComponent implements OnInit {
     if (this.drgCode == null || this.drgCode === '') {
       this.router.navigate(['/', 'procedureSelection']);
     }
-    // this.getUserLocation();
+    this.getUserLocation();
     this.drgDisplayedCode = this.drgCode.substring(0, 3);
 
     this.dataRequest.getData(this.drgCode).subscribe(

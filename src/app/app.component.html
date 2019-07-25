@@ -16,7 +16,7 @@
             <a class="whiteLink" routerLink="/procedureSelection">Compare</a>
           </li>
           <li class="nav-item">
-            <a class="whiteLink" routerLink="/faq">FAQ</a>
+            <a class="whiteLink" routerLink="/oops">FAQ</a>
           </li>
           <li class="nav-item">
             <a class="whiteLink" routerLink="/contact-us">Contact Us</a>
@@ -24,10 +24,10 @@
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <img class="imgLink" src="assets/img/login.png" routerLink="/account">
+            <img class="imgLink" src="assets/img/login.png" routerLink="/auth/signup">
           </li>
           <li class="nav-item">
-            <img class="imgLink" src="assets/img/user.png" routerLink="/auth/signup">
+            <img class="imgLink" src="assets/img/user.png" routerLink="/account">
           </li>
         </ul>
       </div>
@@ -39,7 +39,7 @@
         <a class="whiteLink" id="privacy" data-toggle="modal" data-target="#privacymodal">Privacy Statement</a>
       </div>
       <div>
-        <a>&copy; {{this.currentyear}} CareCompare</a>
+        <a>CareCompare {{this.currentyear}}</a>
       </div>
     </footer>
     <app-footer-modal
