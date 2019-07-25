@@ -46,11 +46,12 @@ h1.name{
 }
 
 #care{
-    color: dodgerblue !important;
+    color: #c4e3f8 !important;
 }
 
 #compare{
-    margin-left: 40px;
+  margin-left: 40px;
+  color: #c4e3f8 !important;
 }
 
 div.phrase{

@@ -21,16 +21,16 @@ li.nav-item{
   bottom: 0;
   color: white;
   width: 100%;
-  background-color: #312619;
+  background-color: dodgerblue;
   clear: both;
   text-align: center;
 }
 
 #terms:hover{
-  color: dodgerblue;
+  color: #c4e3f8;
 }
 #privacy:hover{
-  color: dodgerblue;
+  color: #c4e3f8;
 }
 
 

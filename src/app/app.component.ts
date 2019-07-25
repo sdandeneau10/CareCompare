@@ -22,11 +22,10 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.currentyear = this.date.getFullYear();
+    this.checkSession();
   }
 
-  constructor(
-    public auth: AuthService,
-  ) {
+  constructor(public auth: AuthService) {
     auth.authState.subscribe((event: string) => {
       debugger
       if (event === AuthService.SIGN_IN)
@@ -34,10 +33,6 @@ export class AppComponent implements OnInit{
       if (event === AuthService.SIGN_OUT)
         this.avatar = undefined;
     });
-  }
-
-  ngOnInit() {
-    this.checkSession();
   }
 
   async checkSession() {

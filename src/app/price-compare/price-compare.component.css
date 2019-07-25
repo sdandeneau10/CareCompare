@@ -9,7 +9,8 @@ div.card:hover {
 }
 
 .sidebar-offset {
-  top: 60px;
+  top: 90px;
+  text-align: center;
 }
 
 td {
