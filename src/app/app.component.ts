@@ -3,6 +3,9 @@ import { AuthService } from './auth/auth.service';
 import Auth from '@aws-amplify/auth';
 import Storage from '@aws-amplify/storage';
 import { OnInit } from '@angular/core';
+import {PRIVACY} from "./Privacy";
+import {TERMS} from "./Terms";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,8 +17,8 @@ export class AppComponent implements OnInit{
   currentyear: number;
   termsTitle = 'Terms of Service';
   privacyTitle = 'Privacy Statement';
-  termsBody =  '';
-  privacyBody =  '';
+  termsBody =  TERMS;
+  privacyBody = PRIVACY;
   termsID = 'termsmodal';
   privacyID = 'privacymodal';
   avatar: string;
