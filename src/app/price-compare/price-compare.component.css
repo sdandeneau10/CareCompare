@@ -146,7 +146,7 @@ h3.prevent-overflow {
 .starratingsystem label{
   font-size: 20px;
   padding-right: 3px;
-  color: dodgerblue;
+  color: black;
   cursor: pointer;
 }
 .starratingsystem label:hover,
