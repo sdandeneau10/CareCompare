@@ -34,8 +34,27 @@
         </div>
       </div>
       <h5 class="filter-header">Rating</h5>
-      <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="1" class="slider" #rat (change)="ratingChanged(rat.value)">
+      <div class="starratingsystem">
+        <input id="star-1" type="radio" value="star-1" name="rating" (click)="ratingChanged(1)">
+        <label for="star-1">
+          <i class="fa fa-star" aria-hidden="true"></i>
+        </label>
+        <input id="star-2" type="radio" value="star-2" name="rating" (click)="ratingChanged(2)">
+        <label for="star-2">
+          <i class="fa fa-star" aria-hidden="true"></i>
+        </label>
+        <input id="star-3" type="radio" value="star-3" name="rating" (click)="ratingChanged(3)">
+        <label for="star-3">
+          <i class="fa fa-star" aria-hidden="true"></i>
+        </label>
+        <input id="star-4" type="radio" value="star-4" name="rating" (click)="ratingChanged(4)">
+        <label for="star-4">
+          <i class="fa fa-star" aria-hidden="true"></i>
+        </label>
+        <input id="star-5" type="radio" value="star-5" name="rating" (click)="ratingChanged(5)">
+        <label for="star-5">
+          <i class="fa fa-star" aria-hidden="true"></i>
+        </label>
       </div>
       <h5 class="filter-header">Price</h5>
       <div class="slidecontainer">

@@ -148,8 +148,8 @@ export class PriceCompareComponent implements OnInit {
    * Updates activeSubset to reflect the hospitals that fit in the updated range
    * @param value - The value of the slide 0 < value < 10
    */
-  ratingChanged(value: string) {
-    this.currentrating = parseInt(value, 10);
+  ratingChanged(value: number) {
+    this.currentrating = value;
     this.filterAll();
   }
 
@@ -212,8 +212,7 @@ export class PriceCompareComponent implements OnInit {
     this.activeSubset = [];
     for (const hos of this.relevantHospitals) {
       const price = (((99) * (hos.getApproxOutOfPocket() - this.minPrice)) / (this.maxPrice - this.minPrice)) + 1;
-      const rating = (((99) * (hos.getRating() - 1)) / (5 - 1)) + 1;
-      if (this.distancelist.includes(hos.getState()) && price <= this.currentprice && rating >= this.currentrating) {
+      if (this.distancelist.includes(hos.getState()) && price <= this.currentprice && hos.getRating() <= this.currentrating) {
         this.activeSubset.push(hos);
       }
     }

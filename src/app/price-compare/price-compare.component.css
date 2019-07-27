@@ -117,8 +117,8 @@ h5 {
 }
 
 .align-center {
-  text-align: center; 
-  margin-top: 200px; 
+  text-align: center;
+  margin-top: 200px;
 }
 
 h3.prevent-overflow {
@@ -133,4 +133,24 @@ h3.prevent-overflow {
 
 .statedropdown{
   width: 100%;
+}
+.starratingsystem{
+  direction: rtl;
+  text-align: center;
+  padding-top: 20px;
+  display: inline-block;
+}
+.starratingsystem input[type=radio] {
+  display: none;
+}
+.starratingsystem label{
+  font-size: 20px;
+  padding-right: 3px;
+  color: dodgerblue;
+  cursor: pointer;
+}
+.starratingsystem label:hover,
+.starratingsystem label:hover ~ label,
+.starratingsystem input[type=radio]:checked ~ label{
+  color: yellow;
 }
