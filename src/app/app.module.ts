@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PriceCompareComponent } from './price-compare/price-compare.component';
 import { FAQComponent } from './faq/faq.component';
-// import { SignUpComponent } from './sign-up/sign-up.component';
+import {FilterPipe} from "./auth/country-code-select/filter.pipe";
+import {AvatarComponent} from "./auth/profile/avatar/avatar.component";
 import { AccountComponent } from './account/account.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AgmCoreModule } from '@agm/core';
@@ -51,7 +52,9 @@ import { FooterModalComponent } from './footer-modal/footer-modal.component'
     ResetPComponent,
     ProfileComponent,
     AuthComponent,
-    CountryCodeSelectComponent
+    CountryCodeSelectComponent,
+    FilterPipe,
+    AvatarComponent
   ],
   imports: [
     BrowserModule,
