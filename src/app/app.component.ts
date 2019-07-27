@@ -3,13 +3,14 @@ import { AuthService } from './auth/auth.service';
 import Auth from '@aws-amplify/auth';
 import Storage from '@aws-amplify/storage';
 import { OnInit } from '@angular/core';
+import {Output} from "@angular/core/src/metadata/directives";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'CareCompare';
+  title = 'Care Compare';
   date = new Date();
   currentyear: number;
   termsTitle = 'Terms of Service';
@@ -27,11 +28,12 @@ export class AppComponent implements OnInit{
 
   constructor(public auth: AuthService) {
     auth.authState.subscribe((event: string) => {
-      debugger
-      if (event === AuthService.SIGN_IN)
+      if (event === AuthService.SIGN_IN) {
         this.checkSession();
-      if (event === AuthService.SIGN_OUT)
+      }
+      if (event === AuthService.SIGN_OUT) {
         this.avatar = undefined;
+      }
     });
   }
 

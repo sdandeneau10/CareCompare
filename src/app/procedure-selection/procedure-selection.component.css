@@ -1,125 +1,14 @@
-.jumbotron.blur {
-  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
-  filter: blur(5px);
-}
-.jumbotron {
-  -webkit-transition: .5s -webkit-filter ease-out;
-  transition: .5s -webkit-filter ease-out;
-  background-color: white !important;
-}
-.btn {
-  margin-top: 0px;
-  margin-right: 0px;
-}
-
-.drg-input{
-  border-radius: 5px;
-  margin-right: 10px;
-  opacity: 75%; 
-}
-
-.explain-btn{
-  text-decoration: underline !important;
-  text-decoration-color: blue;
-  background: none;
-  color: blue !important;
-  font-size: 10px;
-  margin: 0px;
-  padding: 0px;
-}
-
-.white {
-  color: white;
-}
-
-/*.btn:hover {*/
-/*  background-color: #3b3355;*/
-/*}*/
-
-* {
-  box-sizing: border-box;
-}
-
-.btn-sm {
-  color: white !important
-}
-
-.inp {
-  position: relative;
-  margin: auto;
-  width: 100%;
-  max-width: 280px;
-}
-.inp .label {
-  position: absolute;
-  top: 16px;
-  left: 0;
-  font-size: 16px;
-  color: #9098a9;
-  font-weight: 500;
-  transform-origin: 0 0;
-  transition: all 0.2s ease;
-}
-.inp .border {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  width: 100%;
-  background: #1E90FF;
-  transform: scaleX(0);
-  transform-origin: 0 0;
-  transition: all 0.15s ease;
-}
-.inp input {
-  -webkit-appearance: none;
-  width: 100%;
-  border: 0;
-  font-family: inherit;
-  padding: 12px 0;
-  height: 48px;
-  font-size: 16px;
-  font-weight: 500;
-  border-bottom: 2px solid #c8ccd4;
-  background: none;
-  border-radius: 0;
-  color: #223254;
-  transition: all 0.15s ease;
-}
-.inp input:hover {
-  background: rgba(34,50,84,0.03);
-}
-.inp input:not(:placeholder-shown) + span {
-  color: #5a667f;
-  transform: translateY(-26px) scale(0.75);
-}
-p.error-text{
-  color: red;
-  font-style: italic;
-}
-.inp input:focus {
-  background: none;
-  outline: none;
-}
-.inp input:focus + span {
-  color: #1E90FF;
-  transform: translateY(-26px) scale(0.75);
-}
-.inp input:focus + span + .border {
-  transform: scaleX(1);
-}
-
 .title {
   text-align: center;
   font-size: 60px;
   font-weight: bold;
-  font-color: #3b3355;
+  color: #c4e3f8;
 }
 
 .subTitle {
   font-size: 20px;
   text-align: center;
-  font-color: #3b3355;
+  color: #c4e3f8;
 }
 
 .centerCustomImg {
@@ -142,4 +31,29 @@ p.error-text{
   font-weight: bolder;
   font-size: 20px;
   letter-spacing: 2px;
+  background-color: #c4e3f8;
+  color: #3b3355;
+}
+
+.mat-form-field {
+  color: white !important;
+
+}
+
+.input:focus {
+  color:white;
+}
+
+
+/* underline border color on focused */
+::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple{
+  background-color: #c4e3f8 !important;
+}
+
+.bg-primary {
+  background-color: #3b3355 !important;
+}
+
+.div-extension {
+  padding-bottom: auto;
 }

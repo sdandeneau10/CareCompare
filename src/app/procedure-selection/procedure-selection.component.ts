@@ -101,6 +101,7 @@ export class ProcedureSelectionComponent implements OnInit {
       } else {
         this.incorrectDRG = true;
       }
+
     }
   }
   filter() {

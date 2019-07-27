@@ -1,11 +1,13 @@
-<div>
+<div class='bg-primary'>
   <p>
     <img class='centerCustomImg' src='assets/img/mediumLogo.png'>
   </p>
   <h1 class="title">Care Compare</h1>.
-  <h2 class="subTitle">This tool provides users with the ability to compare <a href='https://data.medicare.gov/data/hospital-compare'>Medicare data</a> between health care providers based on DRG groupings</h2>
+  <h2 class="subTitle">This tool provides users with the ability to compare <a
+    href='https://data.medicare.gov/data/hospital-compare'>Medicare data</a> between health care providers based on
+    DRG groupings</h2>
   <p>
-    <mat-form-field class="centerCustom" >
+    <mat-form-field class="centerCustom input">
       <input matInput type="text" placeholder="Enter a DRG Code..." [matAutocomplete]="auto" [formControl]="control"
              [(ngModel)]="selectedDRG" (ngModelChange)="filter()">
     </mat-form-field>
@@ -15,9 +17,13 @@
       </mat-option>
     </mat-autocomplete>
   </p>
-  <button mat-flat-button color="primary" class="centerCustom emphasis" (click)="setCode(this.selectedDRG)" id='compare price button'>Compare Pricing</button>
+  <button mat-flat-button color="primary" class="centerCustom emphasis" (click)="setCode(this.selectedDRG)"
+          id='compare price button'>Compare Pricing
+  </button>
   <br>
-  <button mat-flat-button color="primary" class="centerCustom emphasis" (click)="goToDRG()">What is a DRG (Diagnosis Related Group)?</button>
+  <button mat-flat-button color="primary" class="centerCustom emphasis div-extension" (click)="goToDRG()">What is a DRG (Diagnosis
+    Related Group)?
+  </button>
   <br>
   <p *ngIf="incorrectDRG" class="error-text">this DRG code does not exist!</p>
 </div>
