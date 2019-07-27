@@ -136,7 +136,7 @@ export class Hospital {
   setPhone(n: number) {
     this.phone = n;
   }
-  getColor() {
+  getHeaderColor() {
     if (this.getRating() == 1) {
       // #ff0000
       return 'redHeader';
@@ -148,6 +148,20 @@ export class Hospital {
     else if (this.getRating() == 4 || this.getRating() == 5) {
       // #00b300
       return 'greenHeader';
+    }
+  }
+  getTextColor() {
+    if (this.getRating() == 1) {
+      // #ff0000
+      return 'redText';
+    }
+    else if (this.getRating() == 2 || this.getRating() == 3) {
+      // #ffcc00
+      return 'yellowText';
+    }
+    else if (this.getRating() == 4 || this.getRating() == 5) {
+      // #00b300
+      return 'greenText';
     }
   }
 }

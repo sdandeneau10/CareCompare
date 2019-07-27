@@ -69,27 +69,16 @@
       </div>
       <table class="fixedColumns" align="center">
         <tr *ngFor="let hospital of this.activeSubset">
-          <!--<td class="row-container"*ngFor="let hospital of hospitals">
-            <div class="card text-center"
-                 *ngIf="hospital"
-                 (click)="selected(hospital)"
-                 data-toggle="modal" data-target="#fullDetails">
-              <img class="card-img-top" [src]='hospital.imgUrl' style="width: 100%; height: 350px">
-              <div class="card-body">
-                <div class="row">
-                  <h3 class="card-title">{{hospital.name | titlecase}}</h3>
-                </div>
-                <p class="card-text">Estimated Price: {{hospital.getApproxOutOfPocket() | currency }}</p>
-              </div>
-            </div>
-          </td>-->
           <td>
           <div class="newStyleCard" data-toggle="modal" *ngIf="hospital" (click)="selected(hospital)" data-target="#fullDetails">
-            <div [ngClass]="hospital.getColor()">
+            <div [ngClass]="hospital.getHeaderColor()">
               <br>
             </div>
-            <div>
-              <p class="card-title"><b>{{hospital.getName()}}</b></p>
+            <div >
+              <div [ngClass]="hospital.getTextColor()">
+                <p class="card-title">{{hospital.getName() | titlecase}}</p>
+                <p class="price">{{hospital.getApproxOutOfPocket() | currency}}</p>
+              </div>
               <p class="address">{{hospital.getFullAddress()}}</p>
               <div class="card-rating" [ngSwitch]="hospital.getRating()">
                 <div *ngSwitchCase=1 style="color: #ff0000">

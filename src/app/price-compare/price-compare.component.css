@@ -50,10 +50,11 @@ td.row-container {
 .card-title {
   text-align: left;
   overflow: paged-x-controls;
-  width:100%;
   color: black;
+  display: inline-block;
   margin: 0;
   white-space: nowrap;
+  font-weight: bold;
   font-size: 24px;
 }
 
@@ -160,7 +161,7 @@ h3.prevent-overflow {
 .newStyleCard{
   padding-bottom: 20px;
   outline: black 2px solid;
-  width: 70%;
+  width: 50%;
 }
 .newStyleCard:hover{
   background-color: gray;
@@ -177,11 +178,27 @@ h3.prevent-overflow {
   background-color: #ffcc00;
   height: 7px;
 }
+.redText{
+  color: #ff0000;
+}
+.yellowText{
+  color: #ffcc00;
+}
+.greenText{
+  color: #00b300;
+}
 .address{
   font-size: 15px;
   margin: 0;
+  color: black;
 }
 .card-rating{
   color: #979797;
   font-size: 20px;
+}
+.price{
+  font-size: 24px;
+  display: inline-block;
+  float: right;
+  font-weight: bold;
 }
