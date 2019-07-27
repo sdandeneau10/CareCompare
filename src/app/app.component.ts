@@ -3,7 +3,9 @@ import { AuthService } from './auth/auth.service';
 import Auth from '@aws-amplify/auth';
 import Storage from '@aws-amplify/storage';
 import { OnInit } from '@angular/core';
-import {Output} from "@angular/core/src/metadata/directives";
+import {PRIVACY} from "./Privacy";
+import {TERMS} from "./Terms";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,13 +17,15 @@ export class AppComponent implements OnInit{
   currentyear: number;
   termsTitle = 'Terms of Service';
   privacyTitle = 'Privacy Statement';
-  termsBody =  '';
-  privacyBody =  '';
+  termsBody =  TERMS;
+  privacyBody = PRIVACY;
+  home: boolean;
   termsID = 'termsmodal';
   privacyID = 'privacymodal';
   avatar: string;
 
   ngOnInit(): void {
+    this.home = true;
     this.currentyear = this.date.getFullYear();
     this.checkSession();
   }
@@ -48,5 +52,8 @@ export class AppComponent implements OnInit{
     } catch (error) {
       console.log('no session: ', error);
     }
+  }
+  setHomeFlag(b: boolean) {
+    this.home = b;
   }
 }
