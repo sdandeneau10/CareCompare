@@ -212,7 +212,7 @@ export class PriceCompareComponent implements OnInit {
     this.activeSubset = [];
     for (const hos of this.relevantHospitals) {
       const price = (((99) * (hos.getApproxOutOfPocket() - this.minPrice)) / (this.maxPrice - this.minPrice)) + 1;
-      if (this.distancelist.includes(hos.getState()) && price <= this.currentprice && hos.getRating() <= this.currentrating) {
+      if (this.distancelist.includes(hos.getState()) && price <= this.currentprice && hos.getRating() >= this.currentrating) {
         this.activeSubset.push(hos);
       }
     }

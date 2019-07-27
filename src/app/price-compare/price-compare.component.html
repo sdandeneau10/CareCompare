@@ -35,11 +35,11 @@
       </div>
       <h5 class="filter-header">Rating</h5>
       <div class="starratingsystem">
-        <input id="star-1" type="radio" value="star-1" name="rating" (click)="ratingChanged(1)">
+        <input id="star-1" type="radio" value="star-1" name="rating" (click)="ratingChanged(5)">
         <label for="star-1">
           <i class="fa fa-star" aria-hidden="true"></i>
         </label>
-        <input id="star-2" type="radio" value="star-2" name="rating" (click)="ratingChanged(2)">
+        <input id="star-2" type="radio" value="star-2" name="rating" (click)="ratingChanged(4)">
         <label for="star-2">
           <i class="fa fa-star" aria-hidden="true"></i>
         </label>
@@ -47,11 +47,11 @@
         <label for="star-3">
           <i class="fa fa-star" aria-hidden="true"></i>
         </label>
-        <input id="star-4" type="radio" value="star-4" name="rating" (click)="ratingChanged(4)">
+        <input id="star-4" type="radio" value="star-4" name="rating" (click)="ratingChanged(2)">
         <label for="star-4">
           <i class="fa fa-star" aria-hidden="true"></i>
         </label>
-        <input id="star-5" type="radio" value="star-5" name="rating" (click)="ratingChanged(5)">
+        <input id="star-5" type="radio" value="star-5" name="rating" (click)="ratingChanged(1)">
         <label for="star-5">
           <i class="fa fa-star" aria-hidden="true"></i>
         </label>
@@ -68,8 +68,8 @@
         <h1>Showing {{activeSubset.length}} results for {{this.drgDisplayedCode}} </h1>
       </div>
       <table class="fixedColumns" align="center">
-        <tr *ngFor="let hospitals of getHospitalsInRows(3); let i = index">
-          <td class="row-container"*ngFor="let hospital of hospitals">
+        <tr *ngFor="let hospital of this.activeSubset">
+          <!--<td class="row-container"*ngFor="let hospital of hospitals">
             <div class="card text-center"
                  *ngIf="hospital"
                  (click)="selected(hospital)"
@@ -82,7 +82,15 @@
                 <p class="card-text">Estimated Price: {{hospital.getApproxOutOfPocket() | currency }}</p>
               </div>
             </div>
-          </td>
+          </td>-->
+          <div class="newStyleCard">
+            <div [ngClass]="hospital.getColor()">
+              <br>
+            </div>
+            <div class="newStyleCard">
+              <p class="card-title">{{hospital.getName()}}</p>
+            </div>
+          </div>
         </tr>
         <app-hospital-popup
           [hospitalData]="this.activeHospital"

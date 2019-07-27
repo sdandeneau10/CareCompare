@@ -51,6 +51,7 @@ td.row-container {
   text-align: center;
   overflow: paged-x-controls;
   width:100%;
+  color: black;
   white-space: nowrap;
   font-size: 24px;
 }
@@ -153,4 +154,17 @@ h3.prevent-overflow {
 .starratingsystem label:hover ~ label,
 .starratingsystem input[type=radio]:checked ~ label{
   color: yellow;
+}
+
+.greenHeader{
+  background-color: #00b300;
+  height: 7px;
+}
+.redHeader{
+  background-color: #ff0000;
+  height: 7px;
+}
+.yellowHeader{
+  background-color: #ffcc00;
+  height: 7px;
 }
