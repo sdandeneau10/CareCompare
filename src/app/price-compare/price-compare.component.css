@@ -48,10 +48,11 @@ td.row-container {
 }
 
 .card-title {
-  text-align: center;
+  text-align: left;
   overflow: paged-x-controls;
   width:100%;
   color: black;
+  margin: 0;
   white-space: nowrap;
   font-size: 24px;
 }
@@ -156,6 +157,10 @@ h3.prevent-overflow {
   color: yellow;
 }
 
+.newStyleCard{
+  padding-bottom: 20px;
+  width: 55%;
+}
 .greenHeader{
   background-color: #00b300;
   height: 7px;
@@ -167,4 +172,12 @@ h3.prevent-overflow {
 .yellowHeader{
   background-color: #ffcc00;
   height: 7px;
+}
+.address{
+  font-size: 15px;
+  margin: 0;
+}
+.card-rating{
+  color: #979797;
+  font-size: 20px;
 }
