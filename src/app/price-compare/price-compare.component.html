@@ -83,17 +83,44 @@
               </div>
             </div>
           </td>-->
-          <div class="newStyleCard">
+          <td>
+          <div class="newStyleCard" data-toggle="modal" *ngIf="hospital" (click)="selected(hospital)" data-target="#fullDetails">
             <div [ngClass]="hospital.getColor()">
               <br>
             </div>
-            <div class="newStyleCard">
+            <div>
               <p class="card-title"><b>{{hospital.getName()}}</b></p>
               <p class="address">{{hospital.getFullAddress()}}</p>
-              <div class="card-rating">
+              <div class="card-rating" [ngSwitch]="hospital.getRating()">
+                <div *ngSwitchCase=1 style="color: #ff0000">
+                  <span class="fa fa-star" aria-hidden="true"></span>
+                </div>
+                <div *ngSwitchCase=2 style="color: #ffcc00">
+                  <span class="fa fa-star" aria-hidden="true"></span>
+                  <span class="fa fa-star" aria-hidden="true"></span>
+                </div>
+                <div *ngSwitchCase=3 style="color: #ffcc00">
+                  <span class="fa fa-star" aria-hidden="true"></span>
+                  <span class="fa fa-star" aria-hidden="true"></span>
+                  <span class="fa fa-star" aria-hidden="true"></span>
+                </div>
+                <div *ngSwitchCase=4 style="color: #00b300">
+                  <span class="fa fa-star" aria-hidden="true"></span>
+                  <span class="fa fa-star" aria-hidden="true"></span>
+                  <span class="fa fa-star" aria-hidden="true"></span>
+                  <span style="color: #00b300" class="fa fa-star" aria-hidden="true"></span>
+                </div>
+                <div *ngSwitchCase=5 style="color: #00b300">
+                  <span class="fa fa-star" aria-hidden="true"></span>
+                  <span class="fa fa-star" aria-hidden="true"></span>
+                  <span class="fa fa-star" aria-hidden="true"></span>
+                  <span class="fa fa-star" aria-hidden="true"></span>
+                  <span class="fa fa-star" aria-hidden="true"></span>
+                </div>
               </div>
             </div>
           </div>
+          </td>
         </tr>
         <app-hospital-popup
           [hospitalData]="this.activeHospital"
