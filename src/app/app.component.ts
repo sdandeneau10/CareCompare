@@ -19,11 +19,13 @@ export class AppComponent implements OnInit{
   privacyTitle = 'Privacy Statement';
   termsBody =  TERMS;
   privacyBody = PRIVACY;
+  home: boolean;
   termsID = 'termsmodal';
   privacyID = 'privacymodal';
   avatar: string;
 
   ngOnInit(): void {
+    this.home = true;
     this.currentyear = this.date.getFullYear();
     this.checkSession();
   }
@@ -49,5 +51,8 @@ export class AppComponent implements OnInit{
     } catch (error) {
       console.log('no session: ', error);
     }
+  }
+  setHomeFlag(b: boolean) {
+    this.home = b;
   }
 }
