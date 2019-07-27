@@ -71,9 +71,7 @@
         <tr *ngFor="let hospital of this.activeSubset">
           <td>
           <div class="newStyleCard" data-toggle="modal" *ngIf="hospital" (click)="selected(hospital)" data-target="#fullDetails">
-            <div [ngClass]="hospital.getHeaderColor()">
-              <br>
-            </div>
+            <div [ngClass]="hospital.getHeaderColor()"></div>
             <div >
               <div [ngClass]="hospital.getTextColor()">
                 <p class="card-title">{{hospital.getName() | titlecase}}</p>
