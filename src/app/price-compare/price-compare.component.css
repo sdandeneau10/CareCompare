@@ -161,7 +161,7 @@ h3.prevent-overflow {
 .newStyleCard{
   padding-bottom: 20px;
   outline: black 2px solid;
-  width: 50%;
+  width: 100%;
 }
 .newStyleCard:hover{
   background-color: gray;
@@ -208,5 +208,6 @@ h3.prevent-overflow {
   font-size: 24px;
   display: inline-block;
   float: right;
+  padding-right: 2%;
   font-weight: bold;
 }
