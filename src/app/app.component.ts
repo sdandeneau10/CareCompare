@@ -4,7 +4,8 @@ import Auth from '@aws-amplify/auth';
 import Storage from '@aws-amplify/storage';
 import { OnInit } from '@angular/core';
 import {PRIVACY} from "./Privacy";
-import {TERMS} from "./Terms";
+import {TERMS} from "./Terms"
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -25,12 +26,11 @@ export class AppComponent implements OnInit{
   avatar: string;
 
   ngOnInit(): void {
-    this.home = true;
     this.currentyear = this.date.getFullYear();
     this.checkSession();
   }
 
-  constructor(public auth: AuthService) {
+  constructor(public auth: AuthService, private router: Router) {
     auth.authState.subscribe((event: string) => {
       if (event === AuthService.SIGN_IN) {
         this.checkSession();
@@ -53,7 +53,13 @@ export class AppComponent implements OnInit{
       console.log('no session: ', error);
     }
   }
-  setHomeFlag(b: boolean) {
-    this.home = b;
+  setHomeFlag() {
+    if (this.router.url === '/home') {
+      this.home = true;
+    }
+    else {
+      this.home = false;
+    }
   }
-}
+  }
+
