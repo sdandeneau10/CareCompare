@@ -13,7 +13,7 @@ export class Hospital {
   geocodeLoaded: boolean;
   imgLoaded: boolean;
   providerID: number;
-  rating: number;
+  rating: string;
   phone: number;
   mortalityComparison: string;
   safetyComparison: string;
@@ -46,7 +46,7 @@ export class Hospital {
   }
 
 
-  setRatingMetrics(overall: number, mortality: string, safety: string, readmission: string, patient: string,
+  setRatingMetrics(overall: string, mortality: string, safety: string, readmission: string, patient: string,
                    effectiveness: string, timeliness: string, imaging: string, phone: number, lat: number, long: number) {
     this.rating = overall;
     this.mortalityComparison = mortality;
@@ -130,38 +130,44 @@ export class Hospital {
   getPhone() {
     return this.phone;
   }
-  setRating(s: number) {
+  setRating(s: string) {
     this.rating = s;
   }
   setPhone(n: number) {
     this.phone = n;
   }
   getHeaderColor() {
-    if (this.getRating() == 1) {
+    if (this.getRating() == '1') {
       // #ff0000
       return 'redHeader';
     }
-    else if (this.getRating() == 2 || this.getRating() == 3) {
+    else if (this.getRating() == '2' || this.getRating() == '3') {
       // #ffcc00
       return 'yellowHeader';
     }
-    else if (this.getRating() == 4 || this.getRating() == 5) {
+    else if (this.getRating() == '4' || this.getRating() == '5') {
       // #00b300
       return 'greenHeader';
     }
+    else{
+      return 'greyHeader';
+    }
   }
   getTextColor() {
-    if (this.getRating() == 1) {
+    if (this.getRating() == '1') {
       // #ff0000
       return 'redText';
     }
-    else if (this.getRating() == 2 || this.getRating() == 3) {
+    else if (this.getRating() == '2' || this.getRating() == '3') {
       // #ffcc00
       return 'yellowText';
     }
-    else if (this.getRating() == 4 || this.getRating() == 5) {
+    else if (this.getRating() == '4' || this.getRating() == '5') {
       // #00b300
       return 'greenText';
+    }
+    else {
+      return 'greyText';
     }
   }
 }

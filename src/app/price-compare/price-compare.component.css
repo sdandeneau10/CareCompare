@@ -170,6 +170,10 @@ h3.prevent-overflow {
   background-color: #00b300;
   height: 7px;
 }
+.greyHeader{
+  background-color: dimgrey;
+  height: 7px;
+}
 .redHeader{
   background-color: #ff0000;
   height: 7px;
@@ -181,8 +185,12 @@ h3.prevent-overflow {
 .redText{
   color: #ff0000;
 }
+
 .yellowText{
   color: #ffcc00;
+}
+.greyText{
+  color: dimgrey;
 }
 .greenText{
   color: #00b300;
