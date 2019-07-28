@@ -136,6 +136,60 @@ export class Hospital {
   setPhone(n: number) {
     this.phone = n;
   }
+  getMortalityComparison() {
+    return this.mortalityComparison;
+  }
+
+  seMortalityComp(s: string) {
+    this.mortalityComparison = s;
+
+  }
+
+  getSafetyComp() {
+    return this.safetyComparison;
+  }
+
+  setSafetyComp(s: string) {
+    this.safetyComparison = s;
+  }
+
+  setreadmissionComp(s: string) {
+    this.readmissionComparison = s;
+  }
+
+  getreadmissionComp() {
+    return this.readmissionComparison;
+  }
+
+  getEffectivenessComp() {
+    return this.effectivenessComparison;
+  }
+
+  setEffectivenessComp(s: string) {
+    this.effectivenessComparison = s;
+  }
+
+  getTimelinessComp() {
+    return this.timelinessComparison;
+  }
+
+  setTimelinessComp(s: string) {
+    this.timelinessComparison = s;
+  }
+
+  getImagingComp() {
+    return this.imagingComparison;
+  }
+
+  setImagingComp(s: string) {
+    this.imagingComparison = s;
+  }
+  getPatientComp() {
+    return this.patientComparison;
+  }
+  setPatientComp(s: string) {
+    this.patientComparison = s;
+  }
   getHeaderColor() {
     if (this.getRating() == '1') {
       // #ff0000
