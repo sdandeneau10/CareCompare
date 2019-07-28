@@ -80,29 +80,41 @@
               <p class="address">{{hospital.getFullAddress()}}</p>
               <div class="card-rating" [ngSwitch]="hospital.getRating()">
                 <div *ngSwitchCase=1 style="color: #ff0000">
-                  <span class="fa fa-star" aria-hidden="true"></span>
+                  <ng-container *ngFor="let i of [].constructor(1)">
+                    <span class="fa fa-star" aria-hidden="true"></span>
+                  </ng-container>
+                  <ng-container *ngFor="let i of [].constructor(4)">
+                    <span style="color: dimgrey" class="fa fa-star" aria-hidden="true"></span>
+                  </ng-container>
                 </div>
                 <div *ngSwitchCase=2 style="color: #ffcc00">
-                  <span class="fa fa-star" aria-hidden="true"></span>
-                  <span class="fa fa-star" aria-hidden="true"></span>
+                  <ng-container *ngFor="let i of [].constructor(2)">
+                    <span class="fa fa-star" aria-hidden="true"></span>
+                  </ng-container>
+                  <ng-container *ngFor="let i of [].constructor(3)">
+                    <span style="color: dimgrey" class="fa fa-star" aria-hidden="true"></span>
+                  </ng-container>
                 </div>
                 <div *ngSwitchCase=3 style="color: #ffcc00">
-                  <span class="fa fa-star" aria-hidden="true"></span>
-                  <span class="fa fa-star" aria-hidden="true"></span>
-                  <span class="fa fa-star" aria-hidden="true"></span>
+                  <ng-container *ngFor="let i of [].constructor(3)">
+                    <span class="fa fa-star" aria-hidden="true"></span>
+                  </ng-container>
+                  <ng-container *ngFor="let i of [].constructor(2)">
+                    <span style="color: dimgrey" class="fa fa-star" aria-hidden="true"></span>
+                  </ng-container>
                 </div>
                 <div *ngSwitchCase=4 style="color: #00b300">
-                  <span class="fa fa-star" aria-hidden="true"></span>
-                  <span class="fa fa-star" aria-hidden="true"></span>
-                  <span class="fa fa-star" aria-hidden="true"></span>
-                  <span style="color: #00b300" class="fa fa-star" aria-hidden="true"></span>
+                  <ng-container *ngFor="let i of [].constructor(4)">
+                    <span class="fa fa-star" aria-hidden="true"></span>
+                  </ng-container>
+                  <ng-container *ngFor="let i of [].constructor(1)">
+                    <span style="color: dimgrey" class="fa fa-star" aria-hidden="true"></span>
+                  </ng-container>
                 </div>
                 <div *ngSwitchCase=5 style="color: #00b300">
-                  <span class="fa fa-star" aria-hidden="true"></span>
-                  <span class="fa fa-star" aria-hidden="true"></span>
-                  <span class="fa fa-star" aria-hidden="true"></span>
-                  <span class="fa fa-star" aria-hidden="true"></span>
-                  <span class="fa fa-star" aria-hidden="true"></span>
+                  <ng-container *ngFor="let i of [].constructor(5)">
+                    <span class="fa fa-star" aria-hidden="true"></span>
+                  </ng-container>
                 </div>
                 <div *ngSwitchDefault style="color: dimgrey">
                   N/A
