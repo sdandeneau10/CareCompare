@@ -79,7 +79,7 @@
               </div>
               <p class="address">{{hospital.getFullAddress()}}</p>
               <div class="card-rating" [ngSwitch]="hospital.getRating()">
-                <div *ngSwitchCase=1 style="color: #ff0000">
+                <div *ngSwitchCase=1 style="color: #b30000">
                   <ng-container *ngFor="let i of [].constructor(1)">
                     <span class="fa fa-star" aria-hidden="true"></span>
                   </ng-container>
