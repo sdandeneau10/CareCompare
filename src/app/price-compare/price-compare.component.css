@@ -155,7 +155,7 @@ h3.prevent-overflow {
 .starratingsystem label:hover,
 .starratingsystem label:hover ~ label,
 .starratingsystem input[type=radio]:checked ~ label{
-  color: yellow;
+  color: gold;
 }
 
 .newStyleCard{
