@@ -1,8 +1,10 @@
 <br>
 <div class="container-fluid row">
-  <div class="col-md-auto">
+  <div class="col-md-auto" style="width: 20%;">
     <nav class="sticky-top sidebar-offset" id="sidebar">
       <div class="sidebar-header">
+        <h1>CareCompare</h1>
+        <br>
         <h3>Filters</h3>
       </div>
       <h5 class="filter-header">Location</h5>
@@ -34,8 +36,27 @@
         </div>
       </div>
       <h5 class="filter-header">Rating</h5>
-      <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="1" class="slider" #rat (change)="ratingChanged(rat.value)">
+      <div class="starratingsystem">
+        <input id="star-1" type="radio" value="star-1" name="rating" (click)="ratingChanged(5)">
+        <label for="star-1">
+          <i class="fa fa-star" aria-hidden="true"></i>
+        </label>
+        <input id="star-2" type="radio" value="star-2" name="rating" (click)="ratingChanged(4)">
+        <label for="star-2">
+          <i class="fa fa-star" aria-hidden="true"></i>
+        </label>
+        <input id="star-3" type="radio" value="star-3" name="rating" (click)="ratingChanged(3)">
+        <label for="star-3">
+          <i class="fa fa-star" aria-hidden="true"></i>
+        </label>
+        <input id="star-4" type="radio" value="star-4" name="rating" (click)="ratingChanged(2)">
+        <label for="star-4">
+          <i class="fa fa-star" aria-hidden="true"></i>
+        </label>
+        <input id="star-5" type="radio" value="star-5" name="rating" (click)="ratingChanged(1)">
+        <label for="star-5">
+          <i class="fa fa-star" aria-hidden="true"></i>
+        </label>
       </div>
       <h5 class="filter-header">Price</h5>
       <div class="slidecontainer">
@@ -49,20 +70,60 @@
         <h1>Showing {{activeSubset.length}} results for {{this.drgDisplayedCode}} </h1>
       </div>
       <table class="fixedColumns" align="center">
-        <tr *ngFor="let hospitals of getHospitalsInRows(3); let i = index">
-          <td class="row-container"*ngFor="let hospital of hospitals">
-            <div class="card text-center"
-                 *ngIf="hospital"
-                 (click)="selected(hospital)"
-                 data-toggle="modal" data-target="#fullDetails">
-              <img class="card-img-top" [src]='hospital.imgUrl' style="width: 100%; height: 350px">
-              <div class="card-body">
-                <div class="row">
-                  <h3 class="card-title">{{hospital.name | titlecase}}</h3>
+        <tr *ngFor="let hospital of this.activeSubset">
+          <td>
+          <div class="newStyleCard" data-toggle="modal" *ngIf="hospital" (click)="selected(hospital)" data-target="#fullDetails">
+            <div [ngClass]="hospital.getHeaderColor()"></div>
+            <div >
+              <div [ngClass]="hospital.getTextColor()">
+                <p class="card-title">{{hospital.getName() | titlecase}}</p>
+                <p class="price">{{hospital.getApproxOutOfPocket() | currency}}</p>
+              </div>
+              <p class="address">{{hospital.getFullAddress()}}</p>
+              <div class="card-rating" [ngSwitch]="hospital.getRating()">
+                <div *ngSwitchCase=1 style="color: #b30000">
+                  <ng-container *ngFor="let i of [].constructor(1)">
+                    <span class="fa fa-star" aria-hidden="true"></span>
+                  </ng-container>
+                  <ng-container *ngFor="let i of [].constructor(4)">
+                    <span style="color: #e7e7e7" class="fa fa-star" aria-hidden="true"></span>
+                  </ng-container>
                 </div>
-                <p class="card-text">Estimated Price: {{hospital.getApproxOutOfPocket() | currency }}</p>
+                <div *ngSwitchCase=2 style="color: #ffcc00">
+                  <ng-container *ngFor="let i of [].constructor(2)">
+                    <span class="fa fa-star" aria-hidden="true"></span>
+                  </ng-container>
+                  <ng-container *ngFor="let i of [].constructor(3)">
+                    <span style="color: #e7e7e7" class="fa fa-star" aria-hidden="true"></span>
+                  </ng-container>
+                </div>
+                <div *ngSwitchCase=3 style="color: #ffcc00">
+                  <ng-container *ngFor="let i of [].constructor(3)">
+                    <span class="fa fa-star" aria-hidden="true"></span>
+                  </ng-container>
+                  <ng-container *ngFor="let i of [].constructor(2)">
+                    <span style="color: #e7e7e7" class="fa fa-star" aria-hidden="true"></span>
+                  </ng-container>
+                </div>
+                <div *ngSwitchCase=4 style="color: #00b300">
+                  <ng-container *ngFor="let i of [].constructor(4)">
+                    <span class="fa fa-star" aria-hidden="true"></span>
+                  </ng-container>
+                  <ng-container *ngFor="let i of [].constructor(1)">
+                    <span style="color: #e7e7e7" class="fa fa-star" aria-hidden="true"></span>
+                  </ng-container>
+                </div>
+                <div *ngSwitchCase=5 style="color: #00b300">
+                  <ng-container *ngFor="let i of [].constructor(5)">
+                    <span class="fa fa-star" aria-hidden="true"></span>
+                  </ng-container>
+                </div>
+                <div *ngSwitchDefault style="color: dimgrey">
+                  N/A
+                </div>
               </div>
             </div>
+          </div>
           </td>
         </tr>
         <app-hospital-popup
