@@ -56,4 +56,5 @@ export class AppComponent implements OnInit{
   setHomeFlag(b: boolean) {
     this.home = b;
   }
+
 }

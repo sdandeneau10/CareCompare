@@ -27,10 +27,11 @@ import { ConfirmCodeComponent } from './auth/confirm-code/confirm-code.component
 import { LoaderComponent } from './loader/loader.component';
 import { ResetPComponent } from './auth/reset-password/reset-password.component'
 import { ProfileComponent } from './auth/profile/profile.component';
-import {CountryCodeSelectComponent} from "./auth/country-code-select/country-code-select.component";
+import {CountryCodeSelectComponent} from './auth/country-code-select/country-code-select.component';
 import { AuthComponent } from './auth/auth.component';
 import {MatAutocompleteModule, MatFormFieldModule, MatInputModule} from '@angular/material';
-import { FooterModalComponent } from './footer-modal/footer-modal.component'
+import { FooterModalComponent } from './footer-modal/footer-modal.component';
+import { BottomSheetComponentAsSnackBarComponent } from './bottom-sheet-component-as-snack-bar/bottom-sheet-component-as-snack-bar.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { FooterModalComponent } from './footer-modal/footer-modal.component'
     AuthComponent,
     CountryCodeSelectComponent,
     FilterPipe,
-    AvatarComponent
+    AvatarComponent,
+    BottomSheetComponentAsSnackBarComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +76,7 @@ import { FooterModalComponent } from './footer-modal/footer-modal.component'
     MatAutocompleteModule
   ],
   providers: [AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [BottomSheetComponentAsSnackBarComponent]
 })
 export class AppModule { }
