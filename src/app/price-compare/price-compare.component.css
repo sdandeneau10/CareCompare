@@ -48,10 +48,13 @@ td.row-container {
 }
 
 .card-title {
-  text-align: center;
+  text-align: left;
   overflow: paged-x-controls;
-  width:100%;
+  color: black;
+  display: inline-block;
+  margin: 0;
   white-space: nowrap;
+  font-weight: bold;
   font-size: 24px;
 }
 
@@ -117,8 +120,8 @@ h5 {
 }
 
 .align-center {
-  text-align: center; 
-  margin-top: 200px; 
+  text-align: center;
+  margin-top: 200px;
 }
 
 h3.prevent-overflow {
@@ -133,4 +136,78 @@ h3.prevent-overflow {
 
 .statedropdown{
   width: 100%;
+}
+.starratingsystem{
+  direction: rtl;
+  text-align: center;
+  padding-top: 20px;
+  display: inline-block;
+}
+.starratingsystem input[type=radio] {
+  display: none;
+}
+.starratingsystem label{
+  font-size: 20px;
+  padding-right: 3px;
+  color: black;
+  cursor: pointer;
+}
+.starratingsystem label:hover,
+.starratingsystem label:hover ~ label,
+.starratingsystem input[type=radio]:checked ~ label{
+  color: gold;
+}
+
+.newStyleCard{
+  padding-bottom: 20px;
+  outline: black 2px solid;
+  width: 100%;
+}
+.newStyleCard:hover{
+  background-color: gray;
+}
+.greenHeader{
+  background-color: #00b300;
+  height: 7px;
+}
+.greyHeader{
+  background-color: dimgrey;
+  height: 7px;
+}
+.redHeader{
+  background-color: #b30000;
+  height: 7px;
+}
+.yellowHeader{
+  background-color: #ffcc00;
+  height: 7px;
+}
+.redText{
+  color: #b30000;
+}
+
+.yellowText{
+  color: #ffcc00;
+}
+.greyText{
+  color: dimgrey;
+}
+.greenText{
+  color: #00b300;
+}
+.address{
+  font-size: 15px;
+  margin: 0;
+  color: black;
+}
+.card-rating{
+  color: #979797;
+  font-size: 20px;
+}
+.price{
+  font-size: 24px;
+  display: inline-block;
+  float: right;
+  padding-right: 2%;
+  font-weight: bold;
 }

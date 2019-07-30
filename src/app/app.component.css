@@ -28,9 +28,11 @@ li.nav-item{
 
 #terms:hover{
   color: #c4e3f8;
+  cursor: pointer;
 }
 #privacy:hover{
   color: #c4e3f8;
+  cursor: pointer;
 }
 
 body{

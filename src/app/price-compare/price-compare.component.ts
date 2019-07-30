@@ -106,8 +106,35 @@ export class PriceCompareComponent implements OnInit {
   }
 
   selected(hospital: Hospital): void {
+    if (hospital.getRating() == undefined) {
+      hospital.setRating('Not Available');
+    }
+    if (hospital.getPhone() == undefined) {
+      hospital.setPhone(1234567890);
+    }
+    if (hospital.getMortalityComparison() == undefined) {
+      hospital.seMortalityComp('Not Available');
+    }
+    if (hospital.getSafetyComp() == undefined) {
+      hospital.setSafetyComp('Not Available');
+    }
+    if (hospital.getreadmissionComp() == undefined) {
+      hospital.setreadmissionComp('Not Available');
+    }
+    if (hospital.getEffectivenessComp() == undefined) {
+      hospital.setEffectivenessComp('Not Available');
+    }
+    if (hospital.getTimelinessComp() == undefined) {
+      hospital.setTimelinessComp('Not Available');
+    }
+    if (hospital.getImagingComp() == undefined) {
+      hospital.setImagingComp('Not Available');
+    }
+    if (hospital.getPatientComp() == undefined) {
+      hospital.setPatientComp('Not Available');
+    }
+    //this.getLocation(hospital);
     this.activeHospital = hospital;
-    // this.getLocation(hospital);
   }
 
   getHospitalsInRows(col: number): Hospital[][] {
@@ -148,8 +175,8 @@ export class PriceCompareComponent implements OnInit {
    * Updates activeSubset to reflect the hospitals that fit in the updated range
    * @param value - The value of the slide 0 < value < 10
    */
-  ratingChanged(value: string) {
-    this.currentrating = parseInt(value, 10);
+  ratingChanged(value: number) {
+    this.currentrating = value;
     this.filterAll();
   }
 
@@ -212,8 +239,7 @@ export class PriceCompareComponent implements OnInit {
     this.activeSubset = [];
     for (const hos of this.relevantHospitals) {
       const price = (((99) * (hos.getApproxOutOfPocket() - this.minPrice)) / (this.maxPrice - this.minPrice)) + 1;
-      const rating = (((99) * (hos.getRating() - 1)) / (5 - 1)) + 1;
-      if (this.distancelist.includes(hos.getState()) && price <= this.currentprice && rating >= this.currentrating) {
+      if (this.distancelist.includes(hos.getState()) && price <= this.currentprice && (parseInt(hos.getRating()) >= this.currentrating || hos.getRating() == 'Not Available' || hos.getRating() == undefined)) {
         this.activeSubset.push(hos);
       }
     }
