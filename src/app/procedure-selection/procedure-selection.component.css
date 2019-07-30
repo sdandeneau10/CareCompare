@@ -2,13 +2,13 @@
   text-align: center;
   font-size: 60px;
   font-weight: bold;
-  color: #c4e3f8;
+  color: #3b3355;
 }
 
 .subTitle {
   font-size: 20px;
   text-align: center;
-  color: #c4e3f8;
+  color: #3b3355;
 }
 
 .centerCustomImg {
@@ -31,29 +31,22 @@
   font-weight: bolder;
   font-size: 20px;
   letter-spacing: 2px;
-  background-color: #c4e3f8;
-  color: #3b3355;
+  background-color: #3b3355;
+  color: #ffffff;
 }
 
 .mat-form-field {
-  color: white !important;
+  color: #3b3355 !important;
 
 }
 
 .input:focus {
-  color:white;
-}
-
-
-/* underline border color on focused */
-::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple{
-  background-color: #c4e3f8 !important;
+  color: #3b3355;
 }
 
 .bg-primary {
-  background-color: #3b3355 !important;
+  background-color: #c4e3f8 !important;
+  height: 100%;
 }
 
-.div-extension {
-  padding-bottom: auto;
-}
+body, html {height: 100%; }

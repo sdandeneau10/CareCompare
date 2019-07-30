@@ -74,5 +74,4 @@ export class AuthService {
       'provider': provider
     });
   }
-
 }

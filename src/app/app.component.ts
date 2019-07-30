@@ -56,10 +56,8 @@ export class AppComponent implements OnInit{
   setHomeFlag() {
     if (this.router.url === '/home') {
       this.home = true;
-    }
-    else {
+    } else {
       this.home = false;
     }
   }
-  }
-
+}
