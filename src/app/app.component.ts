@@ -13,20 +13,10 @@ import {Router} from "@angular/router";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'Care Compare';
-  date = new Date();
-  currentyear: number;
-  termsTitle = 'Terms of Service';
-  privacyTitle = 'Privacy Statement';
-  termsBody =  TERMS;
-  privacyBody = PRIVACY;
   home: boolean;
-  termsID = 'termsmodal';
-  privacyID = 'privacymodal';
   avatar: string;
 
   ngOnInit(): void {
-    this.currentyear = this.date.getFullYear();
     this.checkSession();
   }
 

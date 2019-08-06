@@ -14,18 +14,6 @@ li.nav-item{
   color: dodgerblue !important;
 }
 
-.footer{
-  position: fixed;
-  left: 0;
-  height: 55px;
-  bottom: 0;
-  color: white;
-  width: 100%;
-  background-color: dodgerblue;
-  clear: both;
-  text-align: center;
-}
-
 #terms:hover{
   color: #c4e3f8;
   cursor: pointer;
@@ -33,8 +21,4 @@ li.nav-item{
 #privacy:hover{
   color: #c4e3f8;
   cursor: pointer;
-}
-
-body{
-  padding-bottom: 55px;
 }
