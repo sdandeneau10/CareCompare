@@ -13,12 +13,3 @@ li.nav-item{
   opacity: 1;
   color: dodgerblue !important;
 }
-
-#terms:hover{
-  color: #c4e3f8;
-  cursor: pointer;
-}
-#privacy:hover{
-  color: #c4e3f8;
-  cursor: pointer;
-}

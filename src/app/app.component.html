@@ -30,7 +30,9 @@
         </ul>
       </div>
     </nav>
+    <div style="padding-bottom: 3%">
     <router-outlet (activate)="setHomeFlag()"></router-outlet>
+    </div>
   <app-footer *ngIf="home==false"></app-footer>
   </body>
 </html>
