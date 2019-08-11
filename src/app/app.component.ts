@@ -3,8 +3,6 @@ import { AuthService } from './auth/auth.service';
 import Auth from '@aws-amplify/auth';
 import Storage from '@aws-amplify/storage';
 import { OnInit } from '@angular/core';
-import {PRIVACY} from "./Privacy";
-import {TERMS} from "./Terms"
 import {Router} from "@angular/router";
 
 @Component({
@@ -13,20 +11,10 @@ import {Router} from "@angular/router";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'Care Compare';
-  date = new Date();
-  currentyear: number;
-  termsTitle = 'Terms of Service';
-  privacyTitle = 'Privacy Statement';
-  termsBody =  TERMS;
-  privacyBody = PRIVACY;
   home: boolean;
-  termsID = 'termsmodal';
-  privacyID = 'privacymodal';
   avatar: string;
 
   ngOnInit(): void {
-    this.currentyear = this.date.getFullYear();
     this.checkSession();
   }
 
@@ -58,6 +46,14 @@ export class AppComponent implements OnInit{
       this.home = true;
     } else {
       this.home = false;
+    }
+  }
+  getBackgroundColor() {
+    if (this.router.url === '/procedureSelection') {
+      return '#c4e3f8';
+    }
+    else{
+      return 'white';
     }
   }
 }
