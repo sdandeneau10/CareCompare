@@ -33,6 +33,7 @@ import {MatAutocompleteModule, MatFormFieldModule, MatInputModule} from '@angula
 import { FooterModalComponent } from './footer-modal/footer-modal.component';
 import { BottomSheetComponentAsSnackBarComponent } from './bottom-sheet-component-as-snack-bar/bottom-sheet-component-as-snack-bar.component';
 import {MatPasswordStrengthModule} from "@angular-material-extensions/password-strength";
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import {MatPasswordStrengthModule} from "@angular-material-extensions/password-s
     CountryCodeSelectComponent,
     FilterPipe,
     AvatarComponent,
-    BottomSheetComponentAsSnackBarComponent
+    BottomSheetComponentAsSnackBarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
