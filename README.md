@@ -1,4 +1,29 @@
 # **Care Compare**
+### Contributers
+Jack Gerulskis, Ken Desrosiers, Ben Emrick, Sean Dandeneau
+
+
+## Preface
+
+This application was started by Jack Gerulskis and Ken Desrosiers last May. We received permission to continue this project as long as we clearly outlined the work that is going to be done. Sean Dandeneau and Ben Emrick are also going to be helping with this project. Below is a list of the work, that is subject to change, that we plan to complete for this project.
+
+- UI Refactors
+    - Account
+    - Log in
+    - Sign up
+    - Home Page
+- Bug Fixes
+    - Translucent Overlay on Account UI
+    - Footers blocking page content
+- UI Research
+    - Find information regarding UIs tailored towards an older audience
+- Misc
+    - News Page API integration
+    - Google analyitcs / Google firebase integration
+    - ::hover button styling
+    - Postgres / SQL database
+
+At the conclusion of this project the work we have completed we be more thoroughly documented.
 
 ## The Problem
 
@@ -22,6 +47,7 @@ At the end of the day, a doctor's opinion is a very important part of this decis
 4. AWS S3 Bucket (File Storage)
 5. JavaScript
 6. Center for Medicare Services API (https://dev.socrata.com/foundry/data.cms.gov/fm2n-hjj6)
+7. Google Geocoding API
 
 ## Setting Up Development Envirorment
 
