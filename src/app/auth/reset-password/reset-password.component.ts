@@ -60,30 +60,30 @@ export class ResetPComponent {
   }
 
   requestForgotPassword() {
-    this._loader.show();
+    //this._loader.show();
     this.auth.requestForgotPassword(this.emailInput.value)
       .then((msg: any) => {
         this.resetPForm.get('email').disable()
         this.showPasswordAndCode = true
-        this._loader.hide();
+        //this._loader.hide();
         this._notification.show(`code has been sent to your email ${this.emailInput.value}`);
       })
       .catch((error: any) => {
-        this._loader.hide();
+        //this._loader.hide();
         this._notification.show(error.message);
       })
   }
 
   forgotPasswordSubmit() {
-    this._loader.show();
+    //this._loader.show();
     this.auth.forgotPasswordSubmit(this.emailInput.value, this.codeInput.value, this.passwordInput.value)
       .then((msg: any) => {
-        this._loader.hide();
+        //this._loader.hide();
         this._notification.show(`password updated successfully`);
         this._router.navigate(['auth/signin']);
       })
       .catch((error: any) => {
-        this._loader.hide();
+        //this._loader.hide();
         this._notification.show(error.message);
       })
   }

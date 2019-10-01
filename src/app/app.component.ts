@@ -49,11 +49,10 @@ export class AppComponent implements OnInit{
     }
   }
   getBackgroundColor() {
-    if (this.router.url === '/procedureSelection') {
-      return '#c4e3f8';
-    }
-    else{
+    if (this.router.url === '/priceCompare' || this.router.url === '/drgtable' || this.router.url === '/oops') {
       return 'white';
+    } else {
+      return '#c4e3f8';
     }
   }
 }
