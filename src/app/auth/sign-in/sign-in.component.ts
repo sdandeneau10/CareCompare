@@ -18,8 +18,7 @@ export class SignInComponent {
     email: new FormControl('',[ Validators.email, Validators.required ]),
     password: new FormControl('', [ Validators.required, Validators.min(6) ])
   });
-  
-  hide = true;
+
 
   get emailInput() { return this.signinForm.get('email'); }
   get passwordInput() { return this.signinForm.get('password'); }

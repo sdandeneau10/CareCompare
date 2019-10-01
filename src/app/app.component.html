@@ -25,28 +25,13 @@
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <img class="imgLink" src="assets/img/login.png" routerLink="/auth/signup">
+            <img class="imgLink" src="assets/img/login.png" routerLink="/auth/signup" style="cursor:pointer;">
           </li>
         </ul>
       </div>
     </nav>
     <router-outlet (activate)="setHomeFlag()"></router-outlet>
-    <footer *ngIf="home==false" class="footer">
-      <div>
-        <a class="whiteLink" id="terms" data-toggle="modal" data-target="#termsmodal">Terms of Service</a>
-        <a class="whiteLink" id="privacy" data-toggle="modal" data-target="#privacymodal">Privacy Statement</a>
-      </div>
-      <div>
-        <a>CareCompare {{this.currentyear}}</a>
-      </div>
-    </footer>
-    <app-footer-modal
-    [title]="this.termsTitle"
-    [ID]="this.termsID"
-    [body]="this.termsBody"></app-footer-modal>
-    <app-footer-modal
-      [title]="this.privacyTitle"
-      [ID]="this.privacyID"
-      [body]="this.privacyBody"></app-footer-modal>
+    <div [style.background-color]="getBackgroundColor()" *ngIf="home==false" style="height: 6.5vh"></div>
+  <app-footer *ngIf="home==false"></app-footer>
   </body>
 </html>

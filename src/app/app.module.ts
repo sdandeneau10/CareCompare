@@ -32,6 +32,8 @@ import { AuthComponent } from './auth/auth.component';
 import {MatAutocompleteModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import { FooterModalComponent } from './footer-modal/footer-modal.component';
 import { BottomSheetComponentAsSnackBarComponent } from './bottom-sheet-component-as-snack-bar/bottom-sheet-component-as-snack-bar.component';
+import {MatPasswordStrengthModule} from "@angular-material-extensions/password-strength";
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { BottomSheetComponentAsSnackBarComponent } from './bottom-sheet-componen
     CountryCodeSelectComponent,
     FilterPipe,
     AvatarComponent,
-    BottomSheetComponentAsSnackBarComponent
+    BottomSheetComponentAsSnackBarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +76,8 @@ import { BottomSheetComponentAsSnackBarComponent } from './bottom-sheet-componen
     NgxPaginationModule,
     MatFormFieldModule,
     MatInputModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatPasswordStrengthModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
