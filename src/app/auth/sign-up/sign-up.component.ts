@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  hide = true;
   signupForm: FormGroup = new FormGroup({
     email: new FormControl('',[ Validators.email, Validators.required ]),
     password: new FormControl('', [ Validators.required ]),
