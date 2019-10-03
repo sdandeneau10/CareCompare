@@ -5,6 +5,24 @@ form {
     width: 100%;
 }
 
+div.info-container {
+    left: 5%;
+    width: 90%;
+    position: relative;
+    padding: 30px;
+    padding-bottom: 70px;
+    margin-top: 10px;
+    border-radius: 15%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: white;
+}
+
+.bg-primary {
+    padding-top: 10px;
+    background-color: #c4e3f8 !important;
+    height: 100%;
+}
+
 form > * {
     margin-bottom: 1.5em;
     width: 100%;
