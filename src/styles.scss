@@ -36,6 +36,7 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 
 body {margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.page-body{padding-bottom: 6.5vh;}
 form {
   width: 100%;
 }

@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   home: boolean;
   avatar: string;
   backgroundColor: string;
@@ -44,10 +44,5 @@ export class AppComponent implements OnInit{
   }
   setHomeFlag() {
     this.home = this.router.url === '/home';
-    if (this.router.url === '/priceCompare' || this.router.url === '/drgtable' || this.router.url === '/oops') {
-      this.backgroundColor = 'white';
-    } else {
-      this.backgroundColor = '#c4e3f8';
-    }
   }
 }

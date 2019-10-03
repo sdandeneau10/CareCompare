@@ -31,7 +31,6 @@
       </div>
     </nav>
     <router-outlet (activate)="setHomeFlag()"></router-outlet>
-    <div [style.background-color]="backgroundColor" *ngIf="home==false" style="height: 6.5vh;"></div>
   <app-footer *ngIf="home==false"></app-footer>
   </body>
 </html>
