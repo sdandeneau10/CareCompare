@@ -13,6 +13,7 @@ import {Router} from "@angular/router";
 export class AppComponent implements OnInit{
   home: boolean;
   avatar: string;
+  backgroundColor: string;
 
   ngOnInit(): void {
     this.checkSession();
@@ -42,18 +43,11 @@ export class AppComponent implements OnInit{
     }
   }
   setHomeFlag() {
-    if (this.router.url === '/home') {
-      this.home = true;
+    this.home = this.router.url === '/home';
+    if (this.router.url === '/priceCompare' || this.router.url === '/drgtable' || this.router.url === '/oops') {
+      this.backgroundColor = 'white';
     } else {
-      this.home = false;
-    }
-  }
-  getBackgroundColor() {
-    if (this.router.url === '/procedureSelection') {
-      return '#c4e3f8';
-    }
-    else{
-      return 'white';
+      this.backgroundColor = '#c4e3f8';
     }
   }
 }
