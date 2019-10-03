@@ -1,80 +1,18 @@
-body{
-    margin: 0;
-    padding: 0;
+div.quotes {
+    padding: 40px;
+    background-color:#3b3355;
+    color:white;
 }
 
-div.top-area{
+div.solution {
+    padding: 40px;
+    background-color:#c1e0f7;
+    color:#293132;
+    align-content: center;
+}
+
+img.logo2 {
+    width: 50%;
     position: relative;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: black;
-}
-div.top-area video{
-    position: absolute;
-    top: 0;
-    left: 0;
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-}
-
-div.content{
-    position: relative;
-    z-index: 2;
-    object-fit: cover;
-}
-
-div.opaque-plane{
-    position: absolute;
-    background: black;
-    z-index: 1;
-    opacity: .3;
-    height: 100vh;
-    width: 100%;
-}
-
-h1.name{
-    display: inline;
-    font-family: 'Roboto', sans-serif;
-    color: white;
-    font-size: 150px;
-    position: relative;
-}
-
-#care{
-    color: #c4e3f8 !important;
-}
-
-#compare{
-  margin-left: 40px;
-  color: #c4e3f8 !important;
-}
-
-div.phrase{
-  text-align: center;
-}
-
-div.phrase p{
-    display: inline;
-    color: white !important;
-    font-family: 'Roboto', sans-serif;
-    font-size: 36px;
-}
-
-div.spacing{
-    display: inline;
-    margin-right: 310px;
-    opacity: 0;
-}
-
-#offset{
-    margin-top: 200px;
-}
-
-#title{
-    margin-bottom: 40px;
+    margin-left: 25%;
 }
