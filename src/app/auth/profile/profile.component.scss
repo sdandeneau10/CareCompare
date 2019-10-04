@@ -12,9 +12,18 @@ div.info-container {
     padding: 30px;
     padding-bottom: 70px;
     margin-top: 10px;
-    border-radius: 15%;
+    border-radius: 25px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: white;
+}
+
+.centerCustomImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5px;
+    margin-bottom: 15px;
+    width: 20%;
 }
 
 .bg-primary {
