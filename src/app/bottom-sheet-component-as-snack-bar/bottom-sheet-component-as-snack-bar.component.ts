@@ -14,7 +14,7 @@ export class BottomSheetComponentAsSnackBarComponent implements OnInit {
   }
 
   goToLogin(): void {
-    this.router.navigate(['auth/signup']);
+    this.router.navigate(['auth/signin']);
   }
 
 }

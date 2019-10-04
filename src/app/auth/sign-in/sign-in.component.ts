@@ -13,6 +13,7 @@ import { LoaderService } from 'src/app/loader/loader.service';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent {
+  hide = true;
   
   signinForm: FormGroup = new FormGroup({
     email: new FormControl('',[ Validators.email, Validators.required ]),
@@ -45,14 +46,14 @@ export class SignInComponent {
   }
 
   signIn() {
-    this._loader.show();
+    //this._loader.show();
     this.auth.signIn(this.emailInput.value, this.passwordInput.value)
       .then((user: CognitoUser|any) => {
-        this._loader.hide();
+        //this._loader.hide();
         this._router.navigate(['']);
       })
       .catch((error: any) => {
-        this._loader.hide();
+        //this._loader.hide();
         this._notification.show(error.message);
         switch (error.code) {
           case "UserNotConfirmedException":

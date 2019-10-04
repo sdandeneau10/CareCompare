@@ -10,9 +10,10 @@ import {Router} from "@angular/router";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   home: boolean;
   avatar: string;
+  backgroundColor: string;
 
   ngOnInit(): void {
     this.checkSession();
@@ -42,18 +43,6 @@ export class AppComponent implements OnInit{
     }
   }
   setHomeFlag() {
-    if (this.router.url === '/home') {
-      this.home = true;
-    } else {
-      this.home = false;
-    }
-  }
-  getBackgroundColor() {
-    if (this.router.url === '/procedureSelection') {
-      return '#c4e3f8';
-    }
-    else{
-      return 'white';
-    }
+    this.home = this.router.url === '/home';
   }
 }
