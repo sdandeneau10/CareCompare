@@ -28,7 +28,8 @@ export class PriceCompareComponent implements OnInit {
   statecodes: string[] = [];
   states: any[] = [];
   filteredstates: any[] = [];
-  currentprice: number;
+  currentlowprice: string;
+  currenthighprice: string;
   currentrating: number;
   procedureName: string;
   drgCode: string;
@@ -46,7 +47,8 @@ export class PriceCompareComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
-    this.currentprice = 100000000;
+    this.currenthighprice = "";
+    this.currentlowprice = "";
     this.currentrating = 1;
     this.formatStates();
     this.distancelist  = this.statecodes;
@@ -83,7 +85,8 @@ export class PriceCompareComponent implements OnInit {
 
   calculatePriceExtremes() {
     for (const h of this.relevantHospitals) {
-      const cost = h.getApproxOutOfPocket();
+      //const cost = h.getApproxOutOfPocket();
+      const cost = Number(h.totalPayments);
       if (cost < this.minPrice) { this.minPrice = cost; }
       if (cost > this.maxPrice) { this.maxPrice = cost; }
     }
@@ -167,7 +170,6 @@ export class PriceCompareComponent implements OnInit {
     if (count === 0) {
       this.distancelist = this.statecodes;
     }
-    this.filterAll();
   }
 
   // TODO: implement
@@ -177,17 +179,16 @@ export class PriceCompareComponent implements OnInit {
    */
   ratingChanged(value: number) {
     this.currentrating = value;
-    this.filterAll();
   }
 
   /**
    * Updates activeSubset to reflect the hospitals that fit in the updated range
    * @param value - The value of the slide 0 < value < 10
    */
-  priceChanged(value: string) {
+  /*priceChanged(value: string) {
     this.currentprice = parseInt(value, 10);
     this.filterAll();
-  }
+  }*/
   getUserLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -236,11 +237,25 @@ export class PriceCompareComponent implements OnInit {
     }
   }
   filterAll() {
+    this.distance();
+    this.currentlowprice = (<HTMLInputElement>document.querySelector('#smallernum')).value;
+    this.currenthighprice = (<HTMLInputElement>document.querySelector('#largernum')).value;
+    if(this.currentlowprice === '') {
+      this.currentlowprice = String(this.minPrice);
+    }
+    if(this.currenthighprice === '') {
+      this.currenthighprice = String(this.maxPrice);
+    }
     this.activeSubset = [];
     for (const hos of this.relevantHospitals) {
-      const price = (((99) * (hos.getApproxOutOfPocket() - this.minPrice)) / (this.maxPrice - this.minPrice)) + 1;
-      if (this.distancelist.includes(hos.getState()) && price <= this.currentprice && (parseInt(hos.getRating()) >= this.currentrating || hos.getRating() == 'Not Available' || hos.getRating() == undefined)) {
-        this.activeSubset.push(hos);
+      //const price = (((99) * (hos.getApproxOutOfPocket() - this.minPrice)) / (this.maxPrice - this.minPrice)) + 1;
+      const price = hos.totalPayments;
+      if (price <= Number(this.currenthighprice) && price >= Number(this.currentlowprice)) {
+        if (this.distancelist.includes(hos.getState())) {
+          if (Number(hos.getRating()) >= this.currentrating || hos.getRating() === 'Not Available' || hos.getRating() === undefined) {
+            this.activeSubset.push(hos);
+          }
+        }
       }
     }
   }

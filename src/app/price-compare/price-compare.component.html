@@ -16,22 +16,12 @@
             [(ngModel)]="input"
             (inputChanged)="filterByState(input)">
           </ng-autocomplete>
-          <div class="checkboxes">
+          <div class="checkboxes" style="height: auto; max-height: 20vh;">
           <div class="custom-control custom-checkbox dropdown-item" *ngFor="let state of this.filteredstates">
             <label>
               <input style="font-size: 20px" type="checkbox" [(ngModel)]="state.checked"> {{state.name}}
             </label>
           </div>
-          </div>
-          <div class="dropdown-buttons">
-            <table>
-              <tr>
-                <td>
-                  <button class="btn btn-primary" (click)="distance()">Apply</button>
-                </td>
-              </tr>
-
-            </table>
           </div>
         </div>
       </div>
@@ -59,9 +49,12 @@
         </label>
       </div>
       <h5 class="filter-header">Price</h5>
-      <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="100" class="slider" #prce (change)="priceChanged(prce.value)">
+      <div class="slidecontainer" style="display: flex; justify-content: center;">
+        <input type="text" id="smallernum" placeholder="min" style="float:left; width: 40%; margin-right: 5%; border-radius: 15%; border: 1px solid #1E90FF; text-align: center;">
+        <input type="text" id="largernum" placeholder="max" style="width: 40%; border-radius: 15%; border: 1px solid #1E90FF; text-align: center;">
       </div>
+      <br>
+      <button class="btn btn-primary" (click)="filterAll()">Apply</button>
     </nav>
   </div>
   <div class="col">
