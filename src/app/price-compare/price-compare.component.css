@@ -8,6 +8,13 @@ div.card:hover {
   background-color: #1E90FF;
 }
 
+#sidebar{
+  position: fixed;
+  width: 20%;
+  top: auto;
+  z-index: 1;
+}
+
 .sidebar-offset {
   top: 90px;
   text-align: center;

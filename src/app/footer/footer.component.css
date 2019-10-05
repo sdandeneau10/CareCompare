@@ -16,3 +16,10 @@
   color: #c4e3f8;
   cursor: pointer;
 }
+#privacy, #terms{
+  font-size: 2vh;
+}
+p{
+  font-size: 1.5vh;
+  line-height: 1;
+}
