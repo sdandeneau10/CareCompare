@@ -26,7 +26,7 @@ export class ContactUsComponent implements OnInit {
     })
     .subscribe(
       data => {
-        console.log("POST Request is successful", data);
+        alert('Message sent!');
       },
       error => {
         console.log("Error", error);
