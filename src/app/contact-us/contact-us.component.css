@@ -1,172 +1,18 @@
-div.background{
-    background: white;
-    z-index: -1;
-    width: 100%;
-    height: 100vh;
-}
-
-div.slantedDiv{
-    position: relative;
-    height: 600px;
-    width: 100%;
-    background: dodgerblue;
-    z-index: 0;
-}
-
-div.slantedDiv::after{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    content: '';
-    background: inherit;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    transform-origin: top left;
-    transform: skewY(4deg);
-    z-index: 0;
-}
-
-div.contactText{
-    padding-top: 100px;
+.bg-primary{
+    background-color: #c4e3f8 !important;
     text-align: center;
-    z-index: 1;
-    position: relative;
 }
-
-p.content{
-    color: white;
-    margin-top: 25px;
-}
-
-#question{
-    color: white;
-}
-
-#contact{
-    margin-top: 25px;
+.contactform{
+    background-color: white;
     color: black;
-}
-
-div.form{
-    background: white !important;
-    width: 400px;
-    height: 775px;
-    z-index: 2;
-    position: relative;
-    margin-left: 250px;
-    transform: translateY(-250px);
-    border-radius: 5px;
+    margin: auto;
+    height: auto;
+    width: 50%;
+    border-radius: 20%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    display: inline-block;
 }
-
-div.meet-the-team{
-    display: inline-block;
-    height: 250px;
-    width: 400px;
-    background: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    transform: translateY(-770px);
-    position: relative;
-    z-index: 2;
-    margin-left: 150px;
-    border-radius: 5px;
-    text-align: center;
-}
-
-div.meet-the-team h4{
-    margin-top: 15px;
-}
-
-div.form-content{
-    padding: 20px;
-    margin: 20px;
-}
-
-input[type=text]{
-    background: white;
-    width: 100%;
-    height: 40px;
-    border-color: dodgerblue;
-}
-
-input[type=text]:focus{
-    border: 3px solid dodgerblue;
-}
-
-textarea[id=message]{
-    width: 100%;
-    height: 225px;
-    resize: none;
-    border: 2px solid dodgerblue;
-}
-
-textarea[id=message]:focus{
-    border: 3px solid dodgerblue;
-}
-
-#send-email{
-   border-color: dodgerblue !important;
-   color: dodgerblue;
-   background: transparent;
-   margin-top: 10px;
-   border-radius: 0;
-}
-
-#send-email:hover{
-    background: dodgerblue;
-    color: white;
-    border-radius: 0;
-}
-
-p.form-text{
-    margin-top: 20px !important;
-    font-weight: bold;
-}
-
-img.icon{
-    height:30px;
-    width: 30px;
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.form-info{
-    display: inline;
-}
-
-div.info-item{
-    margin-bottom: 20px; 
-}
-
-#photos{
-    margin-top: 30px;
-}
-
-img.photo{
-    border-radius: 50%;
-    height: 100px;
-    width: 100px;
-}
-
-img.photo-1{
-    margin-left: 30px;
-    border-radius: 50%;
-    height: 100px;
-    width: 100px;
-}
-
-#names{
-    margin-top: 20px;
-}
-
-p.name{
-    display: inline;
-}
-
-p.name-1{
-    margin-left: 25px;
-    display: inline;
+.inputs{
+    margin-top: 0;
+    width: 70%;
+    border: 1px solid #1E90FF; 
 }
