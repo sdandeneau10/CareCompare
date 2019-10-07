@@ -18,7 +18,7 @@ export class ContactUsComponent implements OnInit {
     const email = (<HTMLInputElement>document.querySelector('#email')).value
     const subject = (<HTMLInputElement>document.querySelector('#subject')).value
     const message = (<HTMLInputElement>document.querySelector('#message')).value
-    this.http.post('https://l2267an2y8.execute-api.us-east-1.amazonaws.com/sendEmail', {
+    this.http.post('https://qra9m7iyyd.execute-api.us-east-1.amazonaws.com/sendEmail/sendemail', {
       "name": name,
       "email": email,
       "subject": subject,
