@@ -47,6 +47,7 @@
     "jquery": "^3.4.1",
     "ngx-bootstrap": "^4.1.1",
     "ngx-pagination": "^4.0.0",
+    "ngx-parallax": "^4.0.0",
     "popper.js": "^1.15.0",
     "rxjs": "~6.3.3",
     "serverless": "^1.46.1",

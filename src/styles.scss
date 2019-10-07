@@ -35,7 +35,7 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 
 body,html{height:100%;}
-body {margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow-x: hidden;}
 .page-body{padding-bottom: 7.5vh; padding-top: 7vh;}
 form {
   width: 100%;
@@ -108,7 +108,7 @@ li {
 }
 
 .whiteLink:hover{
-  color: #c4e3f8;
+  color: #a8a8a8;
   text-decoration: none;
 }
 
@@ -140,3 +140,23 @@ li {
   color: #ffffff;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #3b3355;
+  border-radius: 16px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #29233b;
+}
